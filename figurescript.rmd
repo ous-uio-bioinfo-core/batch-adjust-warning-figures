@@ -1,0 +1,42 @@
+
+
+```{r, results='hide', echo=FALSE}
+starttime = Sys.time()
+```
+`r as.character(starttime)`
+
+
+```{r}
+startwd = getwd()
+rseed=3
+for(i in 6:6)
+{
+  rseed=i
+  source("overviewplot.r")
+}
+
+setwd("reanalysis/Leek2012")
+source("figurescript_leek.r")
+setwd(startwd)
+
+setwd("reanalysis/Towfic2014")
+source("figurescript_towfic.r")
+setwd(startwd)
+
+setwd("reanalysis/Johnson2007")
+source("figurescript_johnson.r")
+setwd(startwd)
+```
+
+```{r sessionInfo, comment=""}
+sessionInfo()
+```
+
+generation ended `r as.character(Sys.time())`. Time spent `r  as.integer(round(difftime(Sys.time(),starttime, units="mins")))` minutes .
+
+
+
+
+
+
+
