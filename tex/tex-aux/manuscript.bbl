@@ -1,0 +1,74 @@
+\begin{thebibliography}{99}
+
+\bibitem[Johnson \emph{and others}(2007)Johnson, Li and Rabinovic]{Johnson2007}
+\textsc{Johnson, W~Evan, Li, Cheng and Rabinovic, Ariel}. (2007, January).
+\newblock {Adjusting batch effects in microarray expression data using
+  empirical Bayes methods.}
+\newblock {\em Biostatistics (Oxford, England)\/}~\textbf{8}(1), 118--27.
+
+\bibitem[Kitchen \emph{and others}(2011)Kitchen, Sabine, Simen, Dixon, Bartlett
+  and Sims]{Kitchen2011}
+\textsc{Kitchen, Robert~R, Sabine, Vicky~S, Simen, Arthur~a, Dixon, J~Michael,
+  Bartlett, John M~S and Sims, Andrew~H}. (2011, January).
+\newblock {Relative impact of key sources of systematic noise in Affymetrix and
+  Illumina gene-expression microarray experiments.}
+\newblock {\em BMC genomics\/}~\textbf{12}(1), 589.
+
+\bibitem[Kupfer \emph{and others}(2012)Kupfer, Guthke, Pohlers, Huber, Koczan
+  and Kinne]{Kupfer2012}
+\textsc{Kupfer, Peter, Guthke, Reinhard, Pohlers, Dirk, Huber, Rene, Koczan,
+  Dirk and Kinne, Raimund~W}. (2012, January).
+\newblock {Batch correction of microarray data substantially improves the
+  identification of genes differentially expressed in rheumatoid arthritis and
+  osteoarthritis.}
+\newblock {\em BMC medical genomics\/}~\textbf{5}(1), 23.
+
+\bibitem[Leek \emph{and others}(2012)Leek, Johnson, Parker, Jaffe and
+  Storey]{Leek2012}
+\textsc{Leek, Jeffrey~T, Johnson, W~Evan, Parker, Hilary~S, Jaffe, Andrew~E and
+  Storey, John~D}. (2012, March).
+\newblock {The sva package for removing batch effects and other unwanted
+  variation in high-throughput experiments.}
+\newblock {\em Bioinformatics (Oxford, England)\/}~\textbf{28}(6), 882--3.
+
+\bibitem[Leek \emph{and others}(2010)Leek, Scharpf, Bravo, Simcha, Langmead,
+  Johnson, Geman, Baggerly and Irizarry]{Leek2010}
+\textsc{Leek, Jeffrey~T, Scharpf, Robert~B, Bravo, H\'{e}ctor~Corrada, Simcha,
+  David, Langmead, Benjamin, Johnson, W~Evan, Geman, Donald, Baggerly, Keith
+  and Irizarry, Rafael~a}. (2010, October).
+\newblock {Tackling the widespread and critical impact of batch effects in
+  high-throughput data.}
+\newblock {\em Nature reviews. Genetics\/}~\textbf{11}(10), 733--9.
+
+\bibitem[Luo \emph{and others}(2010)Luo, Schumacher, Scherer, Sanoudou,
+  Megherbi, Davison, Shi, Tong, Shi, Hong, Zhao, Elloumi, Shi, Thomas, Lin,
+  Tillinghast, Liu, Zhou, Herman, Li, Deng, Fang, Bushel, Woods and
+  Zhang]{Luo2010}
+\textsc{Luo, J, Schumacher, M, Scherer, a, Sanoudou, D, Megherbi, D, Davison,
+  T, Shi, T, Tong, W, Shi, L, Hong, H, Zhao, C, Elloumi, F, Shi, W, Thomas, R,
+  Lin, S, Tillinghast, G, Liu, G, Zhou, Y, Herman, D, Li, Y, Deng, Y, Fang, H,
+  Bushel, P, Woods, M} \emph{and others}. (2010, August).
+\newblock {A comparison of batch effect removal methods for enhancement of
+  prediction performance using MAQC-II microarray gene expression data.}
+\newblock {\em The pharmacogenomics journal\/}~\textbf{10}(4), 278--91.
+
+\bibitem[Towfic \emph{and others}(2014)Towfic, Funt, Fowler, Bakshi, Blaugrund,
+  Artyomov, Hayden, Ladkani, Schwartz and Zeskind]{Towfic2014}
+\textsc{Towfic, Fadi, Funt, Jason~M, Fowler, Kevin~D, Bakshi, Shlomo,
+  Blaugrund, Eran, Artyomov, Maxim~N, Hayden, Michael~R, Ladkani, David,
+  Schwartz, Rivka and Zeskind, Benjamin}. (2014, January).
+\newblock {Comparing the biological impact of glatiramer acetate with the
+  biological impact of a generic.}
+\newblock {\em PloS one\/}~\textbf{9}(1), e83757.
+
+\bibitem[Yoo \emph{and others}(2014)Yoo, Sung, Lee, Kim, Lee, Park, Kim, Lee,
+  Rho, Lee, Cho, Kim, Ju, Kim, Kim, Kim, Lee and Ko]{Yoo2014}
+\textsc{Yoo, Hae~Yong, Sung, Min~Kyung, Lee, Seung~Ho, Kim, Sangok, Lee,
+  Haeseung, Park, Seongjin, Kim, Sang~Cheol, Lee, Byungwook, Rho, Kyoohyoung,
+  Lee, Jong-Eun, Cho, Kwang-Hwi, Kim, Wankyu, Ju, Hyunjung, Kim, Jaesang, Kim,
+  Seok~Jin, Kim, Won~Seog, Lee, Sanghyuk} \emph{and others}. (2014, March).
+\newblock {A recurrent inactivating mutation in RHOA GTPase in
+  angioimmunoblastic T cell lymphoma.}
+\newblock {\em Nature genetics\/}~\textbf{46}(4), 371--375.
+
+\end{thebibliography}

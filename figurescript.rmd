@@ -1,7 +1,7 @@
 
 
 ```{r, results='hide', echo=FALSE}
-starttime = Sys.time()
+outerstarttime = Sys.time()
 ```
 `r as.character(starttime)`
 
@@ -32,7 +32,7 @@ setwd(startwd)
 sessionInfo()
 ```
 
-generation ended `r as.character(Sys.time())`. Time spent `r  as.integer(round(difftime(Sys.time(),starttime, units="mins")))` minutes .
+generation ended `r as.character(Sys.time())`. Time spent `r  as.integer(round(difftime(Sys.time(),outerstarttime, units="mins")))` minutes .
 
 
 
