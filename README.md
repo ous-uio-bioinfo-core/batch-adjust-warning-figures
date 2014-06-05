@@ -8,13 +8,13 @@ Rødland, E. Hovig, manuscript in preparation.
 
 The figures illustrate the side effects from batch effect adjustments using ComBat with study group as covariate or similar methods.
 
-### figurescript.rmd  
+### figurescript.r
 
 Calls the individual figure scripts. The only script needed to be run in order to recreate the figures in the article. Takes about 6 minutes. 
 
-### figurescript.html
+### sessionInfo.txt
 
-The report made from figurescript.rmd.
+The output of sessionInfo() when figurescript was run.
 
 ### overviewplot.r
 
@@ -28,7 +28,6 @@ Consist of a figure-script that loads the data, process with or without ComBat, 
 ### tex/
 
 The tex files and related files needed to compile the manuscript as a pdf
-
 
 ### Additional resources
 

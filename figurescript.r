@@ -1,16 +1,13 @@
 
 
 
-
-
 startwd = getwd()
 rseed=3
 for(i in 6:6)
 {
   rseed=i
-  source("boxplotscript.r")
+  source("overviewplot.r")
 }
-
 
 setwd("reanalysis/Leek2012")
 source("figurescript_leek.r")
@@ -24,7 +21,9 @@ setwd("reanalysis/Johnson2007")
 source("figurescript_johnson.r")
 setwd(startwd)
 
-
+sink("sessionInfo.txt")
+sessionInfo()
+sink()
 
 
 
