@@ -1,5 +1,5 @@
 
-README for the batchnormwarning_figures git repository.
+README for the batch adjust warning figures git repository.
 ----------------------
 
 This project consists of the r-code that produces the figures used in "Methods that remove batch effects while retaining group
