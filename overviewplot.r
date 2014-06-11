@@ -74,7 +74,7 @@ table(sampleannotation[,2:3])
 
 ngenes=1000
 #matrix_random = createrandomdata(ngenes, sampleannotation, mean=0, sd=1)
-set.seed(rseed)
+set.seed(6)
 matrix_random = matrix(rnorm(ngenes * nrow(sampleannotation), mean=0, sd=1), nrow=ngenes, ncol=nrow(sampleannotation))
 
 matrix_condition = matrix_random
@@ -93,7 +93,8 @@ matrix_combat = ComBat(dat=matrix_conditionbatch, batch=sampleannotation$batch,
 
 
 index=1
-figfile = paste( getwd(), "/", "figure1_", rseed, ".pdf", sep="")
+#figfile = paste( getwd(), "/", "figure1_", rseed, ".pdf", sep="")
+figfile = paste( getwd(), "/", "figure1",  ".pdf", sep="")
 pdf(file =figfile, width=16, height=8)
 #png(file = paste("figure/", "figure1_", rseed, ".png", sep=""), width=1600, height=800)
 par(mfrow=c(1, 4))

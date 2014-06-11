@@ -20,6 +20,10 @@ The output of sessionInfo() when figurescript was run.
 
 Figure 1. in the manuscript. 
 
+### commonscripts/helperfunctions.r
+
+A few short utility functions.
+
 ### reanalysis/  
 
 The individual data sets that are used to illustrate the adverse effect of ComBat.
@@ -29,7 +33,11 @@ Consist of a figure-script that loads the data, process with or without ComBat, 
 
 The tex files and related files needed to compile the manuscript as a pdf
 
+### *.pdf
+
+The produced plots.
+
 ### Additional resources
 
-In our work, many more analyses than presented in the above figure-scripts were performed. These are more detailed and go beyond the scope of our article. But for the especially interested some of them are made available as rmarkdown reports here:
-https://github.com/vegardny/batchnormwarning_reports.git
+In our work, many more analyses than presented in the above figure-scripts were performed. These are more detailed and go beyond the scope of our article. But for the especially interested, some of them are made available as rmarkdown reports here:
+https://github.com/ous-uio-bioinfo-core/batch-adjust-warning-reports.git

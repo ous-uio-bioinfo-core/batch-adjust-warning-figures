@@ -2,12 +2,7 @@
 
 
 startwd = getwd()
-rseed=3
-for(i in 6:6)
-{
-  rseed=i
-  source("overviewplot.r")
-}
+source("overviewplot.r")
 
 setwd("reanalysis/Leek2012")
 source("figurescript_leek.r")
