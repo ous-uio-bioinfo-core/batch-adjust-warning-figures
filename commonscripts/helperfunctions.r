@@ -22,7 +22,7 @@ createsampleannotation = function( treatment_in_batches)
 # plots 3 histograms from p-value distibutions on top on each other.
 # draws a line instead of bars for clarity.
 # binsize is 0.01
-adhocpvalueplot = function(realcombatp, reallimmap, randomp, main="P-values", xrange=1:25)
+oldadhocpvalueplot = function(realcombatp, reallimmap, randomp, main="P-values", xrange=1:25)
 {
   thiscolors = c("red", "blue", "black")
   
@@ -49,4 +49,31 @@ adhocpvalueplot = function(realcombatp, reallimmap, randomp, main="P-values", xr
                   "Random data, ComBat adjusted")) 
 }
 
+
+# plots 3 histograms from p-value distibutions on top on each other.
+# draws a line instead of bars for clarity.
+# binsize is 0.01
+adhocpvalueplot = function(realcombatp, reallimmap, randomp, main="P-values", xrange=1:25)
+{
+
+	a = hist(realcombatp, breaks=100, plot=F)$counts[xrange]
+	b = hist(reallimmap, breaks=100, plot=F)$counts[xrange]
+	c = hist(randomp, breaks=100, plot=F)$counts[xrange]
+	ylim=c(0, max(c(a,b,c)))
+	# reproduced ComBat + limma
+	plot((xrange)/100, a , ylim=ylim,
+			 main=main, xlab="p-value", ylab="frequency",
+			 type="l", lwd=2, lty=1)
+	
+	# batch handled in limma
+	lines((xrange)/100, b, lwd=2, lty=2)
+	
+	# random ComBat + limma
+	lines((xrange)/100, c, lwd=2, lty=3)
+	
+	legend("topright", lwd=2, lty=1:3,
+				 legend=c("Real data, ComBat adjusted",
+				 				 "Real data, batch handled by Limma",
+				 				 "Random data, ComBat adjusted")) 
+}
 
