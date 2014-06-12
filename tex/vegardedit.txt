@@ -1,0 +1,43 @@
+
+
+
+
+
+\subsection{Practical advice}
+
+For an investigator facing an unbalanced data set with batch effects, our advice is to adjust for batch inside the statistical test and avoid the two step procedure outlined above. If this is not possible, then applying the method described in this article should only be done with great caution and downstream confidence estimates must be treated with suspicion.
+
+Knowing that adjusting for batch effects while preserving the group difference may lead to varying degree of false results, to what extent can an investigator trust a result from a work applying such a method? Essentially, when the batch/group configuration is balanced, or group difference is ignored  (i.e. no group labels not given as parameters to ComBat), problems related to preserving group differences will not occur. For other cases, a re-analysis without using this approach is the most rigorous path. However, this thoroughness is not feasible if the downstream  analysis can not adjust for batch effects by it self. To reach a reliable result, batch effects need to be handled in some way or another. To make matters worse, a re-analysis relies on the availability of the raw data and a description of processing and analysis steps taken in the original work. Even when this is available, the necessary bioinformatic skills and work hours could still be in short supply. For such situations, a superficial assessment can be performed, taking special note of batches were groups of interest are near missing and how likely a group difference is. In essence asking if the balanced parts (effective sample size?) of the data has enough power to detect the presumed effects and if this is the case (\citealp{Johnson2007}, \CITE{24584070}), treat the results more like an ordered list with the most likely true positives on top while de-emphasizing the somewhat deflated p-values . In contrast, if biological knowledge suggest that a group effect is unlikely  (\CITE{24391845}, \CITE{18414638}?, \CITE{21731603}, \CITE{23630272}), an intermediate lack of batch/group balance  could lead to a mostly false result.
+
+  
+  
+  
+
+
+\subsection{Reproducible research}
+
+The data and scripts used to generate the results in this work, i.e figures, are made available at https://github.com/ous-uio-bioinfo-core/batch-adjust-warning-figures.git. Additional analyses were also performed, but considered excessive for the current  article. However, some readers might find this very interesting and we provide it as an extra resource at https://github.com/ous-uio-bioinfo-core/batch-adjust-warning-reports.git
+
+
+
+
+
+figur1
+
+
+Det er bare ett gen.
+4 grupper som vi er interesert i å måle forskjeller på, fargekodet.
+3 batcher som er adskilt på x aksen (med litt avstand innad i en batch for bedre visualisering)
+Hver gruppe har en god del målinger (av det samme genet men fra forskjellige "pasienter") spredd ujavnt over de 3 batchene.
+
+De forskjellige subplottene viser:
+1. Målinger uten batch effekt (1 og 2 er like men forskjellige fra 3 og 4 som er en slags fasit)
+2. Batch effekt lagt til, men ikke korrigert for, her er batch confounder og får 1 og 2 til å se forskjellige ut (og litt 3 og 4)
+3. Batch korrigeringen "Zero-centered" (også kalt mean adjust, alternativ til combat) er brukt. 3 og 4 er forskjellige (uønsket)
+4. Anova centered, slik ComBat gjør. Her kan 1 og 2 bli funnet å være forskjellige (uønsket)
+5. Standard måten å gjøre det på. dvs ikke en to stegs måte som 3 og 4.
+
+
+
+
+
