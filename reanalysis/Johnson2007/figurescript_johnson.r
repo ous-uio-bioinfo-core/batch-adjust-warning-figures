@@ -60,7 +60,7 @@ print(paste("ComBat adjusted random data, significant probes: ",  sum(p.adjust(r
 # create pvalue plot
 figfile = paste(getwd(), "/dataset2pvalues.pdf", sep="")
 pdf(figfile)
-adhocpvalueplot( combatp, limmap, randp)
+adhocpvalueplot( combatp, limmap, randp,  main="(b) P-values")
 dev.off()
 print( paste("Figure created; ",figfile ))
 

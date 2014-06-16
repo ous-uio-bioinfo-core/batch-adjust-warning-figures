@@ -6,7 +6,7 @@
 library(sva)
 
  
-adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL, xlab="x")
+adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL, xlab="x", figureletter=NA)
 {
   #x = batchlabels + grouplabels/8
   colpalette = c("blue", "red", "darkgreen", "magenta")
@@ -52,14 +52,19 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
     lines(c(xoffset,xright), c(m,m), col=colpalette[g], lwd=lwd)
     xoffset = xoffset+boxseparation
   }
-  
+  legendcex=2
   if(addlegend)
   {
-    legendcex=2
+    
     legend("topright", legend=paste("Group ", groupnames, sep=""), 
            text.col=colpalette[groupnames], bty="n", cex=legendcex)
     legend("bottomright", legend=paste("Batch ", unique(batchlabels), sep=""),
            pch=pchselection[unique(batchlabels)], bty="n", cex=legendcex)
+  }
+  if(!is.na(figureletter))
+  {
+  	figureletter=paste("(", figureletter, ")", sep="")
+  	text(x=0, y=ylim[2], labels=figureletter, cex=legendcex)
   }
 }
 
@@ -104,10 +109,10 @@ alldata = c(matrix_condition[index,],
             matrix_meancenter[index,],
             matrix_combat[index,])
 ylim = c(min(alldata), max(alldata))
-adhocboxplot(matrix_condition[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=FALSE, ylim=ylim, xlab="Without batch effects")
-adhocboxplot(matrix_conditionbatch[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=FALSE, ylim=ylim, xlab="With batch effects added")
-adhocboxplot(matrix_meancenter[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=FALSE, ylim=ylim, xlab="Zero-centered per batch")
-adhocboxplot(matrix_combat[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=TRUE, ylim=ylim, xlab="ANOVA centered values (for tiden combat)")
+adhocboxplot(matrix_condition[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=FALSE, ylim=ylim, xlab="Without batch effects", figureletter="a")
+adhocboxplot(matrix_conditionbatch[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=FALSE, ylim=ylim, xlab="With batch effects added", figureletter="b")
+adhocboxplot(matrix_meancenter[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=FALSE, ylim=ylim, xlab="Zero-centered per batch", figureletter="c")
+adhocboxplot(matrix_combat[index,], sampleannotation$treatment, sampleannotation$batch, addlegend=TRUE, ylim=ylim, xlab="ANOVA centered values (for tiden combat)", figureletter="d")
 dev.off()
 
 print( paste("Figure created; ",figfile ))

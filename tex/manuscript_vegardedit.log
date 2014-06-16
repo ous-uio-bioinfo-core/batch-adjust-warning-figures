@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.3.25)  12 JUN 2014 18:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.3.25)  16 JUN 2014 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -605,29 +605,29 @@ LaTeX Info: Redefining \nameref on input line 22.
 \@outlinefile=\write4
 \openout4 = `manuscript_vegardedit.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 52.
 
 (/usr/local/texlive/2013basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
+LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 
 (/usr/local/texlive/2013basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 54.
+Package hyperref Warning: Ignoring empty anchor on input line 58.
 
 
-Package natbib Warning: Citation `Luo2010' on page 1 undefined on input line 64
+Package natbib Warning: Citation `Luo2010' on page 1 undefined on input line 68
 .
 
 
-Package natbib Warning: Citation `Leek2010' on page 1 undefined on input line 6
-6.
+Package natbib Warning: Citation `Leek2010' on page 1 undefined on input line 7
+0.
 
 
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 69.
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 72.
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -640,60 +640,60 @@ Overfull \vbox (10.0pt too high) has occurred while \output is active []
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 69.
+(Font)              size <6> substituted on input line 72.
 
-LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 69.
+LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 72.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 69.
+(Font)              size <5> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.25> not available
-(Font)              size <5> substituted on input line 69.
+(Font)              size <5> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 69.
+(Font)              size <6> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.54997> not available
-(Font)              size <5> substituted on input line 69.
+(Font)              size <5> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.25> not available
-(Font)              size <5> substituted on input line 69.
+(Font)              size <5> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 69.
+(Font)              size <6> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 69.
+(Font)              size <5> substituted on input line 72.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.25> not available
-(Font)              size <5> substituted on input line 69.
+(Font)              size <5> substituted on input line 72.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
 (/usr/local/texlive/2013basic/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6.5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 69.
+(Font)              size <6> substituted on input line 72.
 
 [1{/usr/local/texlive/2013basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package natbib Warning: Citation `Johnson2007' on page 2 undefined on input lin
-e 74.
+e 78.
 
 
 Package natbib Warning: Citation `Leek2012' on page 2 undefined on input line 7
-4.
+8.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -705,11 +705,14 @@ Overfull \vbox (6.83331pt too high) has occurred while \output is active []
 [2]
 
 Package natbib Warning: Citation `Johnson2007' on page 3 undefined on input lin
-e 95.
+e 90.
 
 
 Package natbib Warning: Citation `Johnson2007' on page 3 undefined on input lin
-e 99.
+e 94.
+
+
+Underfull \vbox (badness 6445) has occurred while \output is active []
 
 
 Overfull \vbox (6.94444pt too high) has occurred while \output is active []
@@ -718,15 +721,15 @@ Overfull \vbox (6.94444pt too high) has occurred while \output is active []
 [3]
 
 Package natbib Warning: Citation `Towfic2014' on page 4 undefined on input line
- 172.
+ 167.
 
 
 Package natbib Warning: Citation `Towfic2014' on page 4 undefined on input line
- 172.
+ 167.
 
 
 Package natbib Warning: Citation `Towfic2014' on page 4 undefined on input line
- 172.
+ 167.
 
 
 Overfull \vbox (6.83331pt too high) has occurred while \output is active []
@@ -735,23 +738,35 @@ Overfull \vbox (6.83331pt too high) has occurred while \output is active []
 [4]
 
 Package natbib Warning: Citation `Johnson2007' on page 5 undefined on input lin
-e 176.
+e 171.
 
 
 Package natbib Warning: Citation `Towfic2014' on page 5 undefined on input line
- 176.
-
-
-Package natbib Warning: Citation `Yoo2014' on page 5 undefined on input line 18
-3.
+ 171.
 
 
 Package natbib Warning: Citation `Johnson2007' on page 5 undefined on input lin
-e 190.
+e 181.
 
 
 Package natbib Warning: Citation `Leek2012' on page 5 undefined on input line 1
-97.
+81.
+
+
+Package natbib Warning: Citation `Johnson2007' on page 5 undefined on input lin
+e 186.
+
+
+Package natbib Warning: Citation `Leek2012' on page 5 undefined on input line 1
+86.
+
+
+Package natbib Warning: Citation `Kupfer2012' on page 5 undefined on input line
+ 186.
+
+
+Package natbib Warning: Citation `Kitchen2011' on page 5 undefined on input lin
+e 186.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -763,23 +778,7 @@ Overfull \vbox (6.94444pt too high) has occurred while \output is active []
 [5]
 
 Package natbib Warning: Citation `Johnson2007' on page 6 undefined on input lin
-e 202.
-
-
-Package natbib Warning: Citation `Leek2012' on page 6 undefined on input line 2
-02.
-
-
-Package natbib Warning: Citation `Kupfer2012' on page 6 undefined on input line
- 202.
-
-
-Package natbib Warning: Citation `Kitchen2011' on page 6 undefined on input lin
-e 202.
-
-
-Package natbib Warning: Citation `Johnson2007' on page 6 undefined on input lin
-e 210.
+e 194.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -789,67 +788,69 @@ Overfull \vbox (6.83331pt too high) has occurred while \output is active []
 
 
 [6]
-Overfull \hbox (22.41765pt too wide) in paragraph at lines 224--225
+Overfull \hbox (22.41765pt too wide) in paragraph at lines 208--210
 []\OT1/cmr/m/n/10 [vi boer klare aa til-fred-stille kravene i http://biostatist
-ics.oxfordjournals.org/content/10/3/405.full][] 
+ics.oxfordjournals.org/content/10/3/405.full][]
  []
 
 No file manuscript_vegardedit.bbl.
 <../figure1.pdf, id=121, 1156.32pt x 578.16pt>
 File: ../figure1.pdf Graphic file (type pdf)
  <use ../figure1.pdf>
-Package pdftex.def Info: ../figure1.pdf used on input line 245.
+Package pdftex.def Info: ../figure1.pdf used on input line 229.
 (pdftex.def)             Requested size: 369.88582pt x 184.93558pt.
 
 <../reanalysis/Leek2012/leekrandomdatapvalues.pdf, id=122, 505.89pt x 505.89pt>
 File: ../reanalysis/Leek2012/leekrandomdatapvalues.pdf Graphic file (type pdf)
 <use ../reanalysis/Leek2012/leekrandomdatapvalues.pdf>
 Package pdftex.def Info: ../reanalysis/Leek2012/leekrandomdatapvalues.pdf used 
-on input line 252.
-(pdftex.def)             Requested size: 369.88582pt x 369.891pt.
+on input line 238.
+(pdftex.def)             Requested size: 184.9429pt x 184.9455pt.
 
-<../reanalysis/Towfic2014/towficpvalues.pdf, id=123, 505.89pt x 505.89pt>
+<../reanalysis/Leek2012/leekqqplot.png, id=123, 481.8pt x 481.8pt>
+File: ../reanalysis/Leek2012/leekqqplot.png Graphic file (type png)
+
+<use ../reanalysis/Leek2012/leekqqplot.png>
+Package pdftex.def Info: ../reanalysis/Leek2012/leekqqplot.png used on input li
+ne 239.
+(pdftex.def)             Requested size: 184.9429pt x 184.9385pt.
+
+<../reanalysis/Towfic2014/towficpvalues.pdf, id=125, 505.89pt x 505.89pt>
 File: ../reanalysis/Towfic2014/towficpvalues.pdf Graphic file (type pdf)
 
 <use ../reanalysis/Towfic2014/towficpvalues.pdf>
 Package pdftex.def Info: ../reanalysis/Towfic2014/towficpvalues.pdf used on inp
-ut line 264.
+ut line 256.
 (pdftex.def)             Requested size: 184.9429pt x 184.9455pt.
 
-<../reanalysis/Johnson2007/dataset2pvalues.pdf, id=124, 505.89pt x 505.89pt>
+<../reanalysis/Johnson2007/dataset2pvalues.pdf, id=126, 505.89pt x 505.89pt>
 File: ../reanalysis/Johnson2007/dataset2pvalues.pdf Graphic file (type pdf)
 
 <use ../reanalysis/Johnson2007/dataset2pvalues.pdf>
 Package pdftex.def Info: ../reanalysis/Johnson2007/dataset2pvalues.pdf used on 
-input line 265.
+input line 257.
 (pdftex.def)             Requested size: 184.9429pt x 184.9455pt.
 
 
 Package natbib Warning: Citation `Towfic2014' on page 7 undefined on input line
- 273.
+ 265.
 
 
 Package natbib Warning: Citation `Johnson2007' on page 7 undefined on input lin
-e 273.
+e 265.
 
 
 Package natbib Warning: Citation `Towfic2014' on page 7 undefined on input line
- 273.
+ 265.
 
 
 Package natbib Warning: Citation `Johnson2007' on page 7 undefined on input lin
-e 273.
-
-
-Overfull \hbox (5.93909pt too wide) in paragraph at lines 291--295
-[]\OT1/cmr/m/n/10 Gjennomf^^\re en m^^Wate ^^Wa skrive batch-group de-sign p^^W
-a. bal-anced group-batch de-sign, batch/group
- []
+e 265.
 
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 308.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
 
 Overfull \vbox (6.94444pt too high) has occurred while \output is active []
 
@@ -858,29 +859,20 @@ Overfull \vbox (6.94444pt too high) has occurred while \output is active []
 Overfull \vbox (6.83331pt too high) has occurred while \output is active []
 
 
-[8 <../figure1.pdf>]
+[8 <../figure1.pdf> <../reanalysis/Leek2012/leekrandomdatapvalues.pdf> <../rean
+alysis/Leek2012/leekqqplot.png>]
 Overfull \vbox (6.94444pt too high) has occurred while \output is active []
 
 
-[9 <../reanalysis/Leek2012/leekrandomdatapvalues.pdf>]
-Overfull \vbox (6.83331pt too high) has occurred while \output is active []
-
-
-[10 <../reanalysis/Towfic2014/towficpvalues.pdf> <../reanalysis/Johnson2007/dat
-aset2pvalues.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 308.
+[9 <../reanalysis/Towfic2014/towficpvalues.pdf> <../reanalysis/Johnson2007/data
+set2pvalues.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
  (./manuscript_vegardedit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 308.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 308.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
+Package rerunfilecheck Info: File `manuscript_vegardedit.out' has not changed.
+(rerunfilecheck)             Checksum: 092AFDCFCDBAB102DB7C586321DA7CEB;988.
 
-
-Package rerunfilecheck Warning: File `manuscript_vegardedit.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `manuscript_vegardedit.out':
-(rerunfilecheck)             Before: D69A6F971BC7D5C793891F48689DF4F3;917
-(rerunfilecheck)             After:  092AFDCFCDBAB102DB7C586321DA7CEB;988.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.75pt have occurred.
@@ -890,13 +882,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 7304 strings out of 494536
- 101907 string characters out of 6167446
- 200481 words of memory out of 5000000
- 10417 multiletter control sequences out of 15000+600000
+ 7307 strings out of 494536
+ 102073 string characters out of 6167446
+ 200145 words of memory out of 5000000
+ 10419 multiletter control sequences out of 15000+600000
  12757 words of font info for 51 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 34i,14n,28p,1796b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,15n,28p,1763b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{page.} has been referenced but does not exist, re
 placed by a fixed one
 
@@ -921,10 +913,10 @@ c/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2013
 basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2
 013basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texli
 ve/2013basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on manuscript_vegardedit.pdf (10 pages, 283814 bytes).
+Output written on manuscript_vegardedit.pdf (9 pages, 297195 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 204 compressed objects within 3 object streams
- 38 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 245 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 
