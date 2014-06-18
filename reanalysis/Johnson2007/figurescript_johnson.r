@@ -1,11 +1,15 @@
 
-# source("figurescriptjohnson.r")
+
+# script to create Figure 3b
+
 starttime = Sys.time()
 
 library("sva")
 library("limma")
 source("../../commonscripts/helperfunctions.r")
 source("helperfunctions_johnson.r")
+
+print("Re-analysis and figure generation for example taken from Johnson et al. 2007, Data set 2")
 
 tmp = loadjohnsondata()
 sampleannotation = tmp[["sampleannotation"]]
@@ -25,7 +29,7 @@ cont.matrix = makeContrasts ( contrasts="TypeR-TypeC", levels=design)
 fit2 = contrasts.fit(fit, cont.matrix)
 combatp = eBayes(fit2)$p.value[,1]
 rm(Type, design, fit, cont.matrix, fit2)
-print(paste("ComBat adjusted real data, significant probes: ",  sum(p.adjust(combatp, "fdr")<0.05)))
+print(paste("ComBat adjusted real data, significant probes (fdr<0.05): ",  sum(p.adjust(combatp, "fdr")<0.05)))
 
 # DE pvalues not ComBat adjusted, 
 # batch blocked in limma
@@ -37,7 +41,7 @@ cont.matrix = makeContrasts ( contrasts="TypeR-TypeC", levels=design)
 fit2 = contrasts.fit(fit, cont.matrix)
 limmap = eBayes(fit2)$p.value[,1]
 rm(Type, Block, design, fit, cont.matrix, fit2)
-print(paste("Limma batch adjusted real data, significant probes: ",  sum(p.adjust(limmap, "fdr")<0.05)))
+print(paste("Limma batch adjusted real data, significant probes (fdr<0.05): ",  sum(p.adjust(limmap, "fdr")<0.05)))
 
 #Random data
 set.seed(100)
@@ -55,7 +59,7 @@ cont.matrix = makeContrasts ( contrasts="TypeR-TypeC", levels=design)
 fit = lmFit(randcombatdata, design)
 fit2 = contrasts.fit(fit, cont.matrix)
 randp = eBayes(fit2)$p.value[,1]
-print(paste("ComBat adjusted random data, significant probes: ",  sum(p.adjust(randp, "fdr")<0.05)))
+print(paste("ComBat adjusted random data, significant probes (fdr<0.05): ",  sum(p.adjust(randp, "fdr")<0.05)))
 
 # create pvalue plot
 figfile = paste(getwd(), "/dataset2pvalues.pdf", sep="")

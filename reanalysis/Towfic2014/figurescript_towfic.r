@@ -1,5 +1,6 @@
 
-# source("figuretowfic.r")
+# script to create Figure 3a
+
 starttime = Sys.time()
 debug = FALSE
 downloaddata=TRUE
@@ -10,6 +11,8 @@ includelibs = c("Biobase", "GEOquery", "sva", "limma")
 lapply(includelibs, require, character.only=T)
 source("../../commonscripts/helperfunctions.r")
 source("helperfunctions_towfic.r")
+
+print("Re-analysis and figure generation for example taken from Towfic et al. 2014")
 
 ret = loadtowfic(downloaddata)
 sampleannotation = ret[["sampleannotation"]]
@@ -33,7 +36,7 @@ fit = lmFit(combatdata, design)
 cont.matrix = makeContrasts ( contrasts="groupDP-groupN", levels=design)  
 fit2 = contrasts.fit(fit, cont.matrix)
 limma_p_alt = eBayes(fit2)$p.value[,1]
-print(paste("ComBat adjusted real data, significant probes: ",
+print(paste("ComBat adjusted real data, significant probes (fdr<0.05): ",
             sum(p.adjust(limma_p_alt, method="fdr")<0.05)))
 
 #Limma blocked batch and significance test
@@ -45,7 +48,7 @@ cont.matrix = makeContrasts ( contrasts="groupDP-groupN", levels=design)
 fit2 = contrasts.fit(fit, cont.matrix)
 limma_ret_woc = eBayes(fit2)
 limma_p_woc = limma_ret_woc$p.value[,1]
-print(paste("Limma adjusted real data, significant probes: ",  
+print(paste("Limma adjusted real data, significant probes (fdr<0.05): ",  
             sum(p.adjust(limma_p_woc, method="fdr")<0.05)))
 
 # radnom, ComBat adjusted
@@ -63,7 +66,7 @@ fit = lmFit(randcombatdata, design)
 cont.matrix = makeContrasts ( contrasts="groupDP-groupN", levels=design)
 fit2 = contrasts.fit(fit, cont.matrix)
 limma_p_rand_combat = eBayes(fit2)$p.value[,1]
-print(paste("ComBat adjusted random data, significant probes: ",
+print(paste("ComBat adjusted random data, significant probes (fdr<0.05): ",
             sum(p.adjust(limma_p_rand_combat, method="fdr")<0.05)))
 
 

@@ -1,4 +1,6 @@
 
+# Main script.
+# Calls the individual scripts that creates figures 1,2,3a,3b.
 
 
 startwd = getwd()
