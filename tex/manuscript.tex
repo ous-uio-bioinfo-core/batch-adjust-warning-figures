@@ -194,10 +194,6 @@ The second example is taken from the supporting information for the original Com
 
 %% FIGURE 4=fig:pdist-johnson: Original position
 
-\subsubsection{More?}
-
-\NOTE{Her kan vi fylle paa med flere eksempler etter samme mal hvis det trengs. Feks en fersk artikkel fra Nature Genetic (\citealp{Yoo2014}). Der har de kombinert sekvenseringsdata  (deres data) fra 9 lymfom pasienter med et (eksternt) microarray data set som har 6 lymfom proever og 5 kontroller, dvs kontroll gruppen er helt fravaerende hos dem. Dvs veldig ubalansert (9/0, 6/5), MEN skille mellom phenotypene er saa stor at de sikkert hadde funnet omtrent de samme genene signifikante med aa bare bruke de balanserte dataene (men det var jo ikke deres.) Dette er ikke en viktig del av paperet, men det er veldig feil selvom konsekvensense ikke blir store. Dog gir det et falskt inntrykk av at dataene deres ligner tidligere data, se heatmap i suppl.. Dessuten lager de GO analyser av dette som egentlig er 7 aar gamle andres data og ikke deres}
-
 
 \section{Discussion}
 
@@ -206,8 +202,7 @@ The second example is taken from the supporting information for the original Com
 \subsection{Increased emphasis on preserving group difference}
 
 In the original ComBat article (\citealp{Johnson2007}) it is clear that the primary motivation behind ComBat was to employ an Emprical Bayes method for batch-effect removal to allow better handling of small batches. The feature of retaining group differences for unbalanced designs is optional and seems to be subordinate, only exemplified in the supplementary information. However, over the years this feature became more important judging from advice given on user fora.  
-When ComBat was later incorporated in the sva package (\citealp{Leek2012}), \COMMENT{batch adjustment without covariates was no longer a default as specification of covariates became a requirement, although specification of a null model was still possible although not clearly documented in the sva documentation}{Is this correct?}. Thus, we expect this usage to have grown more common.
-
+When ComBat was later incorporated in the sva package (\citealp{Leek2012}), batch adjustment without covariates was no longer a default as specification of covariates became a requirement. Although specification of a null model was still possible, the help file specifies that this should contain ``outcome of interest and other covariates besides batch''. Thus, we expect this usage to have grown more common.
 
 \subsection{Motivation for this warning}
 
