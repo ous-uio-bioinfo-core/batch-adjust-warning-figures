@@ -52,6 +52,23 @@
   prediction performance using MAQC-II microarray gene expression data.}
 \newblock {\em The pharmacogenomics journal\/}~\textbf{10}(4), 278--91.
 
+\bibitem[Reich \emph{and others}(2006)Reich, Liefeld, Gould, Lerner, Tamayo and
+  Mesirov]{Reich2006}
+\textsc{Reich, Michael, Liefeld, Ted, Gould, Joshua, Lerner, Jim, Tamayo, Pablo
+  and Mesirov, Jill~P}. (2006, May).
+\newblock {GenePattern 2.0.}
+\newblock {\em Nature genetics\/}~\textbf{38}(5), 500--1.
+
+\bibitem[Taminau \emph{and others}(2011)Taminau, Steenhoff, Coletta, Meganck,
+  Lazar, de~Schaetzen, Duque, Molter, Bersini, Now\'{e} and {Weiss
+  Sol\'{\i}s}]{Taminau2011}
+\textsc{Taminau, Jonatan, Steenhoff, David, Coletta, Alain, Meganck, Stijn,
+  Lazar, Cosmin, de~Schaetzen, Virginie, Duque, Robin, Molter, Colin, Bersini,
+  Hugues, Now\'{e}, Ann} \emph{and others}. (2011, November).
+\newblock {inSilicoDb: an R/Bioconductor package for accessing human Affymetrix
+  expert-curated datasets from GEO.}
+\newblock {\em Bioinformatics (Oxford, England)\/}~\textbf{27}(22), 3204--5.
+
 \bibitem[Towfic \emph{and others}(2014)Towfic, Funt, Fowler, Bakshi, Blaugrund,
   Artyomov, Hayden, Ladkani, Schwartz and Zeskind]{Towfic2014}
 \textsc{Towfic, Fadi, Funt, Jason~M, Fowler, Kevin~D, Bakshi, Shlomo,
@@ -60,15 +77,5 @@
 \newblock {Comparing the biological impact of glatiramer acetate with the
   biological impact of a generic.}
 \newblock {\em PloS one\/}~\textbf{9}(1), e83757.
-
-\bibitem[Yoo \emph{and others}(2014)Yoo, Sung, Lee, Kim, Lee, Park, Kim, Lee,
-  Rho, Lee, Cho, Kim, Ju, Kim, Kim, Kim, Lee and Ko]{Yoo2014}
-\textsc{Yoo, Hae~Yong, Sung, Min~Kyung, Lee, Seung~Ho, Kim, Sangok, Lee,
-  Haeseung, Park, Seongjin, Kim, Sang~Cheol, Lee, Byungwook, Rho, Kyoohyoung,
-  Lee, Jong-Eun, Cho, Kwang-Hwi, Kim, Wankyu, Ju, Hyunjung, Kim, Jaesang, Kim,
-  Seok~Jin, Kim, Won~Seog, Lee, Sanghyuk} \emph{and others}. (2014, March).
-\newblock {A recurrent inactivating mutation in RHOA GTPase in
-  angioimmunoblastic T cell lymphoma.}
-\newblock {\em Nature genetics\/}~\textbf{46}(4), 371--375.
 
 \end{thebibliography}

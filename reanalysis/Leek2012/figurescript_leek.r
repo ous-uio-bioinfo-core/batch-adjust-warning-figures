@@ -39,12 +39,15 @@ dev.off()
 print( paste("Figure created; ",figfile ))
 
 
+source("../../commonscripts/helperfunctions.r")
 figfile = paste(getwd(), "/leekqqplot.png", sep="")
 png(file=figfile)
-source("../../commonscripts/helperfunctions.r")
 test = Ftest(combat_edata,mod,mod0)
 Fquant=qf(ppoints(nrow(combat_edata)),test$df1,test$df0)
-qqplot(Fquant,test$F, ylim=c(0,max(test$F)), xlim=c(0,max(test$F)), main="(b) QQ-plot of F-statistics")
+qqplot(Fquant,test$F, ylim=c(0,max(test$F)), xlim=c(0,max(test$F)),
+       xlab='Quantiles of F distribution',
+       ylab='F statistics from analyses',
+       main="(b) QQ-plot of F-statistics")
 abline(0,1,lwd=2, lty=2)
 dev.off()
 print( paste("Figure created; ",figfile ))
