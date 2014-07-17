@@ -7,7 +7,7 @@ downloaddata=TRUE
 set.seed(100)
 
 
-includelibs = c("Biobase", "GEOquery", "sva", "limma")
+includelibs = c("Biobase", "sva", "limma")
 lapply(includelibs, require, character.only=T)
 source("../../commonscripts/helperfunctions.r")
 source("helperfunctions_towfic.r")

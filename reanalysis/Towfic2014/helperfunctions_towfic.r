@@ -27,7 +27,7 @@ loadtowfic = function(downloaddata=TRUE)
     download.file(url="http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE40566&format=file",
                   destfile=temp, mode = "wb")
     tardirtemp = tempfile()
-    untar(temp, exdir = tardirtemp)
+    untar(temp, exdir = tardirtemp,tar="internal")
     rawannotation = read.table(paste(tardirtemp ,"/GPL6887_MouseWG-6_V2_0_R3_11278593_A.txt.gz", sep=""), 
                                sep="\t", header=TRUE, stringsAsFactors=FALSE, 
                                skip=8, comment.char="", quote="", fill=TRUE)
