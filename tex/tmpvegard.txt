@@ -1,0 +1,22 @@
+
+Siteringene i teksten er ikke som beskrevet i "Stylistic Requirements" i:
+http://www.oxfordjournals.org/our_journals/biosts/for_authors/msprep_submission.html
+Men når jeg ser på et par andre artikler i biostatistics så er det slik du har skrevet ser det ut som.
+
+Er det ikke bedre å henvise direkte til "Figure 1b" eller "Figure 1d" der det passer istedenfor "Figure 1"? Jeg har gjort det noen steder for Figure 3.
+
+
+I avsnittet "Motivation for this warning":
+In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011})
+Ser jeg at den mest siterte artikkelen ikke er sitert: (PMID:21386892, fra plos one). Men, som du er opptatt av så har ikke den i plos one brukt covariates(eksplisitt beskrevet), det tror jeg heller ikke Kitchen har, mens Kupfer har beskrevet bruk av covariates. Uansett så synes jeg de kan være nevnt.
+
+Siteringene i teksten er ikke som beskrevet i "Stylistic Requirements" i:
+http://www.oxfordjournals.org/our_journals/biosts/for_authors/msprep_submission.html
+Men når jeg ser på et par andre artikler i biostatistics så er det slik du har skrevet ser det ut som.
+
+Er det ikke bedre å henvise direkte til "Figure 1b" eller "Figure 1d" der det passer istedenfor "Figure 1"? Jeg har gjort det noen steder for Figure 3.
+
+
+I avsnittet "Motivation for this warning":
+In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011})
+Ser jeg at den mest siterte artikkelen ikke er sitert: (PMID:21386892, fra plos one). Men, som du er opptatt av så har ikke den i plos one brukt covariates(eksplisitt beskrevet), det tror jeg heller ikke Kitchen har, mens Kupfer har beskrevet bruk av covariates. Uansett så synes jeg de kan være nevnt.
