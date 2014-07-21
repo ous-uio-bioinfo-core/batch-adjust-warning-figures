@@ -28,3 +28,15 @@ b, batch lager falske gruppeforskjeller.
 c, lager falsk gruppe forskjell mellom 3 og 4
 d lager falsk gruppe forskjell mellom 1 og 2.
 e er "fasit"
+
+
+
+We simulated expression of one gene from four study groups unevenly distributed in 3 batches containing 50+0+0+20, 0+50+0+20 and 0+0+50+20 samples from groups 1 to 4. This case, design and effects, was selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represent the expression, while the X-axis is used to better visually differenitate between the batches. Boxes showing group mean with 95% confidence intervals are displayed to the right of the measurments.
+a) The "true" values where groups 1 and 2 have lower means than groups 3 and 4.
+b) After adding batch effects, all the groups seem different.
+c) After batch centering, group 3 and 4 seem to differ.
+d) After two-way ANOVA based batch centering (using limma), group 1 and 2 seem to differ.
+e) The least squares estimates of the group means from a two-way ANOVA which represent a more reliable way of estimating group differences than the two-step procedure in c) and d).
+
+
+placed in three different batches with batch effects added. Values and boxes showing group mean with 95% confidence intervals are displayed for data without batch effects, after adding batch effects, after batch centering, and after two-way ANOVA based batch centering (using limma). The last frame shows the least squares estimates of the group means from a two-way ANOVA. This case, design and effects, was selected to illustrate the spurious effects that may arise.
