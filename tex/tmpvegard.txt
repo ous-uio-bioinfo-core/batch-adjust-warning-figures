@@ -10,13 +10,21 @@ I avsnittet "Motivation for this warning":
 In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011})
 Ser jeg at den mest siterte artikkelen ikke er sitert: (PMID:21386892, fra plos one). Men, som du er opptatt av så har ikke den i plos one brukt covariates(eksplisitt beskrevet), det tror jeg heller ikke Kitchen har, mens Kupfer har beskrevet bruk av covariates. Uansett så synes jeg de kan være nevnt.
 
-Siteringene i teksten er ikke som beskrevet i "Stylistic Requirements" i:
-http://www.oxfordjournals.org/our_journals/biosts/for_authors/msprep_submission.html
-Men når jeg ser på et par andre artikler i biostatistics så er det slik du har skrevet ser det ut som.
-
-Er det ikke bedre å henvise direkte til "Figure 1b" eller "Figure 1d" der det passer istedenfor "Figure 1"? Jeg har gjort det noen steder for Figure 3.
+5.1 Reproducible research
+Er linkene til github ikke kommet i teksten.
 
 
-I avsnittet "Motivation for this warning":
-In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011})
-Ser jeg at den mest siterte artikkelen ikke er sitert: (PMID:21386892, fra plos one). Men, som du er opptatt av så har ikke den i plos one brukt covariates(eksplisitt beskrevet), det tror jeg heller ikke Kitchen har, mens Kupfer har beskrevet bruk av covariates. Uansett så synes jeg de kan være nevnt.
+Figurtekst
+
+1.
+Det er bare ett gen.
+ with 4 groups unevenly distributed in in 3 batches( 50-0-0-20, 0-50-0-20 and 0-0-50-20)
+Y-aksen er "ekspression"
+x- axen skiller batchene
+
+skrive eksplisitt hva som er "rett" og "feil"?
+a, 1 og 2 like, 3 og 4 like.
+b, batch lager falske gruppeforskjeller.
+c, lager falsk gruppe forskjell mellom 3 og 4
+d lager falsk gruppe forskjell mellom 1 og 2.
+e er "fasit"
