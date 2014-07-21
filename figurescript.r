@@ -2,6 +2,9 @@
 # Main script.
 # Calls the individual scripts that creates figures 1,2,3a,3b.
 
+source("http://bioconductor.org/biocLite.R")
+biocLite( c("sva", "limma", "lsmeans", "bladderbatch"))
+
 
 startwd = getwd()
 source("overviewplot.r")
