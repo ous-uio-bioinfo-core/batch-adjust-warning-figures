@@ -2,9 +2,11 @@
 # Main script.
 # Calls the individual scripts that creates figures 1,2,3a,3b.
 
-source("http://bioconductor.org/biocLite.R")
-biocLite( c("sva", "limma", "lsmeans", "bladderbatch"))
-
+# In order to reproduce the overview plot, version 3.20.8 of limma was needed.
+# R version 3.1.1 was needed for installation of limma 3.20.8.
+# The below two commands should download and install the nescesary packages if needed.
+# source("http://bioconductor.org/biocLite.R")
+# biocLite( c("sva", "limma", "lsmeans", "bladderbatch"))
 
 startwd = getwd()
 source("overviewplot.r")
