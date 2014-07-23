@@ -1,42 +1,25 @@
 
-Siteringene i teksten er ikke som beskrevet i "Stylistic Requirements" i:
-http://www.oxfordjournals.org/our_journals/biosts/for_authors/msprep_submission.html
-Men når jeg ser på et par andre artikler i biostatistics så er det slik du har skrevet ser det ut som.
+Referanse til lsmeans?
 
-Er det ikke bedre å henvise direkte til "Figure 1b" eller "Figure 1d" der det passer istedenfor "Figure 1"? Jeg har gjort det noen steder for Figure 3.
+References
+
+Kenward, M.G. and Roger, J.H. (1997) Small sample inference for fixed effects from restricted maximum likelihood, Biometrics, 53, 983–997.
+
+SAS Institute Inc. (2012) Online documentation; Shared concepts; LSMEANS statement, http://support.sas.com/documentation/cdl/en/statug/63962/HTML/default/viewer.htm#statug_introcom_a0000003362.htm, accessed August 15, 2012.
+
+referanse til limma.
+PMID: 16646809
+Smyth, G. K. (2004). Linear models and empirical Bayes methods for assessing differential expression in microarray experiments. Statistical Applications in Ge- netics and Molecular Biology, Vol. 3, No. 1, Article 3. http://www.bepress.com/sagmb/vol3/iss1/art3
+
+The limma software itself can be cited as:
+Smyth, G. K. (2005). Limma: linear models for microarray data. In: Bioinfor- matics and Computational Biology Solutions using R and Bioconductor, R. Gen- tleman, V. Carey, S. Dudoit, R. Irizarry, W. Huber (eds.), Springer, New York, pages 397–420.
+
+
+En liten uklarhet i beskrivelsen av "a simple sanity check"
+" increasing the sample size will not reduce the problem" , men i sanitychecken er det ingen batcheffekt og som det står under vil faktisk problemet bli litt mindre med øket sample size.
 
 
 I avsnittet "Motivation for this warning":
 In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011})
 Ser jeg at den mest siterte artikkelen ikke er sitert: (PMID:21386892, fra plos one). Men, som du er opptatt av så har ikke den i plos one brukt covariates(eksplisitt beskrevet), det tror jeg heller ikke Kitchen har, mens Kupfer har beskrevet bruk av covariates. Uansett så synes jeg de kan være nevnt.
 
-5.1 Reproducible research
-Er linkene til github ikke kommet i teksten.
-
-
-Figurtekst
-
-1.
-Det er bare ett gen.
- with 4 groups unevenly distributed in in 3 batches( 50-0-0-20, 0-50-0-20 and 0-0-50-20)
-Y-aksen er "ekspression"
-x- axen skiller batchene
-
-skrive eksplisitt hva som er "rett" og "feil"?
-a, 1 og 2 like, 3 og 4 like.
-b, batch lager falske gruppeforskjeller.
-c, lager falsk gruppe forskjell mellom 3 og 4
-d lager falsk gruppe forskjell mellom 1 og 2.
-e er "fasit"
-
-
-
-We simulated expression of one gene from four study groups unevenly distributed in 3 batches containing 50+0+0+20, 0+50+0+20 and 0+0+50+20 samples from groups 1 to 4. This case, design and effects, was selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represent the expression, while the X-axis is used to better visually differenitate between the batches. Boxes showing group mean with 95% confidence intervals are displayed to the right of the measurments.
-a) The "true" values where groups 1 and 2 have lower means than groups 3 and 4.
-b) After adding batch effects, all the groups seem different.
-c) After batch centering, group 3 and 4 seem to differ.
-d) After two-way ANOVA based batch centering (using limma), group 1 and 2 seem to differ.
-e) The least squares estimates of the group means from a two-way ANOVA which represent a more reliable way of estimating group differences than the two-step procedure in c) and d).
-
-
-placed in three different batches with batch effects added. Values and boxes showing group mean with 95% confidence intervals are displayed for data without batch effects, after adding batch effects, after batch centering, and after two-way ANOVA based batch centering (using limma). The last frame shows the least squares estimates of the group means from a two-way ANOVA. This case, design and effects, was selected to illustrate the spurious effects that may arise.
