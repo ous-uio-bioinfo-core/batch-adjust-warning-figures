@@ -134,7 +134,7 @@ The most common method for removing batch effects is to zero-centre each batch:
 \quad\text{where}\quad
 \bar{Y}_i=\frac{\sum_{j=1}^M\sum_{r=1}^{n_{ij}} Y_{ijr}}{\sum_{j=1}^M n_{ij}}.
 \end{equation}
-An alternative is to centre each batch to the common average by adding the average value $\bar{Y}$ across the entire data set: i.e. $\widetilde Y_{ijr}=\Delta\widetilde Y_{ijr}+\bar{Y}$. When comparing groups, the common value $\bar{Y}$ has no effect, and so this is equilvalent to zero-centring each batch. If the groups are unevenly represented in the different batches, the batch average $\bar{Y}_i$ will tend to capture, through $\bar\beta_i$, group differences, as well as batch effects:
+An alternative is to centre each batch to the common average by adding the average value $\bar{Y}$ across the entire data set: i.e. $\widetilde Y_{ijr}=\Delta\widetilde Y_{ijr}+\bar{Y}$. When comparing groups, the common value $\bar{Y}$ has no effect, and so this is equivalent to zero-centring each batch. If the groups are unevenly represented in the different batches, the batch average $\bar{Y}_i$ will tend to capture, through $\bar\beta_i$, group differences, as well as batch effects:
 \begin{equation}
 \Delta\widetilde{Y}_{ijr}=\beta_j-\bar{\beta}_i+\epsilon_{ijr}-\bar{\epsilon}_i
 \quad\text{where}\quad
@@ -233,7 +233,7 @@ The size and impact of the problem will depend greatly on how unbalanced the gro
 
 \subsection{Increased emphasis on preserving group difference}
 
-In the original ComBat article (\citealp{Johnson2007}), the main objective was to employ an emprical Bayes method to allow better handling of small batches. The inclusion of covariates, e.g. for retaining group differences for unbalanced designs, was optional and appeared subordinate, only exemplified in the supplementary information. However, over the years, this feature became more important, judging from advice given on user fora.
+In the original ComBat article (\citealp{Johnson2007}), the main objective was to employ an empirical Bayes method to allow better handling of small batches. The inclusion of covariates, e.g. for retaining group differences for unbalanced designs, was optional and appeared subordinate, only exemplified in the supplementary information. However, over the years, this feature became more important, judging from advice given on user fora.
 Later, when ComBat was incorporated into the \texttt{sva} package (\citealp{Leek2012}), specification of a covariate model became required: batch adjustment without covariates was no longer a default behaviour. Although specification of a null model was still possible, the help file specifies that covariates should contain ``outcome of interest and other covariates besides batch''. Thus, we expect this usage to have grown more common over time.
 
 \subsection{Motivation for this warning}
@@ -293,7 +293,7 @@ Be aware that the different versions of the r-packages could produce different r
 \begin{figure}[!p]
 \centering\includegraphics[width=13cm]{Fig/boxplots.pdf}
 %\centering\includegraphics[width=13cm]{Fig/boxplots.png}
-\caption{We simulated expression of one gene from four study groups unevenly distributed in 3 batches containing 50+0+0+20, 0+50+0+20 and 0+0+50+20 samples from groups 1 to 4. This case, design and effects, was selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represent the expression, while the X-axis is used to better visually differenitate between the batches. Boxes showing group mean with 95\% confidence intervals are displayed to the right of the measurments.
+\caption{We simulated expression of one gene from four study groups unevenly distributed in 3 batches containing 50+0+0+20, 0+50+0+20 and 0+0+50+20 samples from groups 1 to 4. This case, design and effects, was selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represent the expression, while the X-axis is used to better visually differentiate between the batches. Boxes showing group mean with 95\% confidence intervals are displayed to the right of the measurements.
 a) The ``true'' values where groups 1 and 2 have lower means than groups 3 and 4.
 b) After adding batch effects, all the groups seem different.
 c) After batch centering, group 3 and 4 seem to differ while group 1 and 3 are more similar.
