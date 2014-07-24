@@ -24,13 +24,13 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
     }
   }
   
-  xlim = c(0, length(unique(batchlabels))+2)
+  xlim = c(0, length(unique(batchlabels))+3)
   plot(x, y, col=colpalette[grouplabels], pch=pchselection[batchlabels], 
        xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", axes=FALSE, cex.lab =labelcex)
 
   #add boxplot
   groupnames = sort(unique(grouplabels))
-  xoffset=length(unique(batchlabels))+1
+  xoffset=length(unique(batchlabels))+2
   boxwidth=0.35
   boxseparation = 0.25
   for(g in groupnames) {
@@ -47,7 +47,7 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
   }
 	if(!is.na(figureletter)) {
 		figureletter=paste("(", figureletter, ")", sep="")
-		text(x=0.1, y=ylim[2], labels=figureletter, cex=legendcex)
+		text(x=1, y=ylim[2], labels=figureletter, cex=legendcex)
 	}
 }
 
@@ -83,7 +83,7 @@ adhocboxplot2 = function(lsmeans, grouplabels, batchlabels, addlegend=FALSE, yli
 	}
 	if(!is.na(figureletter)) {
 		figureletter=paste("(", figureletter, ")", sep="")
-		text(x=0.1, y=ylim[2], labels=figureletter, cex=legendcex)
+		text(x=1, y=ylim[2], labels=figureletter, cex=legendcex)
 	}
 }
 

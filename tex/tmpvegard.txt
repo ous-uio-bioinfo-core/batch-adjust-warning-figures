@@ -23,3 +23,17 @@ I avsnittet "Motivation for this warning":
 In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011})
 Ser jeg at den mest siterte artikkelen ikke er sitert: (PMID:21386892, fra plos one). Men, som du er opptatt av så har ikke den i plos one brukt covariates(eksplisitt beskrevet), det tror jeg heller ikke Kitchen har, mens Kupfer har beskrevet bruk av covariates. Uansett så synes jeg de kan være nevnt.
 
+
+
+
+We simulated expression of one gene from four study groups unevenly distributed in 3 batches containing 50+0+0+20, 0+50+0+20 and 0+0+50+20 samples from groups 1 to 4. This case, design and effects, was selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represent the expression, while the X-axis is used to better visually differentiate between the batches. Circles, triangles and crosses indicate the measurment of each sample and wich batch it is part of. Boxes showing group mean with 95\% confidence intervals are displayed to the right of the measurements and are ment to imply if a statistical test would find significant group differences, true or false.
+a) The ``true'' values measured in a system without batch effects. Groups 1 and 2 have lower means than groups 3 and 4.
+b) The same samples as in a) but measured in a system with batch effects. All the groups seem different.
+c) The measurements in b) are adjusted with batch centering. Group 3 and 4 seem to differ while group 1 and 3 are more similar.
+d) The measurements in b) are adjusted with two-way ANOVA based batch centering (using \texttt{limma}). Group 1 and 2 seem to differ.
+e) The least squares estimates of the group means from a two-way ANOVA which represent a more reliable way of estimating group differences of the measurements in b) than the two-step procedure in c) and d).
+
+
+
+
+
