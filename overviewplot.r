@@ -1,7 +1,6 @@
 
 ### Figure of box-plots and confidence intervals
 
-library(sva)
 library(limma)
 library(lsmeans)
 
@@ -33,14 +32,10 @@ matrix_meancenter[,batch ==1] =  matrix_meancenter[,batch ==1] - rowMeans( matri
 matrix_meancenter[,batch ==2] =  matrix_meancenter[,batch ==2] - rowMeans( matrix_meancenter[,batch ==2])
 matrix_meancenter[,batch ==3] =  matrix_meancenter[,batch ==3] - rowMeans( matrix_meancenter[,batch ==3])
 mod = model.matrix(~group)
-matrix_combat = ComBat(dat=matrix_conditionbatch, batch=batch,mod=mod, par.prior=TRUE, prior.plots=FALSE)
 matrix_limma = removeBatchEffect(matrix_conditionbatch, batch=batch, design=mod)
 
-#fit_anova = lmFit(matrix_conditionbatch,model.matrix(~group+batch))
-#fit_eb = eBayes(fit_anova)
 
 index=1
-
 fit_lm=lm(matrix_condition[index,] ~ group+batch)
 means_lm=lsmeans(fit_lm,~group)
 summary(means_lm)
@@ -48,18 +43,19 @@ contrast(means_lm,"pairwise")
 
 figfilename = file.path( getwd(), "boxplots")
 #figfile = paste( figfilename, ".png", sep=""); png(file = figfile, width=1600, height=800)
-figfile = paste( figfilename, ".pdf", sep=""); pdf(file =figfile, width=24, height=12)
+figfile = paste( figfilename, ".pdf", sep=""); 
+pdf(file =figfile, width=24, height=12)
 
-par(mfrow=c(1, 5))
-alldata = c(matrix_condition[index,],matrix_conditionbatch[index,],matrix_meancenter[index,],matrix_combat[index,])
+op=par(mfrow=c(1, 5), 	xaxt="n",yaxt="n", mar=c(5,0,4,0))
+alldata = c(matrix_condition[index,],matrix_conditionbatch[index,],matrix_meancenter[index,],matrix_limma[index,])
 ylim = c(min(alldata), max(alldata))
 adhocboxplot(matrix_condition[index,], group, batch, ylim=ylim, xlab="Without batch effects", figureletter="a")
 adhocboxplot(matrix_conditionbatch[index,], group, batch, ylim=ylim, xlab="With batch effects added", figureletter="b")
 adhocboxplot(matrix_meancenter[index,], group, batch, ylim=ylim, xlab="Zero-centered per batch", figureletter="c")
-#adhocboxplot(matrix_combat[index,], group, batch, ylim=ylim, xlab="ComBat adjusted data", figureletter="d")
 adhocboxplot(matrix_limma[index,], group, batch, ylim=ylim, xlab="ANOVA centered values", figureletter="d")
 adhocboxplot2(means_lm, group, batch, ylim=ylim, xlab="ANOVA estimates", figureletter="e")
 adhoclegend(group,batch)
+par(op)
 dev.off()
 print( paste("Figure created: ",figfile ))
 

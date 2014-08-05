@@ -24,9 +24,9 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
     }
   }
   
-  xlim = c(0, length(unique(batchlabels))+3)
+  xlim = c(0, length(unique(batchlabels))+4)
   plot(x, y, col=colpalette[grouplabels], pch=pchselection[batchlabels], 
-       xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", axes=FALSE, cex.lab =labelcex)
+       xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", cex.lab =labelcex)
 
   #add boxplot
   groupnames = sort(unique(grouplabels))
@@ -60,9 +60,9 @@ adhocboxplot2 = function(lsmeans, grouplabels, batchlabels, addlegend=FALSE, yli
 	x = as.numeric(batchlabels)
 	lwd=2
 	
-	xlim = c(0, length(unique(batchlabels))+2)
+	xlim = c(0, length(unique(batchlabels))+3)
 	plot(1, 1, col=colpalette[grouplabels], pch=pchselection[batchlabels], 
-			 xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", axes=FALSE, cex.lab=adhoc.labcex, type="n")
+			 xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", cex.lab=adhoc.labcex, type="n")
 	
 	anovaest = summary(lsmeans)
 	
