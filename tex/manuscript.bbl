@@ -1,10 +1,18 @@
 \begin{thebibliography}{99}
 
+\bibitem[Chen \emph{and others}(2011)Chen, Grennan, Badner, Zhang, Gershon, Jin
+  and Liu]{Chen2011}
+\textsc{Chen, Chao, Grennan, Kay, Badner, Judith, Zhang, Dandan, Gershon,
+  Elliot, Jin, Li and Liu, Chunyu}. (2011, January).
+\newblock {Removing batch effects in analysis of expression microarray data: an
+  evaluation of six batch adjustment methods.}
+\newblock {\em PloS one\/}~\textbf{6}(2), e17238.
+
 \bibitem[Johnson \emph{and others}(2007)Johnson, Li and Rabinovic]{Johnson2007}
 \textsc{Johnson, W~Evan, Li, Cheng and Rabinovic, Ariel}. (2007, January).
 \newblock {Adjusting batch effects in microarray expression data using
   empirical Bayes methods.}
-\newblock {\em Biostatistics (Oxford, England)\/}~\textbf{8}(1), 118--27.
+\newblock {\em Biostatistics\/}~\textbf{8}(1), 118--27.
 
 \bibitem[Kitchen \emph{and others}(2011)Kitchen, Sabine, Simen, Dixon, Bartlett
   and Sims]{Kitchen2011}
@@ -58,6 +66,18 @@
   and Mesirov, Jill~P}. (2006, May).
 \newblock {GenePattern 2.0.}
 \newblock {\em Nature genetics\/}~\textbf{38}(5), 500--1.
+
+\bibitem[Sandve \emph{and others}(2013)Sandve, Nekrutenko, Taylor and
+  Hovig]{Sandve2013}
+\textsc{Sandve, Geir~Kjetil, Nekrutenko, Anton, Taylor, James and Hovig,
+  Eivind}. (2013, October).
+\newblock {Ten simple rules for reproducible computational research.}
+\newblock {\em PLoS computational biology\/}~\textbf{9}(10), e1003285.
+
+\bibitem[Smyth and Speed(2003)Smyth and Speed]{Smyth2003}
+\textsc{Smyth, Gordon~K and Speed, Terry}. (2003, December).
+\newblock {Normalization of cDNA microarray data}.
+\newblock {\em Methods\/}~\textbf{31}(4), 265--273.
 
 \bibitem[Taminau \emph{and others}(2011)Taminau, Steenhoff, Coletta, Meganck,
   Lazar, de~Schaetzen, Duque, Molter, Bersini, Now\'{e} and {Weiss
