@@ -30,6 +30,7 @@
 
 \begin{document}
 
+\renewcommand{\thefootnote}{§}
 \footnotetext{\color{blue}Manuscript version \today.}
 
 % Title of paper
@@ -38,7 +39,9 @@ to exaggerated confidence in downstream analyses
 }
 
 % List of authors, with corresponding author marked by asterisk
-\author{VEGARD NYGAARD, EINAR ANDREAS RØDLAND\\[4pt]
+\renewcommand{\thefootnote}{\textdagger}
+\footnotetext{These two authors contributed equally.}
+\author{VEGARD NYGAARD$^\dagger$, EINAR ANDREAS RØDLAND$^\dagger$\\[4pt]
 % Author addresses
 \textit{Department of Tumor Biology,
 Institute for Cancer Research,
@@ -83,6 +86,7 @@ Norway}
 % identified in the author list
 \footnotetext{To whom correspondence should be addressed.}
 
+
 \begin{abstract}
 {Removal of, or adjustment for, batch effects or centre differences is generally required when such effects are present in data. In particular, when preparing microarray gene expression data from multiple cohorts, array platforms, or batches for later analyses, batch effects can have confounding effects. Many methods and tools exist for this purpose. One method, ComBat, which is part of the R package sva, is particularly popular due to its ability to remove batch differences even when batches are small and heterogeneous. It also has the option of preserving the difference between study groups, estimated from a two-way ANOVA model, to avoid conflating batch effects and group differences during batch adjustments. Unfortunately, this frequently used and recommended approach may systematically induce incorrect group differences in downstream analyses when groups are distributed between the batches in an unbalanced manner. The scientific community seems to be largely unaware of this problem, which most likely has contributed to false discoveries being presented in the published literature.
 }
@@ -101,9 +105,9 @@ A simple removal of batch effects can be achieved by subtracting the mean of the
 
 To mitigate the above problems, one may simultaneously estimate batch effects and group differences, e.g. using a two-way ANOVA, and only remove the batch differences from the data. Effectively, group differences are estimated based on within batch comparisons, and applied to the batch adjusted data. In a balanced group--batch design, estimates of group differences and batch effects are independent, and this approach becomes identical to the above described zero-centering per batch. However, if the group--batch design is heavily unbalanced, estimation of group differences and batch effects are interdependent, and when applying the estimated group differences across the entire data set, the uncertainties of these estimates are ignored. Subsequent analyses will then systematically underestimate the statistical uncertainties and exaggerate the confidence of group differences. Figure~\ref{fig:boxplots}d illustrates how statistical uncertainties are deflated by this batch adjustment method by comparing them to the uncertainties from the original ANOVA in Figure~\ref{fig:boxplots}e.
 
-Two popular tools for batch adjustment of gene expression data are the R bioconductor packages \texttt{limma} (\citealp{Smyth2003}) and ComBat (\citealp{Johnson2007}) which is now included in the \texttt{sva} package (\citealp{Leek2012}). Both these packages allow the inclusion of covariates, e.g. group difference, the effects of which should not be removed in the batch adjustment. In addition, ComBat uses an empirical Bayes approach to avoid over-correction for batch effects, which is critical for small batches. Increasingly, the inclusion of group difference as a covariate when removing batch effects has been recommended, both in the \texttt{sva} tutorial and user fora, and ComBat has thus helped popularise this approach. Based on the actual use of ComBat by the authors and others, ourselves included, we suspect that adjusted data are commonly treated as ``batch effect free'' in subsequent analyses, and as a consequence, confidence in group effects has been overestimated and false results reported.
+A popular tool for batch adjustment of gene expression data is ComBat (\citealp{Johnson2007}) which is now included in the R bioconductor package \texttt{sva} (\citealp{Leek2012}). This allows the inclusion of covariates, e.g. group difference, the effects of which should not be removed in the batch adjustment. In addition, it uses an empirical Bayes approach to avoid over-correction for batch effects, which is critical for small batches. Increasingly, the inclusion of group difference as a covariate when removing batch effects has been recommended, both in the \texttt{sva} tutorial and user fora. ComBat has thus helped popularise this approach. Based on the actual use of ComBat by the authors and others, ourselves included, we suspect that adjusted data are commonly treated as ``batch effect free'' in subsequent analyses, and as a consequence, confidence in group effects has been overestimated and false results reported. The R package \texttt{limma} (\citealp{Smyth2003}) also offers batch adjustment with covariates, but notes that this is not intended used prior to linear modeling.
 
-When sample or batch sizes are small, statisticians would most likely take extra precautions. However, batch adjustment using two-way ANOVA or ComBat on unbalanced data sets may be just as harmful on large samples and batch sizes as for small. For example, group comparisons using one-way ANOVA on the batch adjusted data will essentially result in $F$ statistics that are inflated by a fixed factor which depends on the unevenness of the design, rather than the size of the sample or batches. The effect of this may be further exacerbated by running these analyses a large number of times, e.g. on thousands of genes, and use false discovery rate to determine significant cases: an approach that is particularly sensitive to inflated false positive rates.
+When sample or batch sizes are small, statisticians would most likely take extra precautions. However, batch adjustment using two-way ANOVA or ComBat on unbalanced data sets may be just as harmful for large samples and batch sizes as for small. For example, group comparisons using one-way ANOVA on the batch adjusted data will essentially result in $F$ statistics that are inflated by a fixed factor which depends on the unevenness of the design, rather than the size of the sample or batches. The effect of this may be further exacerbated by running these analyses a large number of times, e.g. on thousands of genes, and use false discovery rate to determine significant cases: an approach that is particularly sensitive to inflated false positive rates.
 
 
 \section{Methods for batch effect correction}
@@ -162,7 +166,7 @@ n_{\textrm{-}j}=\sum_{i=1}^m n_{ij}
 so that
 \begin{equation}
 \widetilde{Y}^{\textrm{cov}}_{\textrm{-}j}-\widetilde{Y}^{\textrm{cov}}_{\textrm{-}j'}
-=\beta_j-\beta_{j'}+\bar{\epsilon}_{\textrm{-}j}-\bar{\epsilon}_{\textrm{-}j'}
+=(\beta_j-\beta_{j'})+(\bar{\epsilon}_{\textrm{-}j}-\bar{\epsilon}_{\textrm{-}j'})
  -\sum_{i=1}^m \left(\frac{n_{ij}}{n_{\textrm{-}j}}-\frac{n_{ij'}}{n_{\textrm{-}j'}}\right)(\hat{\gamma}_i-\gamma_i).
 \end{equation}
 In a balanced group--batch design, the estimation error $\hat\gamma_i-\gamma_i$ has the same effect for all groups, and thus does not influence group comparisons. In an unbalanced design, however, it will induce systematic differences between groups which, when ignored in downstream analyses, may lead to biases or over-confidence in estimated group differences. In Figure~\ref{fig:boxplots}d, the effect of batch correction using group as covariate is shown with confidence intervals of the corrected data. For comparison, least square means estimates (R package \texttt{lsmeans}) are used in Figure~\ref{fig:boxplots}e to illustrate more appropriate confidence intervals that incorporate the uncertainties of the estimation errors.
@@ -172,7 +176,7 @@ In a balanced group--batch design, the estimation error $\hat\gamma_i-\gamma_i$ 
 
 \subsection{A simple sanity check}
 
-The undesired consequences of preserving group effects when correcting for batch effect is readily illustrated with a sanity check using random numbers. The documentation accompanying the \texttt{sva} library has a executable example demonstrating how to adjust a data set with ComBat, followed by an F-test. Replacing the real data with random numbers from a standard normal distribution (mean=0, sd=1), but otherwise following the instructions, will generate the p-value distribution shown in Figure~\ref{fig:sanity}a.
+The undesired consequences of preserving group effects when correcting for batch effect is readily illustrated with a sanity check using random numbers. The documentation accompanying the \texttt{sva} library has an executable example demonstrating how to adjust a data set with ComBat, followed by an F-test. Replacing the real data with random numbers from a standard normal distribution (mean=0, sd=1), but otherwise following the instructions, will generate the p-value distribution shown in Figure~\ref{fig:sanity}a.
 
 As can be seen from the QQ plot in Figure~\ref{fig:sanity}b, the main effect of the procedure is to inflate the F-statistic by a factor. The size of this factor depends on how unbalanced the group--batch design is, rather than on the sample size in itself. Thus, increasing the sample size will not reduce the problem.
 
@@ -221,7 +225,7 @@ In effect, $\nu$ represents the effective sample size in the unbalanced group--b
 
 \subsection{Examples of undesired consequences}
 
-The extent to which batch adjustment with group differences retained will confound subsequent analyses depends on the batch--group balance. We have reanalysed to cases with varying degree of unbalance.
+The extent to which batch adjustment with group differences retained will confound subsequent analyses depends on the batch--group balance. We have reanalysed two cases with varying degree of unbalance.
 
 \subsubsection{Experiment 1}
 
@@ -245,9 +249,9 @@ Later, when ComBat was incorporated into the \texttt{sva} package (\citealp{Leek
 
 \subsection{Motivation for this warning}
 
-Our knowledge of the problem discussed in this article came through a typical use case when trying to adjust for batch effects in an unbalanced data set using ComBat. Upon realizing that the confidence in the estimated group differences was exaggerated, we searched the literature for a better understanding of correct use and the potential limitations of ComBat. However, the authors of ComBat and the \texttt{sva} package recommended including study group as a covariate as we had done. In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011}, \citealp{Chen2011}). A brief inquiry into  some of the articles citing ComBat (574 on Google Scholar) revealed few reported problems, although their method descriptions regarding ComBat were mostly sparse, limited to one or two sentences.
+Our knowledge of the problem discussed in this article came through a typical use case when trying to adjust for batch effects in an unbalanced data set using ComBat. Upon realizing that the confidence in the estimated group differences was exaggerated, we searched the literature for a better understanding of correct use and the potential limitations of ComBat. However, the authors of ComBat and the \texttt{sva} package recommended including study group as a covariate as we had done. In addition, other studies investigating batch effects were mostly recommending ComBat without much concern (\citealp{Kupfer2012}, \citealp{Kitchen2011}, \citealp{Chen2011}). A brief inquiry into some of the articles citing ComBat (466 in Web of Science) revealed few reported problems, although their method descriptions regarding ComBat were mostly sparse, limited to one or two sentences. Some used ComBat with covariates, some without, but we did not find any that addressed the potential problems related to use of covariates.
 
-A further indication of the carefree use of the procedure was the frequent omittance of program parameters that were applied, i.e batch labels or whether group labels were supplied as covariates. Often, no effort was undertaken in order to substantiate the existence of batch effects, beyond stating the presence of batches. The incorporation of ComBat into various analysis tools appears to make it more accessible, but its use less transparent. Such tools include GenePattern (\citealp{Reich2006}), which offers ComBat with covariates, as well as TCGA and  inSilicoDb ((\citealp{Taminau2011}), presently without covariates as an option.
+A further indication of the carefree use of the procedure was the frequent omittance of program parameters that were applied, i.e batch labels or whether group labels were supplied as covariates. Often, no effort was undertaken in order to substantiate the existence of batch effects, beyond stating the presence of batches. The incorporation of ComBat into various analysis tools appears to make it more accessible, but its use less transparent. Such tools include GenePattern (\citealp{Reich2006}), which offers ComBat with covariates, as well as TCGA and  inSilicoDb (\citealp{Taminau2011}), presently without covariates as an option.
 
 We are concerned, in light of our findings, that many published results from batch adjusted data using study group as covariate may be unreliable. Furthermore, the frequent lack of proper method description accompanying published results makes it hard to judge if they are affected or not. We hope that our warning will help caution the scientific community against this particular approach.
 
@@ -259,7 +263,7 @@ For an investigator facing an unbalanced data set with batch effects, our primar
 Knowing that adjustment for batch effects while preserving the group difference may lead to varying degree of false results, to what extent can an investigator trust published results where such a method has been applied? Essentially, when the batch--group configuration is balanced, or group difference is ignored  (i.e. group labels not given as parameters to ComBat), problems related to preserving group differences will not occur. For other cases, a re-analysis without using this approach is the most rigorous path. However, such a re-analysis is not feasible if the downstream  analysis can not independently adjust for batch effects. To reach a reliable result, batch effects need to be handled in some way or another. To make matters worse, a re-analysis relies on the availability of the raw data and a description of processing and analysis steps taken in the original work. Even when this is available, the necessary statistics and bioinformatics skills and work hours could still be in short supply.
 
 A superficial assessment of the reliability of results based on batch corrected data with group differences retained can often be made.
-In section~\label{sec:twogroups}, the ratio $\nu_0/\nu\ge1$ indicates by how much the effective sample size is overestimated when comparing two groups. A similar computations, although more complicated, can be made for multiple groups. However, the two-group assessment should still give a fair idea of the reliability of pairwise group comparisons. A major concern would be batches where either of the groups of interest are missing or strongly under-represented, which would contribute to the nominal sample size, but not to the effective sample size.
+In section~\ref{sec:twogroups}, the ratio $\nu_0/\nu\ge1$ indicates by how much the effective sample size is overestimated when comparing two groups. A similar computation, although more complicated, can be made for multiple groups. However, the two-group assessment should still give a fair idea of the reliability of pairwise group comparisons. A major concern would be batches where either of the groups of interest are missing or strongly under-represented, which would contribute to the nominal sample size, but not to the effective sample size.
 
 Alternatively, one may treat the results more like an ordered list of candidates, with the most likely true positives on top, de-emphasizing the somewhat deflated p-values. This would, however, be hypothesis generating, rather than hypothesis testing. While investigators should always assess the extent to which findings make biological or clinical sense, this is particularly true when the statistical assessment may be unreliable.
 
@@ -286,7 +290,10 @@ Be aware that the different versions of the r-packages could produce different r
 
 \section*{Acknowledgments}
 
-[...Acknowledgements...]
+We are grateful to Geir Kjetil Sandve for useful suggestions and discussions. 
+
+This project was in part financed through the EUROCAN platform (VN) and the MetAction project (EAR).
+
 {\it Conflict of Interest}: None declared.
 
 
