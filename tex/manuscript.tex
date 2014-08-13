@@ -1,5 +1,5 @@
-\documentclass{bio}
-%\documentclass[oupdraft]{bio}
+%\documentclass{bio}
+\documentclass[oupdraft]{bio}
 \usepackage[colorlinks=true, urlcolor=citecolor, linkcolor=citecolor, citecolor=citecolor]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -18,29 +18,31 @@
 %    \NB{comment (as separate paragraph)}
 %    \NOTE{comment inside paragraph}
 %    \CITE{missing/unspecified citation}
-\usepackage{color}
-\definecolor{NBcol}{rgb}{0.7,0,1}
-\definecolor{CITEcol}{rgb}{1,0,0.7}
-\definecolor{COMMENTcol}{rgb}{0.7,0.2,0}
-\newcommand\COMMENT[2]{\textcolor{COMMENTcol}{#1}\NOTE{#2}}
-\newcommand\NB[1]{\textcolor{NBcol}{\textit{#1}}}
-\newcommand\NOTE[1]{\NB{[#1]}}
-\newcommand\CITE[1]{\textcolor{CITEcol}{[#1]}}
+%\usepackage{color}
+%\definecolor{NBcol}{rgb}{0.7,0,1}
+%\definecolor{CITEcol}{rgb}{1,0,0.7}
+%\definecolor{COMMENTcol}{rgb}{0.7,0.2,0}
+%\newcommand\COMMENT[2]{\textcolor{COMMENTcol}{#1}\NOTE{#2}}
+%\newcommand\NB[1]{\textcolor{NBcol}{\textit{#1}}}
+%\newcommand\NOTE[1]{\NB{[#1]}}
+%\newcommand\CITE[1]{\textcolor{CITEcol}{[#1]}}
 
 
 \begin{document}
 
-\renewcommand{\thefootnote}{§}
-\footnotetext{\color{blue}Manuscript version \today.}
+% Manuscript version (date) in separate footnote
+\renewcommand{\thefootnote}{§}\footnotetext{\color{blue}Manuscript version \today.}
 
 % Title of paper
 \title{Methods that remove batch effects while retaining group differences may lead
 to exaggerated confidence in downstream analyses
 }
 
-% List of authors, with corresponding author marked by asterisk
+% Set other footnote mark for shared first author footnote
 \renewcommand{\thefootnote}{\textdagger}
 \footnotetext{These two authors contributed equally.}
+
+% List of authors, with corresponding author marked by asterisk
 \author{VEGARD NYGAARD$^\dagger$, EINAR ANDREAS RØDLAND$^\dagger$\\[4pt]
 % Author addresses
 \textit{Department of Tumor Biology,
@@ -134,14 +136,14 @@ A common ambition of batch effect adjustments is to remove batch differences in 
 
 The most common method for removing batch effects is to zero-centre each batch:
 \begin{equation}
-\widetilde{Y}^0_{ijr}=Y_{ijr}-\bar{Y}_{i}
+\tilde{Y}^0_{ijr}=Y_{ijr}-\bar{Y}_{i}
 \quad\text{where}\quad
 \bar{Y}_i=\frac{1}{n_{i\textrm{-}}} \sum_{j=1}^M\sum_{r=1}^{n_{ij}} Y_{ijr},\;
 n_{i\textrm{-}}=\sum_{j=1}^M n_{ij}.
 \end{equation}
-An alternative is to centre each batch to the common average by adding the average value $\bar{Y}$ across the entire data set: i.e. $\widetilde{Y}^{\textrm{avg}}_{ijr}=\widetilde{Y}^0_{ijr}+\bar{Y}$. When comparing groups, the common value $\bar{Y}$ has no effect, and so this is equivalent to zero-centring each batch. If the groups are unevenly represented in the different batches, the batch average $\bar{Y}_i$ will tend to capture, through $\bar\beta_i$, group differences, as well as batch effects:
+An alternative is to centre each batch to the common average by adding the average value $\bar{Y}$ across the entire data set: i.e. $\tilde{Y}^{\textrm{avg}}_{ijr}=\tilde{Y}^0_{ijr}+\bar{Y}$. When comparing groups, the common value $\bar{Y}$ has no effect, and so this is equivalent to zero-centring each batch. If the groups are unevenly represented in the different batches, the batch average $\bar{Y}_i$ will tend to capture, through $\bar\beta_i$, group differences, as well as batch effects:
 \begin{equation}
-\widetilde{Y}^0_{ijr}=\beta_j-\bar{\beta}_i+\epsilon_{ijr}-\bar{\epsilon}_i
+\tilde{Y}^0_{ijr}=\beta_j-\bar{\beta}_i+\epsilon_{ijr}-\bar{\epsilon}_i
 \quad\text{where}\quad
 \bar{\beta}_i={\sum_{j=1}^M \frac{n_{ij}}{n_{i\textrm{-}}}\beta_j},\;
 \bar{\epsilon}_i=\frac{1}{n_{i\textrm{-}}} \sum_{j=1}^M\sum_{r=1}^{n_{ij}} \epsilon_{ijr}.
@@ -150,14 +152,14 @@ Thus, batch centering will tend to reduce group differences in an unbalanced des
 
 Removing batch effects while retaining group differences can be achieved through a two-way ANOVA, in which group effects, $\beta_j$, and batch effects, $\gamma_i$, are estimated simultaneously. Batch adjusted values may then be obtained by subtracting the estimated batch effects, $\hat\gamma_i$:
 \begin{equation}
-\widetilde{Y}^{\textrm{cov}}_{ijr}=Y_{ijr}-\hat\gamma_i=\alpha+\beta_j+(\gamma_i-\hat\gamma_i)+\epsilon_{ijr}.
+\tilde{Y}^{\textrm{cov}}_{ijr}=Y_{ijr}-\hat\gamma_i=\alpha+\beta_j+(\gamma_i-\hat\gamma_i)+\epsilon_{ijr}.
 \end{equation}
 This will yield batch adjusted values, where any systematic bias induced by the batch differences has been removed, while the group differences are retained.
 
 The estimation error $\hat\gamma_i-\gamma_i$ affects all values within the same batch in the same manner. Thus, while the aim is to remove spurious dependencies within batches, it may also induce new dependencies. The batch effect estimation errors will influence group effects in proportion to how well the group is represented in each batch:
 \begin{equation}
-\widetilde{Y}^{\textrm{cov}}_{\textrm{-}j}
-=\frac{1}{n_{\textrm{-}j}} \sum_{i=1}^m\sum_{r=1}^{n_{ij}}\widetilde{Y}_{ijr}
+\tilde{Y}^{\textrm{cov}}_{\textrm{-}j}
+=\frac{1}{n_{\textrm{-}j}} \sum_{i=1}^m\sum_{r=1}^{n_{ij}}\tilde{Y}_{ijr}
 =\alpha+\beta_j+\bar{\epsilon}_{\textrm{-}j}
   -\sum_{i=1}^m \frac{n_{ij}}{n_{\textrm{-}j}}(\hat{\gamma}_i-\gamma_i)
 \quad\text{where}\quad
@@ -165,7 +167,7 @@ n_{\textrm{-}j}=\sum_{i=1}^m n_{ij}
 \end{equation}
 so that
 \begin{equation}
-\widetilde{Y}^{\textrm{cov}}_{\textrm{-}j}-\widetilde{Y}^{\textrm{cov}}_{\textrm{-}j'}
+\tilde{Y}^{\textrm{cov}}_{\textrm{-}j}-\tilde{Y}^{\textrm{cov}}_{\textrm{-}j'}
 =(\beta_j-\beta_{j'})+(\bar{\epsilon}_{\textrm{-}j}-\bar{\epsilon}_{\textrm{-}j'})
  -\sum_{i=1}^m \left(\frac{n_{ij}}{n_{\textrm{-}j}}-\frac{n_{ij'}}{n_{\textrm{-}j'}}\right)(\hat{\gamma}_i-\gamma_i).
 \end{equation}
@@ -189,22 +191,22 @@ To explain more clearly what is happening, and to quantify the size of the probl
 
 If we estimate the group difference within batch $i$, we get
 \begin{equation}
-\widehat{\Delta\beta}_i=\bar{Y}_{iA}-\bar{Y}_{iB}\sim\text{N}\left(\Delta\beta,\frac{\sigma^2}{\nu_i}\right)
+\Delta\hat{\beta}_i=\bar{Y}_{iA}-\bar{Y}_{iB}\sim\text{N}\left(\Delta\beta,\frac{\sigma^2}{\nu_i}\right)
 \quad\text{where}\quad
 \bar{Y}_{ij}=\frac{\sum_{r=1}^{n_{ij}}Y_{ijr}}{n_{ij}},\,
 \nu_i=\frac{1}{\frac{1}{n_{iA}}+\frac{1}{n_{iB}}},
 \end{equation}
 from which we may express the overall estimate of $\Delta\beta$
 \begin{equation}
-\widehat{\Delta\beta}=\frac{\sum_{i=1}^m \nu_i\,\widehat{\Delta\beta}_i}{\nu}
+\Delta\hat{\beta}=\frac{\sum_{i=1}^m \nu_i\,\Delta\hat{\beta}_i}{\nu}
 \sim\text{N}\left(\Delta\beta,\frac{\sigma^2}{\nu}\right)
 \quad\text{where}\quad
 \nu=\sum_{i=1}^m\nu_i.
 \end{equation}
 
-If batch and group effects are estimated using a two-way ANOVA, the estimate $\widehat{\Delta\beta}$ will be as stated above, and so the estimated group difference is unaffected. The batch effects are then removed, and the estimated group differences retained, leaving the estimated $\widehat{\Delta\beta}$ unchanged by the batch adjustment. However, if this batch adjusted data set is analysed without considering batch effects, the variance of $\widehat{\Delta\beta}$ will be computed under the assumption that it is derived from a comparison of $n_A=\sum_{i=1}^m n_{iA}$ versus $n_B=\sum_{i=1}^m n_{iB}$ samples, and thus satisfy
+If batch and group effects are estimated using a two-way ANOVA, the estimate $\Delta\hat{\beta}$ will be as stated above, and so the estimated group difference is unaffected. The batch effects are then removed, and the estimated group differences retained, leaving the estimated $\Delta\hat{\beta}$ unchanged by the batch adjustment. However, if this batch adjusted data set is analysed without considering batch effects, the variance of $\Delta\hat{\beta}$ will be computed under the assumption that it is derived from a comparison of $n_A=\sum_{i=1}^m n_{iA}$ versus $n_B=\sum_{i=1}^m n_{iB}$ samples, and thus satisfy
 \begin{equation}
-\widehat{\Delta\beta}
+\Delta\hat{\beta}
 \sim\text{N}\left(\Delta\beta,\frac{\sigma^2}{\nu_0}\right)
 \quad\text{where}\quad
 \nu_0=\frac{1}{\frac{1}{n_A}+\frac{1}{n_B}}.
@@ -270,15 +272,14 @@ Alternatively, one may treat the results more like an ordered list of candidates
 Finally, we would like to emphasise the importance of proper description of how data has been prepared for analysis, and what corrections and adjustments have been made (\citealp{Sandve2013}). In cases where data preparation is performed prior to, and separate from, the data analysis, as is now often the case, this is of particular importance, as artifacts may be introduced in the data preparation which could influence the reliability of downstream analyses.
 
 
-\section{Supplementary Material}
-\label{supp}
+%\section{Supplementary Material}\label{supp}
 
-Supplementary material is available online at
-\href{http://biostatistics.oxfordjournals.org}%
-{http://biostatistics.oxfordjournals.org}.
+%Supplementary material is available online at
+%\href{http://biostatistics.oxfordjournals.org}%
+%{http://biostatistics.oxfordjournals.org}.
 
 
-\subsection{Reproducible research}
+\section*{Reproducible research}
 
 The data and scripts used to generate the results in this work are available at
 \href{https://github.com/ous-uio-bioinfo-core/batch-adjust-warning-figures.git}{https://github.com/ous-uio-bioinfo-core/batch-adjust-warning-figures.git}.
@@ -292,7 +293,7 @@ Be aware that the different versions of the r-packages could produce different r
 
 We are grateful to Geir Kjetil Sandve for useful suggestions and discussions. 
 
-This project was in part financed through the EUROCAN platform (VN) and the MetAction project (EAR).
+This work was supported by the EUROCAN platform (VN) and the MetAction project (EAR).
 
 {\it Conflict of Interest}: None declared.
 

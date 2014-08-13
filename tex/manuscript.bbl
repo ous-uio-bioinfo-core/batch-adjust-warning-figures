@@ -2,30 +2,30 @@
 
 \bibitem[Chen \emph{and others}(2011)Chen, Grennan, Badner, Zhang, Gershon, Jin
   and Liu]{Chen2011}
-\textsc{Chen, Chao, Grennan, Kay, Badner, Judith, Zhang, Dandan, Gershon,
-  Elliot, Jin, Li and Liu, Chunyu}. (2011, January).
+\textsc{Chen, C., Grennan, K., Badner, J., Zhang, D., Gershon, E., Jin, L. and
+  Liu, C.} (2011, January).
 \newblock {Removing batch effects in analysis of expression microarray data: an
   evaluation of six batch adjustment methods.}
 \newblock {\em PloS one\/}~\textbf{6}(2), e17238.
 
 \bibitem[Johnson \emph{and others}(2007)Johnson, Li and Rabinovic]{Johnson2007}
-\textsc{Johnson, W~Evan, Li, Cheng and Rabinovic, Ariel}. (2007, January).
+\textsc{Johnson, W.~E., Li, C. and Rabinovic, A.} (2007, January).
 \newblock {Adjusting batch effects in microarray expression data using
   empirical Bayes methods.}
 \newblock {\em Biostatistics\/}~\textbf{8}(1), 118--27.
 
 \bibitem[Kitchen \emph{and others}(2011)Kitchen, Sabine, Simen, Dixon, Bartlett
   and Sims]{Kitchen2011}
-\textsc{Kitchen, Robert~R, Sabine, Vicky~S, Simen, Arthur~a, Dixon, J~Michael,
-  Bartlett, John M~S and Sims, Andrew~H}. (2011, January).
+\textsc{Kitchen, R.~R., Sabine, V.~S., Simen, A.~a., Dixon, J.~M., Bartlett, J.
+  M.~S. and Sims, A.~H.} (2011, January).
 \newblock {Relative impact of key sources of systematic noise in Affymetrix and
   Illumina gene-expression microarray experiments.}
 \newblock {\em BMC genomics\/}~\textbf{12}(1), 589.
 
 \bibitem[Kupfer \emph{and others}(2012)Kupfer, Guthke, Pohlers, Huber, Koczan
   and Kinne]{Kupfer2012}
-\textsc{Kupfer, Peter, Guthke, Reinhard, Pohlers, Dirk, Huber, Rene, Koczan,
-  Dirk and Kinne, Raimund~W}. (2012, January).
+\textsc{Kupfer, P., Guthke, R., Pohlers, D., Huber, R., Koczan, D. and Kinne,
+  R.~W.} (2012, January).
 \newblock {Batch correction of microarray data substantially improves the
   identification of genes differentially expressed in rheumatoid arthritis and
   osteoarthritis.}
@@ -33,17 +33,16 @@
 
 \bibitem[Leek \emph{and others}(2012)Leek, Johnson, Parker, Jaffe and
   Storey]{Leek2012}
-\textsc{Leek, Jeffrey~T, Johnson, W~Evan, Parker, Hilary~S, Jaffe, Andrew~E and
-  Storey, John~D}. (2012, March).
+\textsc{Leek, J.~T., Johnson, W.~E., Parker, H.~S., Jaffe, A.~E. and Storey,
+  J.~D.} (2012, March).
 \newblock {The sva package for removing batch effects and other unwanted
   variation in high-throughput experiments.}
-\newblock {\em Bioinformatics (Oxford, England)\/}~\textbf{28}(6), 882--3.
+\newblock {\em Bioinformatics\/}~\textbf{28}(6), 882--3.
 
 \bibitem[Leek \emph{and others}(2010)Leek, Scharpf, Bravo, Simcha, Langmead,
   Johnson, Geman, Baggerly and Irizarry]{Leek2010}
-\textsc{Leek, Jeffrey~T, Scharpf, Robert~B, Bravo, H\'{e}ctor~Corrada, Simcha,
-  David, Langmead, Benjamin, Johnson, W~Evan, Geman, Donald, Baggerly, Keith
-  and Irizarry, Rafael~a}. (2010, October).
+\textsc{Leek, J.~T., Scharpf, R.~B., Bravo, H.~C., Simcha, D., Langmead, B.,
+  Johnson, W.~E., Geman, D., Baggerly, K. and Irizarry, R.~a.} (2010, October).
 \newblock {Tackling the widespread and critical impact of batch effects in
   high-throughput data.}
 \newblock {\em Nature reviews. Genetics\/}~\textbf{11}(10), 733--9.
@@ -52,48 +51,49 @@
   Megherbi, Davison, Shi, Tong, Shi, Hong, Zhao, Elloumi, Shi, Thomas, Lin,
   Tillinghast, Liu, Zhou, Herman, Li, Deng, Fang, Bushel, Woods and
   Zhang]{Luo2010}
-\textsc{Luo, J, Schumacher, M, Scherer, a, Sanoudou, D, Megherbi, D, Davison,
-  T, Shi, T, Tong, W, Shi, L, Hong, H, Zhao, C, Elloumi, F, Shi, W, Thomas, R,
-  Lin, S, Tillinghast, G, Liu, G, Zhou, Y, Herman, D, Li, Y, Deng, Y, Fang, H,
-  Bushel, P, Woods, M} \emph{and others}. (2010, August).
+\textsc{Luo, J., Schumacher, M., Scherer, a., Sanoudou, D., Megherbi, D.,
+  Davison, T., Shi, T., Tong, W., Shi, L., Hong, H., Zhao, C., Elloumi, F.,
+  Shi, W., Thomas, R., Lin, S., Tillinghast, G., Liu, G., Zhou, Y., Herman, D.,
+  Li, Y., Deng, Y., Fang, H., Bushel, P., Woods, M.} \emph{and others}. (2010,
+  August).
 \newblock {A comparison of batch effect removal methods for enhancement of
   prediction performance using MAQC-II microarray gene expression data.}
 \newblock {\em The pharmacogenomics journal\/}~\textbf{10}(4), 278--91.
 
 \bibitem[Reich \emph{and others}(2006)Reich, Liefeld, Gould, Lerner, Tamayo and
   Mesirov]{Reich2006}
-\textsc{Reich, Michael, Liefeld, Ted, Gould, Joshua, Lerner, Jim, Tamayo, Pablo
-  and Mesirov, Jill~P}. (2006, May).
+\textsc{Reich, M., Liefeld, T., Gould, J., Lerner, J., Tamayo, P. and Mesirov,
+  J.~P.} (2006, May).
 \newblock {GenePattern 2.0.}
 \newblock {\em Nature genetics\/}~\textbf{38}(5), 500--1.
 
 \bibitem[Sandve \emph{and others}(2013)Sandve, Nekrutenko, Taylor and
   Hovig]{Sandve2013}
-\textsc{Sandve, Geir~Kjetil, Nekrutenko, Anton, Taylor, James and Hovig,
-  Eivind}. (2013, October).
+\textsc{Sandve, G.~K., Nekrutenko, A., Taylor, J. and Hovig, E.} (2013,
+  October).
 \newblock {Ten simple rules for reproducible computational research.}
 \newblock {\em PLoS computational biology\/}~\textbf{9}(10), e1003285.
 
 \bibitem[Smyth and Speed(2003)Smyth and Speed]{Smyth2003}
-\textsc{Smyth, Gordon~K and Speed, Terry}. (2003, December).
+\textsc{Smyth, G.~K. and Speed, T.} (2003, December).
 \newblock {Normalization of cDNA microarray data}.
 \newblock {\em Methods\/}~\textbf{31}(4), 265--273.
 
 \bibitem[Taminau \emph{and others}(2011)Taminau, Steenhoff, Coletta, Meganck,
   Lazar, de~Schaetzen, Duque, Molter, Bersini, Now\'{e} and {Weiss
   Sol\'{\i}s}]{Taminau2011}
-\textsc{Taminau, Jonatan, Steenhoff, David, Coletta, Alain, Meganck, Stijn,
-  Lazar, Cosmin, de~Schaetzen, Virginie, Duque, Robin, Molter, Colin, Bersini,
-  Hugues, Now\'{e}, Ann} \emph{and others}. (2011, November).
+\textsc{Taminau, J., Steenhoff, D., Coletta, A., Meganck, S., Lazar, C.,
+  de~Schaetzen, V., Duque, R., Molter, C., Bersini, H., Now\'{e}, A.} \emph{and
+  others}. (2011, November).
 \newblock {inSilicoDb: an R/Bioconductor package for accessing human Affymetrix
   expert-curated datasets from GEO.}
-\newblock {\em Bioinformatics (Oxford, England)\/}~\textbf{27}(22), 3204--5.
+\newblock {\em Bioinformatics\/}~\textbf{27}(22), 3204--5.
 
 \bibitem[Towfic \emph{and others}(2014)Towfic, Funt, Fowler, Bakshi, Blaugrund,
   Artyomov, Hayden, Ladkani, Schwartz and Zeskind]{Towfic2014}
-\textsc{Towfic, Fadi, Funt, Jason~M, Fowler, Kevin~D, Bakshi, Shlomo,
-  Blaugrund, Eran, Artyomov, Maxim~N, Hayden, Michael~R, Ladkani, David,
-  Schwartz, Rivka and Zeskind, Benjamin}. (2014, January).
+\textsc{Towfic, F., Funt, J.~M., Fowler, K.~D., Bakshi, S., Blaugrund, E.,
+  Artyomov, M.~N., Hayden, M.~R., Ladkani, D., Schwartz, R. and Zeskind, B.}
+  (2014, January).
 \newblock {Comparing the biological impact of glatiramer acetate with the
   biological impact of a generic.}
 \newblock {\em PloS one\/}~\textbf{9}(1), e83757.
