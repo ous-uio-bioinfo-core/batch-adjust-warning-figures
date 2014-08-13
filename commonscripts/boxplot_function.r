@@ -60,7 +60,7 @@ adhocboxplot2 = function(lsmeans, grouplabels, batchlabels, addlegend=FALSE, yli
 	x = as.numeric(batchlabels)
 	lwd=2
 	
-	xlim = c(0, length(unique(batchlabels))+3)
+	xlim = c(0, length(unique(batchlabels))+4)
 	plot(1, 1, col=colpalette[grouplabels], pch=pchselection[batchlabels], 
 			 xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", cex.lab=adhoc.labcex, type="n")
 	
