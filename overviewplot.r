@@ -46,7 +46,7 @@ figfilename = file.path( getwd(), "boxplots")
 figfile = paste( figfilename, ".pdf", sep=""); 
 pdf(file =figfile, width=24, height=12)
 
-op=par(mfrow=c(1, 5), 	xaxt="n",yaxt="n", mar=c(5,0,4,0))
+op=par(mfrow=c(1, 5), 	xaxt="n",yaxt="n", mar=c(5,0,0,0),oma=c(0,.5,.5,.5))
 alldata = c(matrix_condition[index,],matrix_conditionbatch[index,],matrix_meancenter[index,],matrix_limma[index,])
 ylim = c(min(alldata), max(alldata))
 adhocboxplot(matrix_condition[index,], group, batch, ylim=ylim, xlab="Without batch effects", figureletter="a")

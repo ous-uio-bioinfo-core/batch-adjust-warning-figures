@@ -8,6 +8,9 @@
 # source("http://bioconductor.org/biocLite.R")
 # biocLite( c("sva", "limma", "lsmeans", "bladderbatch"))
 
+# If R is not started with the appropriate folder as work directory:
+#setwd("...path to batch-adjust-warning-figures folder...")
+
 startwd = getwd()
 source("overviewplot.r")
 
