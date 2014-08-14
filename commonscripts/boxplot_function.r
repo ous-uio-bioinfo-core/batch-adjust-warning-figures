@@ -1,10 +1,7 @@
 # Functions for producing a boxplot
 
-#adhoc.palette =  c("blue", "red", "darkgreen", "darkorange")
-#adhoc.pch = c(1, 2, 3,4)
-#adhoc.palette =  c("blue", "red", "darkgreen")
-adhoc.palette =  c("black","darkgray","gray","lightgray")
-adhoc.pch = c(1, 2, 3,4)
+adhoc.palette =  c("blue", "red", "darkgreen", "darkorange")
+adhoc.pch = c(1, 2, 3)
 adhoc.cex=3
 adhoc.legendcex=adhoc.cex
 adhoc.labcex=adhoc.cex
@@ -19,7 +16,7 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
   
   # add extra x for better visual separation
   for(b in unique(batchlabels)) {
-    separation = 0.25
+    separation = 0.15
     xoffset=0
     for(g in unique(grouplabels[batchlabels==b])) {
       x[batchlabels==b & grouplabels==g] = x[batchlabels==b & grouplabels==g] + xoffset
@@ -28,16 +25,14 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
   }
   
   xlim = c(0, length(unique(batchlabels))+4)
-#  plot(x, y, col=colpalette[grouplabels], pch=pchselection[batchlabels], 
-#       xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", cex.lab =labelcex)
-  plot(x, y, col=colpalette[batchlabels], pch=pchselection[grouplabels], 
+  plot(x, y, col=colpalette[grouplabels], pch=pchselection[batchlabels], 
        xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, xlab=xlab, ylab="", cex.lab =labelcex)
 
   #add boxplot
   groupnames = sort(unique(grouplabels))
   xoffset=length(unique(batchlabels))+2
   boxwidth=0.35
-  boxseparation = 0.45
+  boxseparation = 0.25
   for(g in groupnames) {
     g=factor(g,levels=levels(groupnames))
     m = mean(y[grouplabels==g])
