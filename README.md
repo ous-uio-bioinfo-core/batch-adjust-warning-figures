@@ -6,7 +6,7 @@ This project consists of the r-code that produces the figures used in "Methods t
 differences may lead to exaggerated confidence in downstream analyses", V. Nygaard, E. A.
 Rødland, E. Hovig, manuscript in preparation.
 
-The figures illustrate the side effects from batch effect adjustments using ComBat with study group as covariate or similar methods.
+The figures illustrate the side effects from batch effect adjustments using ComBat with study group as covariate or similar methods. 
 
 ### figurescript.r
 
