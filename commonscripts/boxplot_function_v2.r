@@ -41,10 +41,10 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
   
   #add boxplot
   groupnames = sort(unique(grouplabels))
-  xoffset=round(length(y)* 1.1)
-  text(x=xoffset+boxwidth, y=ylim[2]-0.5, labels=estimatemethod, cex=legendcex)
+  xoffset=round(length(y)* 1.1)  
   boxwidth=round(length(y)/20)
   boxseparation = round(boxwidth/1.5)
+  text(x=xoffset+boxwidth, y=ylim[2]-0.5, labels=estimatemethod, cex=legendcex)
   for(g in groupnames) {
     g=factor(g,levels=levels(groupnames))
     
