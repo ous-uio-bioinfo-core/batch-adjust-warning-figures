@@ -1,20 +1,20 @@
 
-# Creates a sampleannotation data.frame based on a list of batches with a vector of treatmentcounts.
+# Creates a sampleannotation data.frame based on a list of batches with a vector of group counts
 # Used when creating artificial data.
-createsampleannotation = function( treatment_in_batches)
+createsampleannotation = function( groups_in_batches)
 {
 	batches = vector()
-	treatments = vector()
-	for(i in 1:length(treatment_in_batches))
+	groups = vector()
+	for(i in 1:length(groups_in_batches))
 	{
 		thisbatch = i
-		for(s in 1:length(treatment_in_batches[[i]]))  
+		for(s in 1:length(groups_in_batches[[i]]))  
 		{
-			batches = c(batches, rep(thisbatch, treatment_in_batches[[i]][s]))
-			treatments = c(treatments, rep( s, treatment_in_batches[[i]][s]))
+			batches = c(batches, rep(thisbatch, groups_in_batches[[i]][s]))
+			groups = c(groups, rep( s, groups_in_batches[[i]][s]))
 		}
 	}
-	sampleannotation = data.frame(id=paste("sample", 1:length(treatments), sep=""),    treatment = treatments, batch=batches)
+	sampleannotation = data.frame(id=paste("sample", 1:length(groups), sep=""),    group = groups, batch=batches)
 	return(sampleannotation)
 }
 
