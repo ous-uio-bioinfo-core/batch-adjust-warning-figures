@@ -51,7 +51,7 @@ limma_p_woc = limma_ret_woc$p.value[,1]
 print(paste("Limma adjusted real data, significant probes (fdr<0.05): ",  
             sum(p.adjust(limma_p_woc, method="fdr")<0.05)))
 
-# radnom, ComBat adjusted
+# random, ComBat adjusted
 set.seed(100)
 randdata = rawdata
 randdata[,] = matrix(rnorm(length(randdata), mean=0, sd=1))
