@@ -27,7 +27,7 @@ adhocboxplot = function(y, grouplabels, batchlabels, addlegend=FALSE, ylim=NULL,
 
   lwd=2
   
-  xlim = c(1, length(y)+50)
+  xlim = c(1, round(length(y)*1.25))
   plot(y, col=colpalette[grouplabels], main=xlab, cex.main=labelcex, pch=pchselection[grouplabels],
        xlim=xlim, lwd=lwd, cex=cex, ylim=ylim, ylab="", xlab=NA, cex.lab =labelcex)
 

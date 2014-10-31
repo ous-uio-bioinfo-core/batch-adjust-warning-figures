@@ -14,7 +14,7 @@ sampleannotation = createsampleannotation(  list(c(50,0,0,20), c(0,50,0,20), c(0
 #sampleannotation = createsampleannotation(  list(c(25,0,0,5), c(0,25,0,5), c(0,0,25,5))) 
 
 table(sampleannotation[,2:3])
-group=factor(sampleannotation$treatment)
+group=factor(sampleannotation$group)
 batch=factor(sampleannotation$batch)
 
 ngenes=1000

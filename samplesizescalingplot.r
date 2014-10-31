@@ -42,7 +42,7 @@ for(n in samplesizescaleing)
 		mod0 = model.matrix(~1,data=sampleannotation)
  		batch = factor(sampleannotation$batch)
 
-    mod = model.matrix(~as.factor(treatment), data=sampleannotation)
+    mod = model.matrix(~as.factor(group), data=sampleannotation)
 	matrix_adjusted = ComBat(dat=matrix_random, batch=batch, 
  												mod=mod, numCovs=NULL, 
  												par.prior=TRUE, prior.plots=FALSE)

@@ -13,7 +13,7 @@ source("commonscripts/helperfunctions.r")
 sampleannotation = createsampleannotation(  list(c(50,0,0,20), c(0,50,0,20), c(0,0,50,20))) 
 
 table(sampleannotation[,2:3])
-group=factor(sampleannotation$treatment)
+group=factor(sampleannotation$group)
 batch=factor(sampleannotation$batch)
 
 ngenes=1000
