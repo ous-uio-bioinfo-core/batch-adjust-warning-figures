@@ -1,16 +1,28 @@
 
 
+adhoc.cex=1
+adhoc.legendcex=adhoc.cex
 
-# y=matrix_true[1,]
+# y= matrix_true[index,]
 # group=sampleannotation$group
-# batch=sampleannotation$batch
-# #batch=NA
-# estimatemethod="lsmeans"
+# main=paste("True values")
+# estimatemethod="CI"
+# 
+# # y=matrix_true[1,]
+# # group=sampleannotation$group
+# # batch=sampleannotation$batch
+# batch=NULL
+# # estimatemethod="lsmeans"
 # ylim=NULL
 
-plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemethod="none")
-{
-  lwd=2
+plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemethod="none", lwd=1)
+{  
+  # Boxplots for CI etc.  
+  xboxplots=round(length(y)* 1.1)    
+  boxwidth=round(length(y)/20)
+  boxseparation = (boxwidth * 1.5)
+  thispal=c("red", "blue", "brown", "cyan")
+  
   a = order(group)
   if(!is.null(batch))
   {
@@ -21,7 +33,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   
   y=y[a]
   
-  thispal=c("red", "blue", "green", "orange", "brown", "cyan")
+  
   
   if(is.null(ylim))
   {
@@ -29,11 +41,11 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
     ymin = round(min(y)-2, 1)
     ylim=c(ymin,ymax)
   }
-  xlim = c(1, round(length(y)*1.25))
+  xlim = c(1, round(xboxplots + (boxseparation) * length(unique(group)))  )
   
   # measurements
-  plot(y, ylim=ylim, xlim=xlim, col=thispal[as.factor(group)], main=main,  ylab="Expression", lwd=2, 
-       xlab="samples")
+  plot(y, ylim=ylim, xlim=xlim, col=thispal[as.factor(group)], 
+       main=main,  ylab="Expression", lwd=lwd, cex.main=adhoc.legendcex)
   
   # batch separator
   if(!is.null(batch))
@@ -47,8 +59,8 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
       batchlabelx = c(batchlabelx, (x[i+1]+x[i])/2)
     }
     batchlabelx = c(batchlabelx, (x[i+1]+length(y))/2)	  
-    text(labels="Batch", y=ymin+0.5, x=2)
-    text(labels=paste(batchnames, sep=""), y=ymin+0.5, x=batchlabelx, cex=1.5)	  
+    text(labels="Batch", y=ylim[1]+0.5, x=2, cex=adhoc.legendcex)
+    text(labels=paste(batchnames, sep=""), y=ylim[1]+0.5, x=batchlabelx, cex=adhoc.legendcex)	  
   }
   
   # group means line
@@ -60,16 +72,13 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   }  
   segments(  x0=(1:length(y))-0.5, y0=groupmeans[group], 
              x1=(1:length(y))+0.5, y1=groupmeans[group], 
-             col=thispal[as.factor(group)], lwd=2)
+             col=thispal[as.factor(group)], lwd=lwd)
   #legend("topright", legend=paste(groupnames, groupmeans), text.col=thispal[as.factor(groupnames)])
   
   
-  # Boxplots for CI etc.  
-  xboxplots=round(length(y)* 1.1)  
-  xoffset= xboxplots
-  boxwidth=round(length(y)/20)
-  boxseparation = (boxwidth * 1.5)
+  
   #text(x=xoffset+boxwidth, y=ylim[2]-0.5, labels=estimatemethod, cex=legendcex)
+  xoffset= xboxplots
   for(g in groupnames)
   {
     g=factor(g,levels=levels(groupnames))
@@ -87,9 +96,9 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
       ci = t.test(y[group==g])[["conf.int"]]
       ybottom = ci[1]
       ytop = ci[2]
-    }    
-    
+    }        
     xleft = xoffset    
+    #print(xleft)
     xright = xleft + boxwidth    
     rect(xleft, ybottom, xright, ytop, border=thispal[g], lwd=lwd, lty="solid")
     lines(c(xoffset,xright), c(m,m), col=thispal[g], lwd=lwd)
@@ -104,9 +113,11 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   } else if(estimatemethod=="CI") {
     fc = round(groupmeans[1]-groupmeans[2],2)
     pval= round(t.test( y[group==groupnames[1]], y[group==groupnames[2]])$p.value,2)
-  }  
-  text(labels=paste("FC =", fc, sep=" "), y=ymax-0.5, x=xboxplots) 
-  text(labels=paste("p =", pval, sep=" "), y=ymax-1, x=xboxplots)
+  } 
+  difftestlabel = paste("FC=", fc, ", p=", pval, sep="")
+  text(labels=difftestlabel, y=ylim[2]-0.5, x=xboxplots, cex=adhoc.legendcex) 
+  #legend("topright", legend=difftestlabel, cex=adhoc.legendcex) 
+  
   
   
 }
