@@ -53,7 +53,7 @@ plot_one_gene(matrix_true[index,], group=sa$group, main=paste("True values"),
 
 
 Add batch effect.
-```{r, dev="svg"}
+```{r, dev="png"}
 matrix_batcheffect = matrix_true
 matrix_batcheffect[,sa$batch==1] = matrix_batcheffect[,sa$batch==1]+1
 matrix_batcheffect[,sa$batch==3] = matrix_batcheffect[,sa$batch==3]-1
@@ -89,10 +89,10 @@ plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
 #          mean(matrix_true[index,sa$group==2 & sa$batch==2])
 
 
-figfilename = file.path( getwd(), "plots", paste("boxplots_v3_anovaadjusted_", index, sep=""))
+figfilename = file.path( getwd(), "plots", paste("boxplots_v3_anovaadjusted", sep=""))
 #figfile = paste( figfilename, ".png", sep=""); png(file = figfile, width=1600, height=800)
 figfile = paste( figfilename, ".pdf", sep=""); 
-cairo_pdf(file =figfile, width=6, height=6)
+pdf(file =figfile, width=6, height=6)
 op=par(mfrow=c(4, 1),   xaxt="n", mar=c(2,3,2,1)+0.1)
 ylim=c(min(matrix_batcheffect[index,]), max(matrix_batcheffect[index,]))
 plot_one_gene(matrix_true[index,], group=sa$group, main=paste("True values"),
@@ -168,7 +168,7 @@ plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
 ```{r}
 
 
-figfilename = file.path( getwd(), "plots", paste("boxplots_v3_meanadjusted_", index, sep=""))
+figfilename = file.path( getwd(), "plots", paste("boxplots_v3_meanadjusted" , sep=""))
 figfile = paste( figfilename, ".pdf", sep=""); 
 pdf(file =figfile, width=6, height=6)
 ylim=c(min(matrix_batcheffect[index,]), max(matrix_batcheffect[index,]))
