@@ -1,7 +1,7 @@
 
 # Creates a sampleannotation data.frame based on a list of batches with a vector of group counts
 # Used when creating artificial data.
-createsampleannotation = function( groups_in_batches)
+createsampleannotation = function( groups_in_batches, as.factors=FALSE)
 {
 	batches = vector()
 	groups = vector()
@@ -15,6 +15,11 @@ createsampleannotation = function( groups_in_batches)
 		}
 	}
 	sampleannotation = data.frame(id=paste("sample", 1:length(groups), sep=""),    group = groups, batch=batches)
+  if(as.factors)
+  {
+    sampleannotation$batch=as.factor(sampleannotation$batch)
+    sampleannotation$group=as.factor(sampleannotation$group)
+  }
 	return(sampleannotation)
 }
 
