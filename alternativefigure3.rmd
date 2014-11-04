@@ -95,14 +95,14 @@ figfile = paste( figfilename, ".pdf", sep="");
 pdf(file =figfile, width=6, height=6)
 op=par(mfrow=c(4, 1),   xaxt="n", mar=c(2,3,2,1)+0.1)
 ylim=c(min(matrix_batcheffect[index,]), max(matrix_batcheffect[index,]))
-plot_one_gene(matrix_true[index,], group=sa$group, main=paste("True values"),
+plot_one_gene(matrix_true[index,], group=sa$group, main=paste("(a) True values"),
               estimatemethod="CI", ylim=ylim)
 plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
-              main=paste("Batch affected values"), estimatemethod="CI", ylim=ylim)
+              main=paste("(b) Batch affected values"), estimatemethod="CI", ylim=ylim)
 plot_one_gene(matrix_batchadjusted[index,], group=sa$group, batch=sa$batch,
-              main=paste("Batch effect adjusted values"), estimatemethod="CI", ylim=ylim)
+              main=paste("(c) Batch effect adjusted values"), estimatemethod="CI", ylim=ylim)
 plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch, ylim=ylim,
-              main=paste("Batch affected values, batch included in ANOVA"),estimatemethod="lsmeans")
+              main=paste("(d) Batch affected values, batch included in ANOVA"),estimatemethod="lsmeans")
 
 dev.off()
 
@@ -173,14 +173,14 @@ figfile = paste( figfilename, ".pdf", sep="");
 pdf(file =figfile, width=6, height=6)
 ylim=c(min(matrix_batcheffect[index,]), max(matrix_batcheffect[index,]))
 op=par(mfrow=c(4, 1),   xaxt="n", mar=c(2,3,2,1)+0.1)
-plot_one_gene(matrix_true[index,], group=sa$group, main=paste("True values"),
+plot_one_gene(matrix_true[index,], group=sa$group, main=paste("(a) True values"),
               estimatemethod="CI", ylim=ylim)
 plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
-              main=paste("Batch affected values"), estimatemethod="CI", ylim=ylim)
+              main=paste("(b) Batch affected values"), estimatemethod="CI", ylim=ylim)
 plot_one_gene(matrix_batchadjusted[index,], group=sa$group, batch=sa$batch,
-              main=paste("Batch adjusted values"), estimatemethod="CI", ylim=ylim)
+              main=paste("(c) Batch adjusted values"), estimatemethod="CI", ylim=ylim)
 plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch, ylim=ylim,
-              main=paste("Batch affected values, batch included in ANOVA"),estimatemethod="lsmeans")
+              main=paste("(d) Batch affected values, batch included in ANOVA"),estimatemethod="lsmeans")
 
 dev.off()
 

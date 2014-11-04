@@ -44,7 +44,7 @@ index=1
 #summary(means_lm)
 #contrast(means_lm,"pairwise")
 
-figfilename = file.path( getwd(), "plots", paste("boxplots_v2" sep=""))
+figfilename = file.path( getwd(), "plots", paste("boxplots_v2", sep=""))
 #figfile = paste( figfilename, ".png", sep=""); png(file = figfile, width=1600, height=800)
 figfile = paste( figfilename, ".pdf", sep=""); 
 pdf(file =figfile, width=24, height=24)

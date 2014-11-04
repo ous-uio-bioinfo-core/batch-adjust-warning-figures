@@ -1,7 +1,6 @@
 
 
-adhoc.cex=1
-adhoc.legendcex=adhoc.cex
+
 
 # y= matrix_true[index,]
 # group=sampleannotation$group
@@ -17,11 +16,17 @@ adhoc.legendcex=adhoc.cex
 
 plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemethod="none", lwd=1)
 {  
+	adhoc.cex=1
+	adhoc.legendcex=adhoc.cex
+	adhoc.palette =  c("black","black","black","black")
+	#adhoc.palette =c("red", "blue", "brown", "cyan")
+	adhoc.pch = c(1, 2, 3, 4)
+	
   # Boxplots for CI etc.  
   xboxplots=round(length(y)* 1.1)    
   boxwidth=round(length(y)/20)
   boxseparation = (boxwidth * 1.5)
-  thispal=c("red", "blue", "brown", "cyan")
+ 
   
   a = order(group)
   if(!is.null(batch))
@@ -44,7 +49,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   xlim = c(1, round(xboxplots + (boxseparation) * length(unique(group)))  )
   
   # measurements
-  plot(y, ylim=ylim, xlim=xlim, col=thispal[as.factor(group)], 
+  plot(y, ylim=ylim, xlim=xlim, col=adhoc.palette[as.factor(group)],  pch=adhoc.pch[as.factor(group)]
        main=main,  ylab="Expression", lwd=lwd, cex.main=adhoc.legendcex)
   
   # batch separator
@@ -72,7 +77,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   }  
   segments(  x0=(1:length(y))-0.5, y0=groupmeans[group], 
              x1=(1:length(y))+0.5, y1=groupmeans[group], 
-             col=thispal[as.factor(group)], lwd=lwd)
+             col=thispal[as.factor(group)], lwd=adhoc.pch[group])
   #legend("topright", legend=paste(groupnames, groupmeans), text.col=thispal[as.factor(groupnames)])
   
   
@@ -100,8 +105,8 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
     xleft = xoffset    
     #print(xleft)
     xright = xleft + boxwidth    
-    rect(xleft, ybottom, xright, ytop, border=thispal[g], lwd=lwd, lty="solid")
-    lines(c(xoffset,xright), c(m,m), col=thispal[g], lwd=lwd)
+    rect(xleft, ybottom, xright, ytop, border=adhoc.palette[g], lwd=lwd, lty="solid")
+    lines(c(xoffset,xright), c(m,m), col=adhoc.palette[g], lwd=lwd)
     #points(x=xleft+boxwidth/2, y=ylim[1]+0.5, pch=pchselection[g], cex=legendcex, lwd=lwd)
     xoffset = xoffset+boxseparation
   }
