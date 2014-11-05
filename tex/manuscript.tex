@@ -236,12 +236,12 @@ In an experiment described in \citet{Towfic2014}, the effect of glatiramer aceta
 glatiramer acetate (34 samples), the generic drug (11 samples) or 14 different types of other treatments(64 samples), and mRNA was measured using microarrays. A batch effect correlating to the chip (Illumina
 WG-6\_V2, six samples per chip, 17 chips in total) was observed and adjusted for with
 ComBat, whereafter the data were tested for differentially expressed
-genes, yielding hundreds of differentially expressed probes (Table S5, \citealp{Towfic2014}).
+genes, yielding hundreds of differentially expressed probes (Table S5, \citealp{Towfic2014}) using a $\text{FDR}<0.05 threshold.
 Unfortunately, the batch--treatment design was unbalanced, with several
 batches having only one of the main treatments of interest. When we
 re-analyzed the data without the use of ComBat, but instead blocked for
-batch effect in \texttt{limma}, only 9 genes were found
-($\text{FDR}<0.05$). The sanity check  outlined above with random numbers
+batch effect in \texttt{limma}, only 9 genes were found ($\text{FDR}<0.05$)
+. The sanity check  outlined above with random numbers
 was also carried out. The distribution of p-values for different settings
 are shown in Figure~\ref{fig:comparison}a. Our conclusion is that most of
 the genes found as differentially expressed in the analysis described in
@@ -347,8 +347,8 @@ e) The least squares estimates of the group means from a two-way ANOVA have the 
 \begin{figure}[!p]
 \begin{center}$
 \begin{array}{cc}
-\includegraphics[width=6.5cm]{Fig/leekrandomdatapvalues.pdf} &
-\includegraphics[width=6.5cm]{Fig/leekqqplot.png}
+\includegraphics[width=4cm]{Fig/leekrandomdatapvalues.pdf} &
+\includegraphics[width=4cm]{Fig/leekqqplot.png}\includegraphics[width=4cm]{Fig/samplesizescaling_ComBat.pdf}
 \end{array}$
 \end{center}
 \caption
@@ -356,6 +356,7 @@ e) The least squares estimates of the group means from a two-way ANOVA have the 
 This is a sanity check where the recommended use of ComBat fails, adapted from the user guide in the \texttt{sva} package. Real data are substituted with random numbers from a normal distribution, but the batch--group design is retained. ComBat is applied, followed by an F-test.
 a) P-value distribution
 b) QQ plot of the F-statistics
+c) P-value distributions for 3 equally unbalanced random number experiments with different sample sizes, 12,120 and 1200 samples from two study groups with a 1:5 and 5:1 distribution in two batches. A random batch effect is added for 10\% of the 20000 genes. This example is not from the \texttt{sva} package.
 }
 \label{fig:sanity}
 \end{figure}
@@ -374,6 +375,29 @@ a) Re-analysis of \citet{Towfic2014}, glatiramer acetate vs. generic
 b) Re-analysis of "Data set 2" \citet{Johnson2007},  TAL1 inhibition vs. control
 }
 \label{fig:comparison}
+\end{figure}
+
+
+\begin{figure}[!p]
+\begin{center}$
+\begin{array}{cc}
+\includegraphics[width=6.5cm]{Fig/boxplots_v3_meanadjusted.pdf} &
+\includegraphics[width=6.5cm]{Fig/boxplots_v3_anovaadjusted.pdf}
+\end{array}$
+\end{center}
+\caption
+{
+We simulated expression of one gene from two and three study groups. These two cases, designs and effects, were selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represents the log expression values. while the X-axis is used to separate the samples. Circles, triangles, and crosses indicate sample measurements from separate groups. Horizontal dashed lines indicates the mean of the expression values for that groups samples. Vertical dotted lines separates batches with the batch numbers on the lower half of the plot. To the far right of the plots, a typical differential expression test is performed with estimated fold change and a p-value. The mean expression for each group and 95\% confidence interval is estimated and depicted as boxes.
+a) Simulated expression of one gene in 26 samples from 3 groups (circles, triangles and crosses). The fold change and p-value presented are from the circles vs. triangles comparison and calculated with a one-way ANOVA. The confidence intervals indicate that the crosses are different from the other two groups.
+b) The values from (a) is divided into 2 batches with circle and triangles in batch 1 and triangles and crosses in batch 2. Batch effects were added, -1 for batch 1 and +1 for batch 2. The ANOVA test now results in a p-value less than 0.00 between the circles and triangles. This plot illustrates the problem of disregarding batch effects.
+c) The values in (b) were batch adjusted using the mean adjustment method. In order to make the means of the two batches equal, some of the group-effect for the crosses were transferred over to the triangels within the same batch. As a result the ANOVA test now indicate a difference between the circle-group and the triangle-group (p<0.00).
+d) The same values as in (b) are shown and used in a two-way ANOVA with group and batch included in the model. The estimated fold change and corresponding p-value is in effect calculated from the samples in batch 1.
+e) Simulated expression of one gene in 20 samples from two groups (circles and triangles). The t-test indicates no significant group differences(p=0.82).
+f) The values from (e) are divided into 3 batches in an unbalanced way, with only batch 2 containing samples from both groups. Batch effects were added, +1 for batch 1 and -1 for batch 3. The t-test now results in p<0.00. This plot illustrates the problem with disregarding batch effects.
+g) The values in (f) were batch effect adjusted while retaining the group difference (using removeBatchEffects), thus creating a ``batch effet free'' data set. Notice that all the values in batch 1 (which also belong to the circle group) are adjusted to make the group mean coincide with the mean of the two circle-samples in batch 2. The triangle-samples in batch 3 is adjusted similarly to match the mean of the two triangle-sampels in batch 2.The t-test now results in a significant group difference (p=0.01) and a fold change equal to a fold change calculated from the batch 2 samples only. Thus, the fold change is in effect estimated from only 2+2 samples, but the t-test assumes 10+10 samples with the low p-value as a result.
+h) The same values as in (f) are shown and used in a two-way ANOVA with group and batch included in the model. The estimated fold change is again in effect only based on samples from batch 2 and is exactly the same as for (g), but the p-value is much higher and the confidence intervals are more appropriate.
+}
+\label{fig:boxplots_v3}
 \end{figure}
 
 

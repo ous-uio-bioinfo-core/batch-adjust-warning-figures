@@ -11,7 +11,7 @@ set.seed(rseed)
 
 
 pvalcounts = list(ComBat=list(), LIMMA=list())
-batchaffectedgenefraction = 0
+batchaffectedgenefraction = 0.1
 samplesizescaleing = c(1,10,100)
 ngenes=20000
 
@@ -62,14 +62,14 @@ for(i in 1:length(pvalcounts))
 {
   figfilename = file.path( getwd(), "plots", paste("samplesizescaling",
                                                    names(pvalcounts)[i], 
-                                                   batchaffectedgenefraction,sep="_"))
+                                                   sep="_"))
   figfile = paste( figfilename, ".pdf", sep=""); 
-  pdf(file =figfile, width=24, height=12)
+  pdf(file =figfile)
   
   
   
   plot(  (1:25)/100, 1:25, 
-  		 main="Effect of sample size scaling on P-values", 
+  		 main="(c) Effect of sample size scaling on P-values", 
   		 xlab="p-value", ylab="Frequency", type="n", 
   		 ylim=c(0, max(unlist( pvalcounts))))
   for(t in 1:length(pvalcounts[[i]]))

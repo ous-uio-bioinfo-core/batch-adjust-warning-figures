@@ -49,7 +49,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   xlim = c(1, round(xboxplots + (boxseparation) * length(unique(group)))  )
   
   # measurements
-  plot(y, ylim=ylim, xlim=xlim, col=adhoc.palette[as.factor(group)],  pch=adhoc.pch[as.factor(group)]
+  plot(y, ylim=ylim, xlim=xlim, col=adhoc.palette[as.factor(group)],  pch=adhoc.pch[as.factor(group)],
        main=main,  ylab="Expression", lwd=lwd, cex.main=adhoc.legendcex)
   
   # batch separator
@@ -57,7 +57,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   {
     batchnames=unique(batch)
     x = match(batchnames, batch)
-    abline(v = x[-1]-0.5)#
+    abline(v = x[-1]-0.5, lty=3)#
     batchlabelx=vector()
     for(i in 1:(length(x)-1))
     {
@@ -77,8 +77,8 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
   }  
   segments(  x0=(1:length(y))-0.5, y0=groupmeans[group], 
              x1=(1:length(y))+0.5, y1=groupmeans[group], 
-             col=thispal[as.factor(group)], lwd=adhoc.pch[group])
-  #legend("topright", legend=paste(groupnames, groupmeans), text.col=thispal[as.factor(groupnames)])
+             col=adhoc.palette[as.factor(group)], lwd=lwd, lty=2)
+  #legend("topright", legend=paste(groupnames, groupmeans), text.col=adhoc.palette[as.factor(groupnames)])
   
   
   
@@ -107,7 +107,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
     xright = xleft + boxwidth    
     rect(xleft, ybottom, xright, ytop, border=adhoc.palette[g], lwd=lwd, lty="solid")
     lines(c(xoffset,xright), c(m,m), col=adhoc.palette[g], lwd=lwd)
-    #points(x=xleft+boxwidth/2, y=ylim[1]+0.5, pch=pchselection[g], cex=legendcex, lwd=lwd)
+    points(x=xleft+boxwidth/2, y=ylim[1], pch=adhoc.pch[g], cex=adhoc.legendcex, lwd=lwd)
     xoffset = xoffset+boxseparation
   }
   
@@ -120,7 +120,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
     pval= round(t.test( y[group==groupnames[1]], y[group==groupnames[2]])$p.value,2)
   } 
   difftestlabel = paste("FC=", fc, ", p=", pval, sep="")
-  text(labels=difftestlabel, y=ylim[2]-0.5, x=xboxplots, cex=adhoc.legendcex) 
+  text(labels=difftestlabel, y=ylim[2]-0.5, x=xboxplots+boxwidth, cex=adhoc.legendcex) 
   #legend("topright", legend=difftestlabel, cex=adhoc.legendcex) 
   
   

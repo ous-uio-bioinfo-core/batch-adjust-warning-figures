@@ -98,3 +98,6 @@ sympy-plots-for-*.tex/
 *.xdy
 .Rproj.user
 *.Rproj
+
+.DS_Store
+not_in_github/
