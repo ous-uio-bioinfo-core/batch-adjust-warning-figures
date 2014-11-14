@@ -1,5 +1,22 @@
 \begin{thebibliography}{99}
 
+\bibitem[Bakshi \emph{and others}(2013)Bakshi, Chalifa-Caspi, Plaschkes,
+  Perevozkin, Gurevich and Schwartz]{Bakshi2013}
+\textsc{Bakshi, S., Chalifa-Caspi, V., Plaschkes, I., Perevozkin, I., Gurevich,
+  M. and Schwartz, R.} (2013, April).
+\newblock {Gene expression analysis reveals functional pathways of glatiramer
+  acetate activation.}
+\newblock {\em Expert opinion on therapeutic targets\/}~\textbf{17}(4),
+  351--62.
+
+\bibitem[Buhule \emph{and others}(2014)Buhule, Minster, Hawley, Medvedovic,
+  Sun, Viali, Deka, McGarvey and Weeks]{Buhule2014}
+\textsc{Buhule, O.~D., Minster, R.~L., Hawley, N.~L., Medvedovic, M., Sun, G.,
+  Viali, S., Deka, R., McGarvey, S.~T. and Weeks, D.~E.} (2014, October).
+\newblock {Stratified randomization controls better for batch effects in 450K
+  methylation analysis: a cautionary tale}.
+\newblock {\em Frontiers in Genetics\/}~\textbf{5}(October), 1--11.
+
 \bibitem[Chen \emph{and others}(2011)Chen, Grennan, Badner, Zhang, Gershon, Jin
   and Liu]{Chen2011}
 \textsc{Chen, C., Grennan, K., Badner, J., Zhang, D., Gershon, E., Jin, L. and
@@ -7,6 +24,30 @@
 \newblock {Removing batch effects in analysis of expression microarray data: an
   evaluation of six batch adjustment methods.}
 \newblock {\em PloS one\/}~\textbf{6}(2), e17238.
+
+\bibitem[Emig \emph{and others}(2010)Emig, Salomonis, Baumbach, Lengauer,
+  Conklin and Albrecht]{Emig2010}
+\textsc{Emig, D., Salomonis, N., Baumbach, J., Lengauer, T., Conklin, B.~R. and
+  Albrecht, M.} (2010, July).
+\newblock {AltAnalyze and DomainGraph: analyzing and visualizing exon
+  expression data.}
+\newblock {\em Nucleic acids research\/}~\textbf{38}(Web Server issue),
+  W755--62.
+
+\bibitem[Fern\'{a}ndez-Albert \emph{and others}(2014)Fern\'{a}ndez-Albert,
+  Llorach, Garcia-Aloy, Ziyatdinov, Andres-Lacueva and
+  Perera]{Fernandez-Albert2014}
+\textsc{Fern\'{a}ndez-Albert, F., Llorach, R., Garcia-Aloy, M., Ziyatdinov, A.,
+  Andres-Lacueva, C. and Perera, A.} (2014, October).
+\newblock {Intensity drift removal in LC/MS metabolomics by common variance
+  compensation.}
+\newblock {\em Bioinformatics (Oxford, England)\/}~\textbf{30}(20), 2899--905.
+
+\bibitem[Giordan(2013)Giordan]{Giordan2013}
+\textsc{Giordan, M.} (2013, February).
+\newblock {A Two-Stage Procedure for the Removal of Batch Effects in Microarray
+  Studies}.
+\newblock {\em Statistics in Biosciences\/}~\textbf{6}(1), 73--84.
 
 \bibitem[Johnson \emph{and others}(2007)Johnson, Li and Rabinovic]{Johnson2007}
 \textsc{Johnson, W.~E., Li, C. and Rabinovic, A.} (2007, January).
@@ -60,6 +101,22 @@
   prediction performance using MAQC-II microarray gene expression data.}
 \newblock {\em The pharmacogenomics journal\/}~\textbf{10}(4), 278--91.
 
+\bibitem[Morris \emph{and others}(2014)Morris, Butcher, Feber, Teschendorff,
+  Chakravarthy, Wojdacz and Beck]{Morris2014}
+\textsc{Morris, T.~J., Butcher, L.~M., Feber, A., Teschendorff, A.~E.,
+  Chakravarthy, A.~R., Wojdacz, T.~K. and Beck, S.} (2014, March).
+\newblock {ChAMP: 450k Chip Analysis Methylation Pipeline.}
+\newblock {\em Bioinformatics (Oxford, England)\/}~\textbf{30}(3), 428--30.
+
+\bibitem[Piccolo \emph{and others}(2013)Piccolo, Withers, Francis, Bild and
+  Johnson]{Piccolo2013}
+\textsc{Piccolo, S.~R., Withers, M.~R., Francis, O.~E., Bild, A.~H. and
+  Johnson, W.~E.} (2013, October).
+\newblock {Multiplatform single-sample estimates of transcriptional
+  activation.}
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America\/}~\textbf{110}(44), 17778--83.
+
 \bibitem[Reich \emph{and others}(2006)Reich, Liefeld, Gould, Lerner, Tamayo and
   Mesirov]{Reich2006}
 \textsc{Reich, M., Liefeld, T., Gould, J., Lerner, J., Tamayo, P. and Mesirov,
@@ -79,15 +136,15 @@
 \newblock {Normalization of cDNA microarray data}.
 \newblock {\em Methods\/}~\textbf{31}(4), 265--273.
 
-\bibitem[Taminau \emph{and others}(2011)Taminau, Steenhoff, Coletta, Meganck,
-  Lazar, de~Schaetzen, Duque, Molter, Bersini, Now\'{e} and {Weiss
-  Sol\'{\i}s}]{Taminau2011}
-\textsc{Taminau, J., Steenhoff, D., Coletta, A., Meganck, S., Lazar, C.,
-  de~Schaetzen, V., Duque, R., Molter, C., Bersini, H., Now\'{e}, A.} \emph{and
-  others}. (2011, November).
-\newblock {inSilicoDb: an R/Bioconductor package for accessing human Affymetrix
-  expert-curated datasets from GEO.}
-\newblock {\em Bioinformatics\/}~\textbf{27}(22), 3204--5.
+\bibitem[Taminau \emph{and others}(2012)Taminau, Meganck, Lazar, Steenhoff,
+  Coletta, Molter, Duque, de~Schaetzen, {Weiss Sol\'{\i}s}, Bersini and
+  Now\'{e}]{Taminau2012}
+\textsc{Taminau, J., Meganck, S., Lazar, C., Steenhoff, D., Coletta, A.,
+  Molter, C., Duque, R., de~Schaetzen, V., {Weiss Sol\'{\i}s}, D.~Y., Bersini,
+  H.} \emph{and others}. (2012, January).
+\newblock {Unlocking the potential of publicly available microarray data using
+  inSilicoDb and inSilicoMerging R/Bioconductor packages.}
+\newblock {\em BMC bioinformatics\/}~\textbf{13}, 335.
 
 \bibitem[Towfic \emph{and others}(2014)Towfic, Funt, Fowler, Bakshi, Blaugrund,
   Artyomov, Hayden, Ladkani, Schwartz and Zeskind]{Towfic2014}
