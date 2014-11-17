@@ -1,18 +1,17 @@
 
-# old GSE40566
+
 # Towfic et al.  For the correct GEO accession GSE61901
 # load data and sample annotation and some formatting
 loadtowfic = function(downloaddata=TRUE)
 {
-	geoaccession="GSE40566"
-  rawfn = "http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE40566&format=file&file=GSE40566%5Fnon%5Fnormalized%2Etxt%2Egz"
+	geoaccession="GSE61901"
 	
 	if(downloaddata)
 	{
 		geoseries=getGEO(geoaccession)
 		eset = geoseries[[1]]
 	}else{
-		eset=getGEO(filename=paste("not_in_github/",geoaccession,"_series_matrix.txt.gz", sep=""))
+		eset=getGEO(filename="not_in_github/GSE61901_series_matrix.txt.gz")
 	}
 	# will only use sample annotation from this eset. The data will be taken from the non-normalized matrix file.
 	
@@ -31,20 +30,19 @@ loadtowfic = function(downloaddata=TRUE)
 	sampleannotation$covariate[sampleannotation$covariate=="Medium"] = "M"
 	sampleannotation$covariate[sampleannotation$covariate=="GA.RS"] = "RS"
 	rownames(sampleannotation) = sampleannotation[, "array_strip_address"]
-	
-	sampleannotation = read.table("sampleannotation.txt", sep="\t",
-                                header=TRUE, stringsAsFactors=FALSE)
+		
 	
 	if(downloaddata)
 	{
-		temp = tempfile()    
-		download.file(url=rawfn, destfile=temp, mode = "wb")
+		temp = tempfile()
+		download.file(url="http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE61901&format=file&file=GSE61901%5Fnon%2Dnormalized%2Etxt%2Egz",
+									destfile=temp, mode = "wb")
 		orgrawtable = read.table(temp, sep="\t", header=TRUE, 
-														 stringsAsFactors=FALSE, skip=0, strip.white=TRUE, fill=TRUE)
+														 stringsAsFactors=FALSE, skip=5, strip.white=TRUE, fill=TRUE)
 		unlink(temp)
 	}else{
-		orgrawtable = read.table(paste("not_in_github/",geoaccession,"_non-normalized.txt", sep=""), sep="\t", header=TRUE, 
-														 stringsAsFactors=FALSE, skip=0, strip.white=TRUE, fill=TRUE)
+		orgrawtable = read.table("not_in_github/GSE61901_non-normalized.txt", sep="\t", header=TRUE, 
+														 stringsAsFactors=FALSE, skip=5, strip.white=TRUE, fill=TRUE)
 	}
 	
 	#to matrix, taking out the empty detection p-val columns.
