@@ -70,6 +70,7 @@ ymax = max(t(t(tmpmatrix) + (batchboxtop - matrix_true[index,])))
 ylim = c(ymin, ymax)
 
 #op=par(mfrow=c(3, 2),   xaxt="n", mar=c(1,3,2,1)+0.1)
+source("commonscripts/boxplot_function.r")
 layout(  matrix(c(1,2,0,3,4,5), 2, 3, byrow = TRUE) , widths=c(1,1,0.35) )
 op=par(oma = c(5,4,0,0) + 0.1, mar = c(0,0,2,1) + 0.1)
 plot_one_gene(matrix_true[index,], group=sa$group,  batch=sa$batch,, 

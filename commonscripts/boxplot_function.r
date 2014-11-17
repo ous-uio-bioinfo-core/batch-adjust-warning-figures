@@ -2,14 +2,14 @@
 adhoc.palette =c("red", "blue", "brown", "cyan")
 adhoc.cex=1
 adhoc.legendcex=adhoc.cex
+adhoc.pch = c(1, 2, 3, 4)
 
 plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemethod="none", lwd=1, bbh=NA, bblo=NA, usecolor=TRUE)
 {  
 	
   if(!usecolor)
     adhoc.palette =  c("black","black","black","black")
-	  
-	adhoc.pch = c(1, 2, 3, 4)
+  
 	
   # Boxplots for CI etc.  
   xboxplots=round(length(y)* 1.1)    
@@ -138,7 +138,7 @@ estimatesboxesonly = function(y, group, batch, ylim=NULL, main="", lwd=1, usecol
     rect(xleft, ybottom, xright, ytop, border=adjustcolor(adhoc.palette[g], linealpha), lwd=lwd, 
          lty="solid", density=-1, col=adjustcolor(adhoc.palette[g],boxalpha))
     lines(c(xleft,xright), c(m,m), col=adjustcolor(adhoc.palette[g],linealpha), lwd=lwd)
-    #points(x=(xleft+xright)/2, y=ybottom-1, pch=adhoc.pch[g], cex=adhoc.legendcex, lwd=lwd)
+    points(x=(xleft+xright)/2, y=ytop+( (ylim[2]-ylim[1])/30), pch=adhoc.pch[g], cex=adhoc.legendcex, lwd=lwd, col=adhoc.palette[g])
 
   }
 }
