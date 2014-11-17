@@ -23,13 +23,6 @@ if(debug)
 
 qnormdata = normalizeBetweenArrays(rawdata, method="quantile") 
 
-# Collapsing the dataset based on the replicate sub-arrays.
-qnormdata = avearrays(qnormdata,  sampleannotation$array_hyb_address)
-sampleannotation=sampleannotation[(1:(nrow(sampleannotation)/2))*2,c(1,2,4)]
-rownames(sampleannotation) = sampleannotation[, "array_hyb_address"]
-
-
-
 # combat adjust
 combatdata= as.matrix(ComBat(dat=qnormdata,
                              batch=sampleannotation$batch,

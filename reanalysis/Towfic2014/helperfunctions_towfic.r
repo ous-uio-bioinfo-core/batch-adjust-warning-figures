@@ -1,37 +1,12 @@
 
-# old GSE40566
-# Towfic et al.  For the correct GEO accession GSE61901
-# load data and sample annotation and some formatting
+# Downloads the non-normalized data from GSE40566
+# Using the covariate annotation from GSE61901
 loadtowfic = function(downloaddata=TRUE)
 {
 	geoaccession="GSE40566"
-  rawfn = "http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE40566&format=file&file=GSE40566%5Fnon%5Fnormalized%2Etxt%2Egz"
+  rawfn = "http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE40566&format=file&file=GSE40566%5Fnon%5Fnormalized%2Etxt%2Egz"	
 	
-	if(downloaddata)
-	{
-		geoseries=getGEO(geoaccession)
-		eset = geoseries[[1]]
-	}else{
-		eset=getGEO(filename=paste("not_in_github/",geoaccession,"_series_matrix.txt.gz", sep=""))
-	}
-	# will only use sample annotation from this eset. The data will be taken from the non-normalized matrix file.
-	
-	# getting the sample annotation, some renaming
-	sampleannotation = pData(eset)[, c("characteristics_ch1", "characteristics_ch1.3", "characteristics_ch1.2")]
-	names(sampleannotation) = c("batch", "covariate", "array_strip_address")
-	sampleannotation[,1]=gsub("batch: ", "", sampleannotation[,1] )
-	sampleannotation[,2]=gsub("batchcovar: ", "", sampleannotation[,2] )
-	sampleannotation[,3]=gsub("array_address: ", "", sampleannotation[,3] )
-	sampleannotation[,"array_hyb_address"]=gsub("_[12]", "", sampleannotation[,3] )
-	
-	# some renaming for conveniance
-	sampleannotation$covariate = make.names(sampleannotation$covariate)
-	sampleannotation$covariate[sampleannotation$covariate=="GA.DP"] = "DP"
-	sampleannotation$covariate[sampleannotation$covariate=="GA.Q"] = "N"
-	sampleannotation$covariate[sampleannotation$covariate=="Medium"] = "M"
-	sampleannotation$covariate[sampleannotation$covariate=="GA.RS"] = "RS"
-	rownames(sampleannotation) = sampleannotation[, "array_strip_address"]
-	
+	#createsampleannotation() # ad.hoc function to create sampleannotation.txt based on GSE61901 and GSE40566
 	sampleannotation = read.table("sampleannotation.txt", sep="\t",
                                 header=TRUE, stringsAsFactors=FALSE)
 	
@@ -39,39 +14,54 @@ loadtowfic = function(downloaddata=TRUE)
 	{
 		temp = tempfile()    
 		download.file(url=rawfn, destfile=temp, mode = "wb")
-		orgrawtable = read.table(temp, sep="\t", header=TRUE, 
+		datamatrix_raw = read.table(temp, sep="\t", header=TRUE, 
 														 stringsAsFactors=FALSE, skip=0, strip.white=TRUE, fill=TRUE)
 		unlink(temp)
 	}else{
-		orgrawtable = read.table(paste("not_in_github/",geoaccession,"_non-normalized.txt", sep=""), sep="\t", header=TRUE, 
+		datamatrix_raw = read.table(paste("not_in_github/",geoaccession,"_non-normalized.txt", sep=""), sep="\t", header=TRUE, 
 														 stringsAsFactors=FALSE, skip=0, strip.white=TRUE, fill=TRUE)
 	}
 	
-	#to matrix, taking out the empty detection p-val columns.
-	datamatrix_raw = orgrawtable
-	rawdataprobeids = datamatrix_raw[,1]
-	datamatrix_raw = datamatrix_raw[,(1:214)*2]
+	rownames(datamatrix_raw) =  datamatrix_raw[,1]
+	datamatrix_raw = datamatrix_raw[,-1]
 	datamatrix_raw = as.matrix(datamatrix_raw)
-	mode(datamatrix_raw) = "numeric"
-	# table(is.na(datamatrix_raw))
-	
-	#ordercheck
-	#table(colnames(datamatrix_raw)==paste( sampleannotation[, "array_strip_address"], sep="")) 
-	colnames(datamatrix_raw)=sampleannotation[, "array_strip_address"]
-	
-	# probeannotation not used
-	# probeid check. Different order from the probeannotation, but all there.
-	# probeannotation is not used further.
-	#gplannotation =  getGEO(annotation(eset))
-	#probeannotation = data.frame(Table(dataTable(gplannotation)), stringsAsFactors=FALSE)
-	#probeannotation[] <- lapply(probeannotation, as.character)
-	#table(rawdataprobeids==probeannotation$ID)
-	#table(rawdataprobeids %in% probeannotation$ID)
-	#table(probeannotation$ID %in% rawdataprobeids)
-	
-	rownames(datamatrix_raw) = rawdataprobeids
-	rm(orgrawtable)
+
+	sampleannotation = sampleannotation[ match(sampleannotation$title, colnames(datamatrix_raw) ) , ]
 	return(list(sampleannotation=sampleannotation, data=datamatrix_raw))
 }	
 
+# ad hoc function to fetch the covariate labels which are described in GSE61901 but not in GSE40566
+# GSE40566 has a "relation" tag that connects to the sample in GSE61901 which has covaraite label.
+# I dont know a method of getting the sample annotation from GEO whitout downloading the whole matrix (including the GPL).
+createsampleannotation = function()
+{
+	GSE61901eset=getGEO("GSE61901")[[1]]
+	GSE40566eset=getGEO("GSE40566")[[1]]
 	
+	#t(pData(GSE61901eset)[1,])
+	GSE61901sa = pData(GSE61901eset)[, c("characteristics_ch1", "characteristics_ch1.3", "characteristics_ch1.2")]
+	names(GSE61901sa) = c("batch", "covariate", "array_strip_address")
+	GSE61901sa[,1]=gsub("batch: ", "", GSE61901sa[,1] )
+	GSE61901sa[,2]=gsub("batchcovar: ", "", GSE61901sa[,2] )
+	GSE61901sa[,3]=gsub("array_address: ", "", GSE61901sa[,3] )
+	GSE61901sa[,"array_hyb_address"]=gsub("_[12]", "", GSE61901sa[,3] )
+	# some renaming for conveniance
+	
+	GSE61901sa$covariate = make.names(GSE61901sa$covariate)
+	GSE61901sa$covariate[GSE61901sa$covariate=="GA.DP"] = "DP"
+	GSE61901sa$covariate[GSE61901sa$covariate=="GA.Q"] = "N"
+	GSE61901sa$covariate[GSE61901sa$covariate=="Medium"] = "M"
+	GSE61901sa$covariate[GSE61901sa$covariate=="GA.RS"] = "RS"
+	
+	#t(pData(GSE40566eset)[1,])
+	GSE40566sa  = pData(GSE40566eset)[, c("title", "relation")]
+	GSE40566sa$title = make.names(GSE40566sa$title)
+	GSE40566sa[,"relation"]=gsub("Reanalyzed by: ", "", GSE40566sa[,"relation"] )
+	GSE40566sa = cbind(GSE40566sa, GSE61901sa[GSE40566sa$relation,])
+	write.table(GSE40566sa, file="sampleannotation.txt", sep="\t", col.names=NA, quote=FALSE)
+}
+
+
+
+
+

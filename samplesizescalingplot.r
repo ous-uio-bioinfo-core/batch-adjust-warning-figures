@@ -10,7 +10,7 @@ rseed=1111
 set.seed(rseed)
 
 
-pvalcounts = list(ComBat=list(), LIMMA=list())
+pvalcounts = list()
 batchaffectedgenefraction = 0.1
 samplesizescaleing = c(1,10,100)
 ngenes=20000
@@ -39,22 +39,21 @@ for(n in samplesizescaleing)
     }
 	}
 	
-		mod0 = model.matrix(~1,data=sampleannotation)
- 		batch = factor(sampleannotation$batch)
+	mod0 = model.matrix(~1,data=sampleannotation)
+ 	batch = factor(sampleannotation$batch)
 
-    mod = model.matrix(~as.factor(group), data=sampleannotation)
+  mod = model.matrix(~as.factor(group), data=sampleannotation)
 	matrix_adjusted = ComBat(dat=matrix_random, batch=batch, 
  												mod=mod, numCovs=NULL, 
  												par.prior=TRUE, prior.plots=FALSE)
 	pValues = f.pvalue(matrix_adjusted,mod,mod0)
 	pvalcounts[["ComBat"]][[runname]]=hist(pValues, plot=FALSE, breaks=100)$counts
 	
-  
-	matrix_adjusted = removeBatchEffect(matrix_random, batch=batch, design=mod)
-	pValues = f.pvalue(matrix_adjusted,mod,mod0)
-	pvalcounts[["LIMMA"]][[runname]]=hist(pValues, plot=FALSE, breaks=100)$counts
-	
-#qValuesComBat = p.adjust(pValuesComBat,method="BH")
+	# using removeBatchEffect
+	#matrix_adjusted = removeBatchEffect(matrix_random, batch=batch, design=mod)
+	#pValues = f.pvalue(matrix_adjusted,mod,mod0)
+	#pvalcounts[["LIMMA"]][[runname]]=hist(pValues, plot=FALSE, breaks=100)$counts
+
 }
 
 

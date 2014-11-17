@@ -1,61 +1,108 @@
 
-### Figure of box-plots and confidence intervals
 
+
+library(sva)
+source("commonscripts/helperfunctions.r")
+source("commonscripts/boxplot_function_v4.r")
 library(limma)
 library(lsmeans)
 
-source("commonscripts/boxplot_function.r")
-source("commonscripts/helperfunctions.r")
-
-# 3 batches.
-# 4 groups
-#sampleannotation = createsampleannotation(  list(c(100,0,0,20), c(0,100,0,20), c(0,0,100,20))) 
-sampleannotation = createsampleannotation(  list(c(50,0,0,20), c(0,50,0,20), c(0,0,50,20))) 
-
-table(sampleannotation[,2:3])
-group=factor(sampleannotation$group)
-batch=factor(sampleannotation$batch)
-
-ngenes=1000
-#matrix_random = createrandomdata(ngenes, sampleannotation, mean=0, sd=1)
-rseed=1111
-set.seed(rseed)
-matrix_random = matrix(rnorm(ngenes * nrow(sampleannotation), mean=0, sd=1), nrow=ngenes, ncol=nrow(sampleannotation))
-
-matrix_condition = matrix_random
-matrix_condition[, group %in% c(3,4)] = matrix_condition[, group %in% c(3,4)] +2
-matrix_conditionbatch=matrix_condition
-matrix_conditionbatch[, batch ==2] = matrix_condition[, batch ==2] -1
-matrix_conditionbatch[, batch ==3] = matrix_condition[, batch ==3] +1
-matrix_meancenter = matrix_conditionbatch
-matrix_meancenter[,batch ==1] =  matrix_meancenter[,batch ==1] - rowMeans( matrix_meancenter[,batch ==1])
-matrix_meancenter[,batch ==2] =  matrix_meancenter[,batch ==2] - rowMeans( matrix_meancenter[,batch ==2])
-matrix_meancenter[,batch ==3] =  matrix_meancenter[,batch ==3] - rowMeans( matrix_meancenter[,batch ==3])
-mod = model.matrix(~group)
-matrix_limma = removeBatchEffect(matrix_conditionbatch, batch=batch, design=mod)
 
 
+
+
+
+#set.seed(100)
+ngenes = 1000
 index=1
-fit_lm=lm(matrix_condition[index,] ~ group+batch)
-means_lm=lsmeans(fit_lm,~group)
-summary(means_lm)
-contrast(means_lm,"pairwise")
+#sa = createsampleannotation(  list(c(10,5,0,0), c(0,5,5,0), c(0,0,5,10)), as.factors=TRUE)
 
-figfilename = file.path( getwd(), "boxplots")
-#figfile = paste( figfilename, ".png", sep=""); png(file = figfile, width=1600, height=800)
+
+sa = createsampleannotation(  list(c(10,3,0,0), c(0,10,30,0), c(0,0,3,20)), as.factors=TRUE)
+
+
+#sa = createsampleannotation(  list(c(20,2,0), c(0,20,50)), as.factors=TRUE) # god 3 grupper 2 batcher
+
+
+#sa = createsampleannotation(  list(c(15,0), c(2,2), c(0,15)), as.factors=TRUE)
+matrix_true = matrix(rnorm(ngenes * nrow(sa), mean=5, sd=2), nrow=ngenes, ncol=nrow(sa))
+
+# add a group effect for group 3
+ matrix_true[,sa$group==1] = matrix_true[,sa$group==1]+4
+ matrix_true[,sa$group==2] = matrix_true[,sa$group==2]+4
+ matrix_true[,sa$group==3] = matrix_true[,sa$group==3]+0
+ matrix_true[,sa$group==4] = matrix_true[,sa$group==4]+0
+
+bbextra=1.2
+batchboxheight=(max(matrix_true[index,]) - min(matrix_true[index,]) ) * bbextra
+batchboxlow=min(matrix_true[index,]) - batchboxheight * (bbextra-1)/2
+batchboxtop=max(matrix_true[index,]) + batchboxheight * (bbextra-1)/2
+batchmeans = sapply( unique(sa$batch), FUN=function(x){  mean( matrix_true[index,sa$batch==x] ) } )
+batchboxlowmeanoffsets=batchmeans - batchboxlow
+
+
+matrix_batcheffect = matrix_true
+matrix_batcheffect[,sa$batch==1] = matrix_batcheffect[,sa$batch==1]+2
+matrix_batcheffect[,sa$batch==2] = matrix_batcheffect[,sa$batch==2]-2
+
+
+#Batch adjust with mean center.
+
+matrix_batchadjusted = matrix_batcheffect
+genemeans = rowMeans(matrix_batcheffect)
+matrix_batchadjusted[,sa$batch ==1] =  genemeans +
+  matrix_batchadjusted[,sa$batch ==1] - rowMeans( matrix_batchadjusted[,sa$batch ==1])
+matrix_batchadjusted[,sa$batch ==2] =  genemeans + 
+  matrix_batchadjusted[,sa$batch ==2] - rowMeans( matrix_batchadjusted[,sa$batch ==2])
+
+
+mod = model.matrix(~as.factor(sa$group))
+matrix_batchadjusted2 = removeBatchEffect(matrix_batcheffect[,], batch=as.factor(sa$batch), design=mod)
+
+source("commonscripts/boxplot_function_v4.r")
+figfilename = file.path( getwd(), "plots", paste("boxplots_v4" , sep=""))
 figfile = paste( figfilename, ".pdf", sep=""); 
-pdf(file =figfile, width=24, height=12)
+#pdf(file =figfile, width=6, height=6)
 
-op=par(mfrow=c(1, 5), 	xaxt="n",yaxt="n", mar=c(5,0,0,0),oma=c(0,.5,.5,.5))
-alldata = c(matrix_condition[index,],matrix_conditionbatch[index,],matrix_meancenter[index,],matrix_limma[index,])
-ylim = c(min(alldata), max(alldata))
-adhocboxplot(matrix_condition[index,], group, batch, ylim=ylim, xlab="Without batch effects", figureletter="a")
-adhocboxplot(matrix_conditionbatch[index,], group, batch, ylim=ylim, xlab="With batch effects added", figureletter="b")
-adhocboxplot(matrix_meancenter[index,], group, batch, ylim=ylim, xlab="Zero-centered per batch", figureletter="c")
-adhocboxplot(matrix_limma[index,], group, batch, ylim=ylim, xlab="ANOVA centered values", figureletter="d")
-adhocboxplot2(means_lm, group, batch, ylim=ylim, xlab="ANOVA estimates", figureletter="e")
-adhoclegend(group,batch)
-par(op)
-dev.off()
-print( paste("Figure created: ",figfile ))
+# find the ylim.
+tmpmatrix = rbind(matrix_true[index,], matrix_batcheffect[index,], matrix_batchadjusted[index,], matrix_batchadjusted2[index,])
+ymin = min(t(t(tmpmatrix) - (matrix_true[index,]-batchboxlow)))
+ymax = max(t(t(tmpmatrix) + (batchboxtop - matrix_true[index,])))
+ylim = c(ymin, ymax)
 
+
+
+
+#op=par(mfrow=c(3, 2),   xaxt="n", mar=c(1,3,2,1)+0.1)
+layout(  matrix(c(1,2,0,3,4,5), 2, 3, byrow = TRUE) , widths=c(1,1,0.35) )
+layout.show(5)
+op=par(oma = c(5,4,0,0) + 0.1, mar = c(0,0,2,1) + 0.1)
+plot_one_gene(matrix_true[index,], group=sa$group,  batch=sa$batch,, 
+              main=paste("(a) True values"), estimatemethod="CI", ylim=ylim,
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+axis(side = 2, labels =TRUE)
+plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
+              main=paste("(b) Batch affected values"), estimatemethod="CI", ylim=ylim,
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+plot_one_gene(matrix_batchadjusted[index,], group=sa$group, batch=sa$batch,
+              main=paste("(c) Mean adjusted values"), estimatemethod="CI", ylim=ylim,
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+axis(side = 2, labels =TRUE)
+plot_one_gene(matrix_batchadjusted2[index,], group=sa$group, batch=sa$batch,
+              main=paste("(d) Anova adjusted values"), estimatemethod="CI", ylim=ylim,
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+
+#plot_one_gene(matrix_batchadjusted2[index,], group=sa$group, batch=sa$batch, ylim=ylim,
+#              main=paste("(e) Batch affected values, batch included in ANOVA"),estimatemethod="lsmeans",
+#              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+estimatesboxesonly(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,ylim=ylim, 
+                   main="(e) 2-Way-Anova")
+
+
+
+## show the regions that have been allocated to each plot
+
+
+
+
+#dev.off()
