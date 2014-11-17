@@ -18,6 +18,8 @@ setwd("reanalysis/Leek2012")
 source("figurescript_leek.r")
 setwd(startwd)
 
+source("samplesizescalingplot.r")
+
 setwd("reanalysis/Towfic2014")
 source("figurescript_towfic.r")
 setwd(startwd)

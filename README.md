@@ -20,18 +20,19 @@ The output of sessionInfo() when figurescript was run.
 
 Figure 1. in the manuscript. 
 
-### commonscripts/helperfunctions.r
+### samplesizescalingplot.r
+
+Figure 2c. in the manuscript. 
+
+### commonscripts/
 
 A few short utility functions.
 
 ### reanalysis/  
 
 The individual data sets that are used to illustrate the adverse effect of ComBat.
-Consist of a figure-script that loads the data, process with or without ComBat, run a significance analysis and creates a plot of the p-values. Figures 2. and 3 in the manuscript.
+Consist of a figure-script that loads the data, process the with or without ComBat, and runs a find differentially expressed genes analysis and creates a plot of the p-values. Figures 2a, 2b, 3a and 3c in the manuscript.
 
-### tex/
-
-The tex files and related files needed to compile the manuscript as a pdf
 
 ### *.pdf
 
