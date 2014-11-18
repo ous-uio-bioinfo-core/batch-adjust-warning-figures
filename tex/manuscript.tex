@@ -243,11 +243,12 @@ In effect, $\nu$ represents the effective sample size in the unbalanced group--b
 
 The detailed calculations for general linear models are presented in the appendix. Here, we summarise the results for two-way ANOVA based batch adjustments based on \eqref{eq:model} when there are $m$ batches, $M$ study groups, and $n_{ij}$ samples in batch $i$ and group $j$.
 
-A one-way ANOVA checking for group differences will assume that the $F$-statistic follows an $\text{F}_{q,n-q-1}$ distribution. However, if the data have been batch adjusted prior to this analysis, the approximate distribution of this $F$-statistic, with correct first two momenta, will be
+A one-way ANOVA checking for group differences will assume that the $F$-statistic follows an $\text{F}_{q,n-q-1}$ distribution. However, if the data have been batch adjusted prior to this analysis using two-way ANOVA, the approximate distribution of this $F$-statistic, with correct first two momenta, will be
 \begin{equation}
-F\approx\frac{\tilde q\tilde\sigma^2}{q\sigma^2}\cdot\left(1+\frac{r}{n-q-r-1}\right)\cdot\text{F}_{\tilde q,n-q-r-1}
+F\sim\frac{\sum_{i=1}^q\lambda_i\chi^2_{1}}{\chi^2_{n-q-r-1}}
+\approx\frac{\tilde q\tilde\sigma^2}{q\sigma^2}\cdot\left(1+\frac{r}{n-q-r-1}\right)\cdot\text{F}_{\tilde q,n-q-r-1}
 \end{equation}
-where $\tilde q$ and $\tilde\sigma^2$ are as computed in the appendix and satisfy $\tilde q\tilde\sigma^2\ge q\sigma^2$ and $\tilde q\le q$ with equalities if and only if the groups are evenly represented in all batches.
+where the eigenvalues $\lambda_i$, $\tilde q$, and $\tilde\sigma^2$ are as computed in the appendix and satisfy $\tilde q\tilde\sigma^2\ge q\sigma^2$ and $\tilde q\le q$ with equalities if and only if the groups are evenly represented in all batches.
 
 The two factors both cause a bias in the $F$-statistic. The first factor, $\tilde q\tilde\sigma^2/q\sigma^2$, captures the unbalancedness of the design but is otherwise independent of the sample size. The second factor, $q-r/(n-q-r-1)$ captures loss of variance due to the centering of the data, but is primarily a problem when there are few samples in each batch. Finally, the degrees of freedom, $\tilde q$ and $n-q-r-1$, of the F-distribution are smaller than assumed by the $\text{F}_{q,n-q-1}$ distribution, and so the variance is larger.
 
@@ -301,7 +302,7 @@ For an investigator facing an unbalanced data set with batch effects, our primar
 
 Knowing that adjustment for batch effects while preserving the group difference may lead to varying degree of false results, to what extent can an investigator trust published results where such a method has been applied? Essentially, when the batch--group configuration is balanced, or group difference is ignored  (i.e. group labels not given as parameters to ComBat), problems related to preserving group differences will not occur. For other cases, a re-analysis without using this approach is the most rigorous path. However, such a re-analysis is not feasible if the downstream  analysis can not independently adjust for batch effects. To reach a reliable result, batch effects need to be handled in some way or another. To make matters worse, a re-analysis relies on the availability of the raw data and a description of processing and analysis steps taken in the original work. Even when this is available, the necessary statistics and bioinformatics skills and work hours could still be in short supply.
 
-A superficial assessment of the reliability of results based on batch corrected data with group differences retained can often be made. A major concern would be batches where either of the groups of interest are missing or strongly under-represented, which would contribute to the nominal sample size, but not to the effective sample size. In section~\ref{sec:twogroups}, the ratio $\nu_0/\nu\ge1$ indicates by how much the effective sample size is overestimated when comparing two groups. A similar computation, although more complicated, can be made for multiple groups \NB{refer to appendix for details}. However, the two-group assessment should still give a fair idea of the reliability of pairwise group comparisons. If the $\nu_0/\nu$ ratio is close to 1, results should still be reliable, while a ratio much larger than 1 will indicate exaggerated confidence. If the behaviour of the test statistic is well understood, as the $F$-statistic in ANOVA, one may adjust the statistic according to the $\nu_0/\nu$ ratio and recompute the $p$-value. However, this will require deep insight into the statistical behaviour of the model. Down-sampling to the effective samples size, i.e. to a $\nu/\nu_0$ portion of the samples, may also be done to see if results persist. However, none of these solutions are ideal.
+A superficial assessment of the reliability of results based on batch corrected data with group differences retained can often be made. A major concern would be batches where either of the groups of interest are missing or strongly under-represented, which would contribute to the nominal sample size, but not to the effective sample size. In section~\ref{sec:twogroups}, the ratio $\nu_0/\nu\ge1$ indicates by how much the effective sample size is overestimated when comparing two groups. A similar computation, although more complicated, can be made for multiple groups: see appendix for details covering general linear models. However, the two-group assessment should still give a fair idea of the reliability of pairwise group comparisons. If the $\nu_0/\nu$ ratio is close to 1, results should still be reliable, while a ratio much larger than 1 will indicate exaggerated confidence. If the behaviour of the test statistic is well understood, as the $F$-statistic in ANOVA, one may adjust the statistic according to the $\nu_0/\nu$ ratio and recompute the $p$-value. However, this will require deep insight into the statistical behaviour of the model. Down-sampling to the effective samples size, i.e. to a $\nu/\nu_0$ portion of the samples, may also be done to see if results persist. However, none of these solutions are ideal.
 
 We did consider if batch adjustment could be modified so as to balance the need for removing batch effects with avoidance of introducing false group differences which would be somewhere between batch centering and two-way ANOVA based adjustment. For two-group comparisons, the batch centering will remove some of the group effects and thus underestimate group differences, while two-way ANOVA based batch adjustment will add random, but unbiased, group effects. Somewhere in between is a balance for which these two balance out. However, the applicability of this approach is very limited and potentially risky since the degree of moderation of the batch adjustment will depend on the subsequent comparison to be made.
 
@@ -331,31 +332,29 @@ Y_0=\beta_0 B_0+\gamma_0 C_0+\epsilon_0
 where $Y_0$ and $\epsilon_0$ are now $n-p$ vectors. If $\alpha$ is the intercept term, this corresponds to centering all variables and covariates, but the rotation also eliminates the corresponding degree of freedom.
 
 If there are no batches, i.e. $r=0$, we get the common linear model in which we get a decomposition $Y=\hat\beta_0B_0+\hat\epsilon_0$ with $\hat\gamma_0=Y_0B_0^t(B_0B_0^t)^{-1}$, where
-$|\hat\epsilon|^2\sim\sigma^2\chi_{n-p-q}$ and $|(\hat\beta_0-\beta_0)C_0|^2\sim\sigma^2\chi_q$, yielding the common
+$|\hat\epsilon|^2\sim\sigma^2\chi^2_{n-p-q}$ and $|(\hat\beta_0-\beta_0)C_0|^2\sim\sigma^2\chi^2_q$, yielding the common
 $F$-statistic
 \begin{equation}
 F=\frac{|(\hat\beta_0-\beta_0)C_0|^2/q}{|\hat\epsilon_0|^2/(n-p-q)}\sim\text{F}_{q,n-p-q}.
 \end{equation}
-If we believe our data are  ``batch effect free'', this is the model we would use, and the distribution of the $F$-statistic we would assume.
+If we believe our data are  ``batch effect free'', and therefore do not include batch in the model, this is the distribution of the $F$-statistic we would assume.
 
-We define the batch adjusted data $\tilde Y_0=Y_0-\hat\gamma_0C_0$ using the estimated batch effect $\hat\gamma_0$ from the full model. If we let $X_0=[B_0^t\mid C_0^t]^t$ be the full design matrix after elimination of covariates $A$, the parameter estimates are $[\hat\beta_0\mid\hat\gamma_0]=Y_0X_0^t(X_0X_0^t)^{-1}$. The linear decomposition $Y_0=\hat\beta_0B_0+\hat\gamma_0C_0+\hat\epsilon_0$ has $|\hat\epsilon_0|^2\sim\sigma^2\chi^2_{n-p-q-r}$ and
+We define the batch adjusted data $\tilde Y_0=Y_0-\hat\gamma_0C_0$ using the estimated batch effect $\hat\gamma_0$ from the full model. If we let $X_0=[B_0^t| C_0^t]^t$ be the full design matrix after elimination of covariates $A$, the parameter estimates are $[\hat\beta_0|\hat\gamma_0]=Y_0X_0^t(X_0X_0^t)^{-1}$. The linear decomposition $Y_0=\hat\beta_0B_0+\hat\gamma_0C_0+\hat\epsilon_0$ has $|\hat\epsilon_0|^2\sim\sigma^2\chi^2_{n-p-q-r}$ and
 $|(\hat\beta_0-\beta_0)B_0+(\hat\gamma_0-\gamma_0)C_0|^2\sim\sigma^2\chi^2_{q+r}$, and so the variance of the error term is the same in the batch adjusted case $\tilde Y_0=\hat\beta_0C_0+\hat\epsilon_0$. However, the sum of squares $|(\hat\beta_0-\beta_0)B_0|^2$ explained by $B$ is less easily expressed.
 
-Solving $[\hat\beta_0\mid\hat\gamma_0]=Y_0X_0^t(X_0X_0^t)^{-1}$ and using
+Solving $[\hat\beta_0|\hat\gamma_0]=Y_0X_0^t(X_0X_0^t)^{-1}$ and using
 \begin{equation}
-(X_0X_0^t)^{-1}
-\begin{pmatrix}B_0\\0\end{pmatrix}
-=
-\begin{pmatrix}P\\-(C_0C_0^t)^{-1}C_0B_0^tP\end{pmatrix} B_0
+X_0^t(X_0X_0^t)^{-1} \begin{bmatrix}B_0\\0\end{bmatrix}
+=[B_0^t|C_0^t] \begin{bmatrix}P\\-(C_0C_0^t)^{-1}C_0B_0^tP\end{bmatrix} B_0
+=\rho_{C_0}B_0^tPB_0
 \end{equation}
-with $P=(B_0\rho_{C_0}B_0^t)^{-1}$ and $\rho_{C_0}=I-C_0(C_0C_0^t)^{-1}C_0$
-yields
+with $P=(B_0\rho_{C_0}B_0^t)^{-1}$, and $\rho_{W}=I-W^t(WW^t)^{-1}W$ for any $k\times n$ matrix with $k\le n$ defining the projection to the $n-k$-hyperplane perpendicular to the $k$-hyperplane spanned by $W$, yields
 \begin{equation}
-(\hat\beta_0-\beta_0)B_0=\epsilon_0\rho_{C_0}B_0^tPB_0\sim\text{N}(0,\sigma^2L_0)
-\quad\text{with}\quad
-L_0=B_0^tPB_0\rho_{C_0}B_0^tPB_0
+(\hat\beta_0-\beta_0)B_0=\epsilon_0\rho_{C_0}B_0^tPB_0\sim\text{N}(0,\sigma^2L)
+\quad\text{where}\quad
+L=B_0^tPB_0
 \end{equation}
-since $\epsilon_0\sim\text{N}(0,\sigma^2I)$. Let $\lambda_1,\ldots,\lambda_q\ge1$ be the non-zero eigenvalues of $L_0$: this holds since $L_0$ is a symmetric rank $q$ matrix \NB{complete the proof of this}. Then,
+since $\epsilon_0\sim\text{N}(0,\sigma^2I)$. Let $\lambda_1,\ldots,\lambda_q\ge1$ be the non-zero eigenvalues of $L$: this holds since $L$ is a symmetric rank $q$ matrix,  has the same eigenvalues as $PB_0B_0^t$ the inverse of which, $(B_0B_0^t)^{-1}B_0\rho_{C}B_0^t$, has eigenvalues in $(0,1)$ (not 0 since $B_0$ and $C_0$ are linearly independent). Then,
 \begin{equation}
 |(\hat\beta_0-\beta_0)B_0|^2=\sigma^2\sum_{i=1}^q\lambda_iU_i
 \quad\text{where}\quad
@@ -365,18 +364,26 @@ Approximating this so that the first two momenta match gives
 \begin{equation}
 |(\hat\beta_0-\beta_0)B_0|^2\approx\tilde\sigma^2\chi^2_{\tilde q}
 \quad\text{where}\quad
-\frac{\tilde q\tilde\sigma^2}{\sigma^2}=\sum_{i=1}^q\lambda_i=\text{tr}(L_0),\,
-\frac{\tilde q\tilde\sigma^4}{\sigma^4}=\sum_{i=1}^q\lambda_i^2=\text{tr}(L_0^2),
+\frac{\tilde q\tilde\sigma^2}{\sigma^2}=\sum_{i=1}^q\lambda_i=\text{tr}(L),\,
+\frac{\tilde q\tilde\sigma^4}{\sigma^4}=\sum_{i=1}^q\lambda_i^2=\text{tr}(L^2),
 \end{equation}
 from which it follows that $\tilde\sigma^2\ge\sigma^2$, $\tilde q\tilde\sigma^2\ge q\sigma^2$, and $\tilde q\le q$, where equality holds if and only if all $\lambda_i=1$, which happens when $B_0$ and $C_0$ are linearly independent, i.e. $B_0C_0^t=0$.
 
-We would like to express $\tilde\sigma^2$ and $\tilde q$ terms of the original design matrices. The rotated design matrices were defined as $B_0=BU_0$, etc., using the rotation $U=[U_0\mid U']$ so that $AU_0=0$ while $AU'$ is non-singular. Hence, it follows that $V_0V_0^t=\rho_A=1-A^t(AA^t)^{-1}A$ which is the projection onto the $n-p$-hyperplane perpendicular to the $p$-hyperplane spanned by $A$. This allows us to express
+We would like to express $\tilde\sigma^2$ and $\tilde q$ terms of the original design matrices. The rotated design matrices were defined as $B_0=BU_0$, etc., using the rotation $U=[U_0|U']$ so that $AU_0=0$ while $AU'$ is non-singular. Hence, it follows that $V_0V_0^t=\rho_A=1-A^t(AA^t)^{-1}A$. This allows us to express
 \begin{equation}
-L_0=U_0^tLU_0
+L=U_0^tB^tPBU_0
 \quad\text{where}\quad
-L=
+P=(BU_0\rho_{C_0}U_0^tB^t)^{-1}=(B\rho_{A,C}B^t)^{-1}
 \end{equation}
-\NB{Need to complete this part...}
+and $\rho_{A,C}=\rho_{[A^t|C^t]^t}$ is the projection to the $n-p-r$-hyperplane perpendicular to the $p+r$-hyperplane spanned by $A$ and $C$. We can then compute
+\begin{equation}
+\text{tr}(L)=\text{tr}(M),\,
+\text{tr}(L^2)=\text{tr}(M^2)
+\quad\text{where}\quad
+M=BU_0U_0^tB^tP=B\rho_A B^t(B\rho_{A,C}B^t)^{-1}
+\end{equation}
+and where $M$ and $L$ have the same eigenvalues.
+Notice that if $B$ is orthogonal to $A$, which can be achieved by replacing $B$ with $B-VA$ for some matrix $V$, then $B\rho_A=B$. If $C$ is also made orthogonal to $A$, then $\rho_{A,C}$ can be replaced by $\rho_C$.
 
 
 %\section{Supplementary Material}\label{supp}
@@ -418,7 +425,8 @@ This work was supported by the EUROCAN platform (VN) and the MetAction project (
 %\end{figure}
 
 \begin{figure}[!p]
-\centering\includegraphics[width=13cm]{Fig/boxplots.pdf}
+\centering\includegraphics[width=8cm]{Fig/boxplots.pdf}
+%\centering\includegraphics[width=13cm]{Fig/boxplots_old.pdf}% For the old version
 %\centering\includegraphics[width=13cm]{Fig/boxplots.png}
 \caption{We simulated expression of one gene from four study groups unevenly distributed in three batches containing 50+0+0+20, 0+50+0+20 and 0+0+50+20 samples from groups 1 to 4. This case, design and effects, was selected to illustrate the spurious effects that may arise from different batch adjustments. The Y-axis represent the expression values, while the X-axis is used to visually separate the batches. Circles, triangles, and crosses indicate values from each of the three batches, with colours indicating study groups. Correspondingly coloured boxes to the right of the measurements show group means with 95\% confidence intervals. These give some indication as to which group differences would be found significant.
 a) The ``true'' values measured in a system without batch effects. Groups 1 and 2 have lower means than groups 3 and 4.
