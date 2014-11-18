@@ -37,7 +37,7 @@ plot_one_gene = function(y, group, batch=NULL, ylim=NULL, main="", estimatemetho
 	xlim = c(-1, length(y))
   
   # measurements
-  plot(y, ylim=ylim, xlim=xlim, col=adhoc.palette[as.factor(group)],  pch=adhoc.pch[as.factor(group)], main=main,  ylab="Expression", lwd=lwd, cex.main=adhoc.legendcex, xaxt="n", yaxt="n")
+  plot(y, ylim=ylim, xlim=xlim, col=adhoc.palette[as.factor(group)],  pch=adhoc.pch[as.factor(group)], main=main,  ylab=NA, xlab=NA, lwd=lwd, cex.main=adhoc.legendcex, xaxt="n", yaxt="n")
   
   # batch separator
   if(!is.null(batch))    
@@ -116,7 +116,7 @@ estimatesboxesonly = function(y, group, batch, ylim=NULL, main="", lwd=1, usecol
     adhoc.palette =c("red", "blue", "brown", "cyan")
   
   groupnames=factor(unique(group))
-  plot( as.numeric(unique(group)),  xlim=c(1, length(unique(group))+1) , ylim=ylim, type="n", xaxt="n", yaxt="n", main=main, cex.main=adhoc.legendcex)
+  plot( as.numeric(unique(group)),  xlim=c(1, length(unique(group))+1) , ylim=ylim, type="n", xaxt="n", yaxt="n", main=main, cex.main=adhoc.legendcex, xlab=NA, ylab=NA)
   for(g in groupnames)
   {
     g=factor(g,levels=levels(groupnames))

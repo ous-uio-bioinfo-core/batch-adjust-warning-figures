@@ -60,8 +60,8 @@ matrix_batchadjusted2 = removeBatchEffect(matrix_batcheffect[,], batch=as.factor
 
 figfilename = file.path( getwd(), "plots", paste("boxplots" , sep=""))
 figfile = paste( figfilename, ".pdf", sep=""); 
-#pdf(file =figfile, width=6, height=6)
-pdf(file =figfile)
+pdf(file =figfile, width=8, height=4)
+#pdf(file =figfile)
 
 # find the extreme ylims to be used by all plots.. 
 tmpmatrix = rbind(matrix_true[index,], matrix_batcheffect[index,], matrix_batchadjusted[index,], matrix_batchadjusted2[index,])
@@ -71,8 +71,9 @@ ylim = c(ymin, ymax)
 
 #op=par(mfrow=c(3, 2),   xaxt="n", mar=c(1,3,2,1)+0.1)
 source("commonscripts/boxplot_function.r")
-layout(  matrix(c(1,2,0,3,4,5), 2, 3, byrow = TRUE) , widths=c(1,1,0.35) )
-op=par(oma = c(5,4,0,0) + 0.1, mar = c(0,0,2,1) + 0.1)
+#layout(  matrix(c(1,2,0,3,4,5), 2, 3, byrow = TRUE) , widths=c(1,1,0.35) )
+layout(  matrix(c(1,2,3,4,5), 1, 5, byrow = TRUE) , widths=c(1,1,1,1,0.35) )
+op=par(oma = c(5,4,0,0) + 0.1, mar = c(0,0,2,1) + 0.1, xpd=NA)
 plot_one_gene(matrix_true[index,], group=sa$group,  batch=sa$batch,, 
               main=paste("(a) True values"), estimatemethod="CI", ylim=ylim,
               bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
@@ -83,13 +84,13 @@ plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
 plot_one_gene(matrix_batchadjusted[index,], group=sa$group, batch=sa$batch,
               main=paste("(c) Mean adjusted values"), estimatemethod="CI", ylim=ylim,
               bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
-axis(side = 2, labels =TRUE)
+#axis(side = 2, labels =TRUE)
 plot_one_gene(matrix_batchadjusted2[index,], group=sa$group, batch=sa$batch,
               main=paste("(d) Anova adjusted values"), estimatemethod="CI", ylim=ylim,
               bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
 
 estimatesboxesonly(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,ylim=ylim, 
-                   main="(e) 2way-Anova")
+                   main="(e)")
 # alternativly show tha 2-way anova on the batch adjusted values.
 #plot_one_gene(matrix_batchadjusted2[index,], group=sa$group, batch=sa$batch, ylim=ylim,
 #              main=paste("(e) Batch affected values, batch included in ANOVA"),estimatemethod="lsmeans",
