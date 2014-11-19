@@ -24,7 +24,7 @@ sa = createsampleannotation(  list(c(25,5,0), c(0,20,50)), as.factors=TRUE) #  3
 
 
 #sa = createsampleannotation(  list(c(15,0), c(2,2), c(0,15)), as.factors=TRUE)
-matrix_true = matrix(rnorm(ngenes * nrow(sa), mean=5, sd=2), nrow=ngenes, ncol=nrow(sa))
+matrix_true = matrix(rnorm(ngenes * nrow(sa), mean=10, sd=2), nrow=ngenes, ncol=nrow(sa))
 
 # add a group effect
 matrix_true[,sa$group==1] = matrix_true[,sa$group==1]+4
