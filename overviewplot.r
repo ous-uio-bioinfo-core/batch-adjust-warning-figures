@@ -12,7 +12,7 @@ library(lsmeans)
 
 #setseed=100
 #setseed = setseed+1
-
+#set.seed(setseed)
 set.seed(139)
 ngenes = 1000
 index=1
@@ -82,7 +82,7 @@ plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
               main=paste("(b) Batch affected values"), estimatemethod="CI", ylim=ylim,
               bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
 plot_one_gene(matrix_batchadjusted[index,], group=sa$group, batch=sa$batch,
-              main=paste("(c) Mean adjusted values"), estimatemethod="CI", ylim=ylim,
+              main=paste("(c) Mean centred values"), estimatemethod="CI", ylim=ylim,
               bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
 #axis(side = 2, labels =TRUE)
 plot_one_gene(matrix_batchadjusted2[index,], group=sa$group, batch=sa$batch,

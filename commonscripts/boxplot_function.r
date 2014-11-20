@@ -138,7 +138,7 @@ estimatesboxesonly = function(y, group, batch, ylim=NULL, main="", lwd=1, usecol
     rect(xleft, ybottom, xright, ytop, border=adjustcolor(adhoc.palette[g], linealpha), lwd=lwd, 
          lty="solid", density=-1, col=adjustcolor(adhoc.palette[g],boxalpha))
     lines(c(xleft,xright), c(m,m), col=adjustcolor(adhoc.palette[g],linealpha), lwd=lwd)
-    points(x=(xleft+xright)/2, y=ytop+( (ylim[2]-ylim[1])/30), pch=adhoc.pch[g], cex=adhoc.legendcex, lwd=lwd, col=adhoc.palette[g])
+    #points(x=(xleft+xright)/2, y=ytop+( (ylim[2]-ylim[1])/30), pch=adhoc.pch[g], cex=adhoc.legendcex, lwd=lwd, col=adhoc.palette[g])
 
   }
 }
