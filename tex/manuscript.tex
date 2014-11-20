@@ -370,7 +370,7 @@ Approximating this so that the first two momenta match gives
 \frac{\tilde q\tilde\sigma^2}{\sigma^2}=\sum_{i=1}^q\lambda_i=\text{tr}(L),\,
 \frac{\tilde q\tilde\sigma^4}{\sigma^4}=\sum_{i=1}^q\lambda_i^2=\text{tr}(L^2),
 \end{equation}
-from which it follows that $\tilde\sigma^2\ge\sigma^2$, $\tilde q\tilde\sigma^2\ge q\sigma^2$, and $\tilde q\le q$, where equality holds if and only if all $\lambda_i=1$, which happens when $B_0$ and $C_0$ are linearly independent, i.e. $B_0C_0^t=0$.
+from which it follows that $\tilde\sigma^2\ge\sigma^2$, $\tilde q\tilde\sigma^2\ge q\sigma^2$, and $\tilde q\le q$, and where equality holds if and only if all $\lambda_i=1$, which happens when $B_0$ and $C_0$ are orthogonal, i.e. $B_0C_0^t=0$.
 
 We would like to express $\tilde\sigma^2$ and $\tilde q$ terms of the original design matrices. The rotated design matrices were defined as $B_0=BU_0$, etc., using the rotation $U=[U_0|U']$ so that $AU_0=0$ while $AU'$ is non-singular. Hence, it follows that $V_0V_0^t=\rho_A=1-A^t(AA^t)^{-1}A$. This allows us to express
 \begin{equation}
@@ -380,12 +380,12 @@ P=(BU_0\rho_{C_0}U_0^tB^t)^{-1}=(B\rho_{A,C}B^t)^{-1}
 \end{equation}
 and $\rho_{A,C}=\rho_{[A^t|C^t]^t}$ is the projection to the $n-p-r$-hyperplane perpendicular to the $p+r$-hyperplane spanned by $A$ and $C$. We can then compute
 \begin{equation}
-\text{tr}(L)=\text{tr}(M),\,
-\text{tr}(L^2)=\text{tr}(M^2)
-\quad\text{where}\quad
-M=BU_0U_0^tB^tP=B\rho_A B^t(B\rho_{A,C}B^t)^{-1}
+\frac{\tilde q\tilde\sigma^2}{\sigma^2}=\text{tr}(L)=\text{tr}(M),\,
+\frac{\tilde q\tilde\sigma^4}{\sigma^4}=\text{tr}(L^2)=\text{tr}(M^2)
+\quad\text{with}\quad
+M=B\rho_A B^t(B\rho_{A,C}B^t)^{-1}
 \end{equation}
-and where $M$ and $L$ have the same eigenvalues.
+since $M=BU_0U_0^tB^tP$ and $L=U_0^tB^tPBU_0$ have the same non-zero eigenvalues.
 Notice that if $B$ is orthogonal to $A$, which can be achieved by replacing $B$ with $B-VA$ for some matrix $V$, then $B\rho_A=B$. If $C$ is also made orthogonal to $A$, then $\rho_{A,C}$ can be replaced by $\rho_C$.
 
 
