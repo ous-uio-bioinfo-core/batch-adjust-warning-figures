@@ -8,35 +8,35 @@ Rødland, E. Hovig, manuscript in preparation.
 
 The figures illustrate the side effects from batch effect adjustments using ComBat with study group as covariate or similar methods. 
 
-### figurescript.r
+### mainscript.r
 
 Calls the individual figure scripts. The only script needed to be run in order to recreate the figures in the article. Takes about 6 minutes. 
 
 ### sessionInfo.txt
 
-The output of sessionInfo() when figurescript was run.
+The output of sessionInfo() when mainscript was run.
 
-### overviewplot.r
+### scripts/overviewplot.r
 
 Figure 1. in the manuscript. 
 
-### samplesizescalingplot.r
+### scripts/samplesizescalingplot.r
 
 Figure 2c. in the manuscript. 
 
-### commonscripts/
+### scripts/helperfunctions.r boxplot_function.r
 
 A few short utility functions.
 
 ### reanalysis/  
 
 The individual data sets that are used to illustrate the adverse effect of ComBat.
-Consist of a figure-script that loads the data, process the with or without ComBat, and runs a find differentially expressed genes analysis and creates a plot of the p-values. Figures 2a, 2b, 3a and 3c in the manuscript.
+Consist of a figure-script that loads the data, process the with or without ComBat, and runs a find differentially expressed genes analysis and creates a plot of the p-values. Figures 2a, 2b, 3a and 3c are created in their respective folder.
 
 
-### *.pdf
+### plots/
 
-The produced plots.
+The produced plots used in figure 1 and ficgure 2c.
 
 ### Additional resources
 

@@ -1,10 +1,11 @@
 
-### Figure of box-plots and confidence intervals
+# Figure 2c
+
 
 library(limma)
 library(sva)
 
-source("commonscripts/helperfunctions.r")
+source("helperfunctions.r")
 
 rseed=1111
 set.seed(rseed)
@@ -24,7 +25,7 @@ for(n in samplesizescaleing)
 	
 	
 	
-
+	# A variable batch effect is added for a fraction of the genes
 	matrix_random = matrix(rnorm(ngenes * nrow(sampleannotation), mean=0, sd=1), nrow=ngenes, ncol=nrow(sampleannotation))
 	for(batch in (unique(sampleannotation$batch)))
 	{
@@ -50,16 +51,16 @@ for(n in samplesizescaleing)
 	pvalcounts[["ComBat"]][[runname]]=hist(pValues, plot=FALSE, breaks=100)$counts
 	
 	# using removeBatchEffect
-	#matrix_adjusted = removeBatchEffect(matrix_random, batch=batch, design=mod)
-	#pValues = f.pvalue(matrix_adjusted,mod,mod0)
-	#pvalcounts[["LIMMA"]][[runname]]=hist(pValues, plot=FALSE, breaks=100)$counts
+	# matrix_adjusted = removeBatchEffect(matrix_random, batch=batch, design=mod)
+	# pValues = f.pvalue(matrix_adjusted,mod,mod0)
+	# pvalcounts[["LIMMA"]][[runname]]=hist(pValues, plot=FALSE, breaks=100)$counts
 
 }
 
 
 for(i in 1:length(pvalcounts))
 {
-  figfilename = file.path( getwd(), "plots", paste("samplesizescaling",
+  figfilename = file.path( "../plots", paste("samplesizescaling",
                                                    names(pvalcounts)[i], 
                                                    sep="_"))
   figfile = paste( figfilename, ".pdf", sep=""); 
@@ -80,5 +81,5 @@ for(i in 1:length(pvalcounts))
   
   
   dev.off()
-  print( paste("Figure created: ",figfile ))
+  print( paste("Figure created: ",normalizePath(figfile) ))
 }

@@ -9,7 +9,7 @@ set.seed(100)
 
 includelibs = c("Biobase", "sva", "limma", "GEOquery")
 lapply(includelibs, require, character.only=T)
-source("../../commonscripts/helperfunctions.r")
+source("../../scripts/helperfunctions.r")
 source("helperfunctions_towfic.r")
 
 print("Re-analysis and figure generation for example taken from Towfic et al. 2014")
@@ -75,7 +75,7 @@ figfile = paste(getwd(), "/towficpvalues.pdf", sep="")
 pdf(file=figfile)
 adhocpvalueplot(limma_p_combat,limma_p_woc,limma_p_rand_combat, main="(a) P-values")
 dev.off()
-print( paste("Figure created; ",figfile ))
+print( paste("Figure created; ", normalizePath(figfile) ))
 
 print(paste( "Figure generated for Towfic et al data set. Time spent ", 
              as.integer(round(difftime(Sys.time(),starttime, units="mins"))  ), 

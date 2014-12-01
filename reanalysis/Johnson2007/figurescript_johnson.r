@@ -6,7 +6,7 @@ starttime = Sys.time()
 
 library("sva")
 library("limma")
-source("../../commonscripts/helperfunctions.r")
+source("../../scripts/helperfunctions.r")
 source("helperfunctions_johnson.r")
 
 print("Re-analysis and figure generation for example taken from Johnson et al. 2007, Data set 2")
@@ -66,7 +66,7 @@ figfile = paste(getwd(), "/dataset2pvalues.pdf", sep="")
 pdf(figfile)
 adhocpvalueplot( combatp, limmap, randp,  main="(b) P-values")
 dev.off()
-print( paste("Figure created; ",figfile ))
+print( paste("Figure created; ",normalizePath(figfile) ))
 
 print(paste( "Figure generated for pvalues from Johnson data set 2. Time spent ", 
              as.integer(round(difftime(Sys.time(),starttime, units="mins"))  ), 

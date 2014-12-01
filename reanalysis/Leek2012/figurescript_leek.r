@@ -1,6 +1,6 @@
 
 
-# Script to create a Figure 2.
+# Script to create a Figure 2a and 2b.
 
 # This is a modified version of the ComBat use example from the sva tutorial:
 # http://www.bioconductor.org/packages/2.13/bioc/vignettes/sva/inst/doc/sva.pdf
@@ -10,6 +10,7 @@ library(sva)
 library(bladderbatch)
 data(bladderdata)
 library(limma)
+source("../../scripts/helperfunctions.r")
 
 pheno = pData(bladderEset)
 edata = exprs(bladderEset)
@@ -39,7 +40,7 @@ dev.off()
 print( paste("Figure created; ",figfile ))
 
 
-source("../../commonscripts/helperfunctions.r")
+
 figfile = paste(getwd(), "/leekqqplot.png", sep="")
 png(file=figfile)
 test = Ftest(combat_edata,mod,mod0)
@@ -50,4 +51,4 @@ qqplot(Fquant,test$F, ylim=c(0,max(test$F)), xlim=c(0,max(test$F)),
        main="(b) QQ-plot of F-statistics")
 abline(0,1,lwd=2, lty=2)
 dev.off()
-print( paste("Figure created; ",figfile ))
+print( paste("Figure created; ", normalizePath(figfile) ))
