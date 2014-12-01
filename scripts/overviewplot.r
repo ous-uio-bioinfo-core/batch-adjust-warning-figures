@@ -12,6 +12,7 @@ library(lsmeans)
 set.seed(139) # selected based on illustrative values
 ngenes = 1000 # Really not needed for removeBatchEffect, but a matrix is needed for ComBat.
 index=1 # only this gene is plotted
+usecolor=TRUE
 
 sa = createsampleannotation(  list(c(25,5,0), c(0,20,50)), as.factors=TRUE) #  3 groups,  2 batches
 
@@ -67,20 +68,20 @@ layout(  matrix(c(1,2,3,4,5), 1, 5, byrow = TRUE) , widths=c(1,1,1,1,0.35) )
 op=par(oma = c(5,4,0,0) + 0.1, mar = c(0,0,2,1) + 0.1, xpd=NA)
 plot_one_gene(matrix_true[index,], group=sa$group,  batch=sa$batch,, 
               main=paste("(a) True values"), estimatemethod="CI", ylim=ylim,
-              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets, usecolor=usecolor)
 axis(side = 2, labels =TRUE)
 plot_one_gene(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,
               main=paste("(b) Batch affected values"), estimatemethod="CI", ylim=ylim,
-              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets, usecolor=usecolor)
 plot_one_gene(matrix_batchadjusted[index,], group=sa$group, batch=sa$batch,
               main=paste("(c) Mean centred values"), estimatemethod="CI", ylim=ylim,
-              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets, usecolor=usecolor)
 plot_one_gene(matrix_batchadjusted2[index,], group=sa$group, batch=sa$batch,
               main=paste("(d) Anova adjusted values"), estimatemethod="CI", ylim=ylim,
-              bbh=batchboxheight, bblo = batchboxlowmeanoffsets)
+              bbh=batchboxheight, bblo = batchboxlowmeanoffsets, usecolor=usecolor)
 
 estimatesboxesonly(matrix_batcheffect[index,], group=sa$group, batch=sa$batch,ylim=ylim, 
-                   main="(e)")
+                   main="(e)", usecolor=usecolor)
 
 dev.off()
 
