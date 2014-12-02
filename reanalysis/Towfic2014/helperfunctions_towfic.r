@@ -35,6 +35,7 @@ loadtowfic = function(downloaddata=TRUE)
 # I dont know a method of getting the sample annotation from GEO whitout downloading the whole matrix (including the GPL).
 createsampleannotation = function()
 {
+	require("GEOquery")
 	GSE61901eset=getGEO("GSE61901")[[1]]
 	GSE40566eset=getGEO("GSE40566")[[1]]
 	
