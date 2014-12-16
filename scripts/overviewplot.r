@@ -59,7 +59,7 @@ figfilename = file.path( "../plots", paste("boxplots" , sep=""))
 
 # eps
 figfile = paste( figfilename, ".eps", sep="");
-cairo_ps(file =figfile)
+cairo_ps(file =figfile,  width=8, height=4)
 
 
 # find the extreme ylims to be used by all plots.. 
