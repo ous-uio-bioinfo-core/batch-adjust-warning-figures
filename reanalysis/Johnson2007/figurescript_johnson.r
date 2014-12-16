@@ -62,8 +62,14 @@ randp = eBayes(fit2)$p.value[,1]
 print(paste("ComBat adjusted random data, significant probes (fdr<0.05): ",  sum(p.adjust(randp, "fdr")<0.05)))
 
 # create pvalue plot
-figfile = paste(getwd(), "/dataset2pvalues.pdf", sep="")
-pdf(figfile)
+#figfile = paste(getwd(), "/dataset2pvalues.pdf", sep="")
+#pdf(figfile)
+
+# eps
+figfile = paste(getwd(), "/dataset2pvalues.eps", sep="")
+cairo_ps(file =figfile)
+
+
 adhocpvalueplot( combatp, limmap, randp,  main="(b) P-values")
 dev.off()
 print( paste("Figure created; ",normalizePath(figfile) ))

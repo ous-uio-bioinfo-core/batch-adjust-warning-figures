@@ -33,16 +33,27 @@ combat_edata = ComBat(dat=edata, batch=batch,
 pValuesComBat = f.pvalue(combat_edata,mod,mod0)
 qValuesComBat = p.adjust(pValuesComBat,method="BH")
 
-figfile = paste(getwd(), "/leekrandomdatapvalues.pdf", sep="")
-pdf(file=figfile)
+#figfile = paste(getwd(), "/leekrandomdatapvalues.pdf", sep="")
+#pdf(file=figfile)
+
+# eps
+figfile = paste(getwd(), "/leekrandomdatapvalues.eps", sep="")
+cairo_ps(file =figfile)
+
+
 hist(pValuesComBat,  main="(a) P-values, Random numbers", breaks=100, xlab="p-value")
 dev.off()
 print( paste("Figure created; ",figfile ))
 
 
 
-figfile = paste(getwd(), "/leekqqplot.png", sep="")
-png(file=figfile)
+#figfile = paste(getwd(), "/leekqqplot.png", sep="")
+#png(file=figfile)
+
+# eps
+figfile = paste(getwd(), "/leekqqplot.eps", sep="")
+cairo_ps(file =figfile)
+
 test = Ftest(combat_edata,mod,mod0)
 Fquant=qf(ppoints(nrow(combat_edata)),test$df1,test$df0)
 qqplot(Fquant,test$F, ylim=c(0,max(test$F)), xlim=c(0,max(test$F)),

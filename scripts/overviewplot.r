@@ -54,8 +54,13 @@ matrix_batchadjusted2 = removeBatchEffect(matrix_batcheffect[,], batch=as.factor
 
 # plotting
 figfilename = file.path( "../plots", paste("boxplots" , sep=""))
-figfile = paste( figfilename, ".pdf", sep=""); 
-pdf(file =figfile, width=8, height=4)
+#figfile = paste( figfilename, ".pdf", sep=""); 
+#pdf(file =figfile, width=8, height=4)
+
+# eps
+figfile = paste( figfilename, ".eps", sep="");
+cairo_ps(file =figfile)
+
 
 # find the extreme ylims to be used by all plots.. 
 tmpmatrix = rbind(matrix_true[index,], matrix_batcheffect[index,], matrix_batchadjusted[index,], matrix_batchadjusted2[index,])

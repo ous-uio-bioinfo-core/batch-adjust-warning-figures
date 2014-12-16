@@ -63,9 +63,11 @@ for(i in 1:length(pvalcounts))
   figfilename = file.path( "../plots", paste("samplesizescaling",
                                                    names(pvalcounts)[i], 
                                                    sep="_"))
-  figfile = paste( figfilename, ".pdf", sep=""); 
-  pdf(file =figfile)
+  #figfile = paste( figfilename, ".pdf", sep="") 
+  #pdf(file =figfile)
   
+  figfile = paste( figfilename, ".eps", sep="")
+  cairo_ps(file =figfile)
   
   
   plot(  (1:25)/100, 1:25, 

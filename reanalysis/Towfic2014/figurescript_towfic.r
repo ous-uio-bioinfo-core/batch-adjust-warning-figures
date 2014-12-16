@@ -71,8 +71,12 @@ print(paste("ComBat adjusted random data, significant probes (fdr<0.05): ",
 
 
 # create pvalue plot
-figfile = paste(getwd(), "/towficpvalues.pdf", sep="")
-pdf(file=figfile)
+#figfile = paste(getwd(), "/towficpvalues.pdf", sep="")
+#pdf(file=figfile)
+
+figfile = paste(getwd(), "/towficpvalues.eps", sep="")
+cairo_ps(file =figfile)
+
 adhocpvalueplot(limma_p_combat,limma_p_woc,limma_p_rand_combat, main="(a) P-values")
 dev.off()
 print( paste("Figure created; ", normalizePath(figfile) ))
