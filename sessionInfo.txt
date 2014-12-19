@@ -1,24 +1,16 @@
-
-> print(sessionInfo())
 R version 3.1.1 (2014-07-10)
-Platform: x86_64-w64-mingw32/x64 (64-bit)
+Platform: x86_64-apple-darwin10.8.0 (64-bit)
 
 locale:
-[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252   
-[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C                          
-[5] LC_TIME=English_United States.1252    
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] parallel  stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] bladderbatch_1.2.0  Biobase_2.24.0      BiocGenerics_0.10.0 lsmeans_2.12       
-[5] limma_3.20.9        sva_3.10.0          mgcv_1.8-3          nlme_3.1-118       
-[9] corpcor_1.6.7      
+[1] bladderbatch_1.2.0  Biobase_2.24.0      BiocGenerics_0.10.0 lsmeans_2.12        limma_3.20.9        sva_3.10.0         
+[7] mgcv_1.8-3          nlme_3.1-118        corpcor_1.6.7      
 
 loaded via a namespace (and not attached):
- [1] grid_3.1.1      lattice_0.20-29 Matrix_1.1-4    multcomp_1.3-7  mvtnorm_1.0-0  
- [6] plyr_1.8.1      Rcpp_0.11.3     sandwich_2.3-2  splines_3.1.1   survival_2.37-7
-[11] TH.data_1.0-3   tools_3.1.1     zoo_1.7-11     
-
-> sink()
+ [1] grid_3.1.1      lattice_0.20-29 Matrix_1.1-4    multcomp_1.3-7  mvtnorm_1.0-0   plyr_1.8.1      Rcpp_0.11.3    
+ [8] sandwich_2.3-2  splines_3.1.1   survival_2.37-7 TH.data_1.0-3   tools_3.1.1     zoo_1.7-11     
