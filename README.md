@@ -14,11 +14,12 @@ Calls the individual figure scripts. The only script needed to be run in order t
 
 ### sessionInfo.txt
 
-The output of sessionInfo() when mainscript was run.
+The output of sessionInfo() when mainscript was run. Be aware that the different versions of the r-packages could produce different results. In particular, the newest version of limma (3.20.8) was needed to produce the Figure 1.
 
 ### scripts/overviewplot.r
 
 Figure 1. in the manuscript. 
+
 
 ### scripts/samplesizescalingplot.r
 
