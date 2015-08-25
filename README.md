@@ -4,8 +4,8 @@ README for the batch-adjust-warning-figures git repository.
 
 This project consists of the r-code that produces the figures used in
 ["Methods that remove batch effects while retaining group differences may lead to exaggerated confidence in downstream analyses"](http://biostatistics.oxfordjournals.org/content/early/2015/08/13/biostatistics.kxv027), 
-Vegard Nygaard, Einar Andreas Rødland, and Eivind Hovig
-Biostat first published online August 13, 2015
+Vegard Nygaard, Einar Andreas Rødland, and Eivind Hovig, 
+Biostat first published online August 13, 2015, 
 doi:10.1093/biostatistics/kxv027
 
 
