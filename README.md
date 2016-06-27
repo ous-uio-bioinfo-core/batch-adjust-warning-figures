@@ -11,6 +11,13 @@ doi:10.1093/biostatistics/kxv027
 
 The figures illustrate the side effects from batch effect adjustments using ComBat with study group as covariate or similar methods. 
 
+### Update, response_to_towfic/
+
+Towfic and colleagues commented on our paper in their Letter to the Editor (June 2016). When preparing our response we did some further analysis. In addition, we had a brief email communication with Illumina regarding the recommended way of analyzing their microarray chip. This work is under review.
+
+The original github commit for our paper has id 4cf315b and was done on Aug 25, 2015.
+
+
 ### mainscript.r
 
 Calls the individual figure scripts. The only script needed to be run in order to recreate the figures in the article. Takes about 6 minutes. 

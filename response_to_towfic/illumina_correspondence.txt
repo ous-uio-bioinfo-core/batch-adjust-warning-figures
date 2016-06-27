@@ -1,0 +1,112 @@
+From: Illumina Technical Support <techsupport@illumina.com>
+Subject: RE: SFC#00948991 - Re: SFC#00947829 - Should the two strips from the MouseWG-6 v2.0 chip be treated as technical replicates?
+Date: 9 June 2016 at 16:31:16 GMT+2
+To: "vegardny@ifi.uio.no" <vegardny@ifi.uio.no>
+Cc: "vegardny@ifi.uio.no" <vegardny@ifi.uio.no>, "ehovig@ifi.uio.no" <ehovig@ifi.uio.no>, "einarro@ifi.uio.no" <einarro@ifi.uio.no>
+
+Hello Vegard,
+
+The stripes, or swaths, are generated when the beadchip is scanned because the sample area is not scanned in a single swath.  One sample area is scanned multiple times and in fact, there is some overlap between the swaths.  All of a single sample area should always be considered as a single sample. 
+
+We do not have specific documentation which states not to consider swaths of a single sample as replicates.  
+
+For technical replicates, we recommend loading the same sample into 2 different sample areas.  Below is a link to the TechNote 'The Power of Replicates' for gene expression profiling.  
+
+http://support.illumina.com/content/dam/illumina-marketing/documents/products/technotes/technote_power_replicates.pdf
+
+Please let us know if you need any additional information. 
+
+
+
+Best regards,
+Susan
+
+Susan Chambers
+Technical Applications Scientist
+
+Technical Bulletins are updated at: https://icom.illumina.com/MyIllumina/Bulletins
+Browse instructor-led, hands-on trainings at: http://support.illumina.com/training.ilmn
+
+
+-----<Email Received>-----
+From: vegardny@ifi.uio.no
+Sent: 6/09/2016 03:05 AM PDT
+To: techsupport@illumina.com
+CC: vegardny@ifi.uio.no;ehovig@ifi.uio.no;einarro@ifi.uio.no;
+Subject: Re: SFC#00947829 - Should the two strips from the MouseWG-6 v2.0 chip be treated as technical replicates?
+
+Dear Dr. Bristow,
+
+Thank you indeed for an illuminating answer. Please permit a follow-up
+question:
+Does Illumina have any formal statement(s) on this that we can cite in our
+discussion, or should we cite your statement when discussing the Illumina
+position on the topic.
+
+Thank you in advance,
+
+mvh.
+Vegard Nygaard
+Bioinformatics Core Facility
+Department of Core Facilities (Montebello)
+Institute for Cancer Research
+Oslo University Hospital
+
+
+
+
+
+
+On 07 Jun 2016, at 16:55, Illumina Technical Support <techsupport@illumina.com<mailto:techsupport@illumina.com>> wrote:
+
+Hello Vegard,
+
+Thank you for contacting Illumina Technical Support with your inquiry.
+
+The Mouse WG-6 array is a 6-sample array, as you mentioned. The data generated for each sample area, as a whole, is considered data for a single sample. The stripes within the sample area do not constitute technical replicates.
+
+We do not advise dividing the data from each stripe to be processed as replicates. Each bead type is present in a single sample area an average of 15-30 times. GenomeStudio either excludes or imputes data for bead types that are represented less than 5 times in any one sample area because the confidence level for poorly represented bead types is not high. By dividing each stripe into a single technical replicate, the number of bead types that are represented by 5 or fewer beads in each sample would increase significantly and would lead to the data being less reliable.
+
+I hope this helps. Please let us know if you have any additional questions or require further assistance.
+
+Best Regards,
+Jeannie
+
+Jeannie Bristow, Ph.D.
+Technical Support
+Technical Bulletins are updated at: https://icom.illumina.com/MyIllumina/Bulletins
+Browse instructor-led, hands-on trainings at: http://support.illumina.com/training.ilmn
+
+
+-----<Email Received>-----
+From: vegardny@ifi.uio.no<mailto:vegardny@ifi.uio.no>
+Sent: 6/07/2016 06:49 AM PDT
+To: techsupport@illumina.com<mailto:techsupport@illumina.com>
+CC: ehovig@ifi.uio.no<mailto:ehovig@ifi.uio.no>;einarro@ifi.uio.no<mailto:einarro@ifi.uio.no>;
+Subject: Should the two strips from the MouseWG-6 v2.0 chip be treated as technical replicates?
+
+My question is about processing of data from your MouseWG-6 v2.0 beadchip,
+http://support.illumina.com/array/array_kits/mousewg-6_v2_expression_beadchip_kit.html
+
+In a recent paper, we re-analyzed  data from an experiment utilizing the MouseWG-6 v2.0 chip. Now, we receive critizism regarding the processing of the data,
+
+The Mouse WG6 v2 chip consist of 6 samples, which each occupy two strips. In the data set we used, measurments from the two strips were combined, yielding one column of data per sample. However, according to our critics, the two strips are to be treated as technical replicates. They further give the impression that averaging them are inferior and uncommon. We find the critique surprising, since we know that Illuminas Genome Studio normally combines the two strips, and based on our experience this is the format mostly used in analysis. We tried unsuccessfully to find a technical report or recommendation from Illumina in how to treat these two strips. We would appreciate if you could clarify:
+
+1. Regarding the MouseWG-6 v2.0 chip, in what way do Illumina recommend treating the two strips from each sample, combined or as technical replicates?
+
+2. Is combining them unusual?
+
+
+We are not expecting a proof that combining the strips is the best, but we would like a recommendation which we can refer to in our answer.
+
+We have three weeks to submit an answer to the journal.
+If needed, we can provide more context as GEO accessions and draft manuscript (of the critique).
+
+
+Best Regards
+
+Vegard Nygaard
+Bioinformatics Core Facility
+Department of Core Facilities (Montebello)
+Institute for Cancer Research
+Oslo University Hospital
