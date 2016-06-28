@@ -13,7 +13,7 @@ Results are produced by running table1_modified_code.R on the data set GEO:GSE61
 5. One-way: replicates averaged, ComBat with treatment as covariate |  974 |  742 |   NA |     NA
 6. Two-way: replicates averaged, CHIP blocking                      |   87 |    1 |   NA |     NA
 7. Two-way: replicates averaged, ComBat normalized, CHIP blocking   |   86 |    1 |   NA |     NA
-8. Result from Nygaard et al. article (GEO:GSEGSE40566)             |   11 |   NA |   NA |     NA
+8. Result from Nygaard et al. article (GEO:GSE40566)                |   11 |   NA |   NA |     NA
 
 Consensus correlation from duplicateCorrelation: 0.09611996
 
