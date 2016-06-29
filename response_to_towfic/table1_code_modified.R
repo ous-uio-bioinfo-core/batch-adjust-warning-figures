@@ -122,8 +122,8 @@ lmem_original <- function(X,lab,batch,sampid) {
   # does not make sense. However, ML gives biased variance estimates. More
   # critically, the degrees of freedom does not take into account the mixed
   # random effects.
-  model1 <- lmer(X~0+batch+(1|sampid),REML = F)
-  model2 <- lmer(X~0+batch+lab+(1|sampid),REML=F);
+  model1 <- lme4::lmer(X~0+batch+(1|sampid),REML = F)
+  model2 <- lme4::lmer(X~0+batch+lab+(1|sampid),REML=F);
   comp <- anova(model1,model2,test='Chisq');
   comp[['Pr(>Chisq)']][2]
 }
@@ -131,7 +131,7 @@ lmem_original <- function(X,lab,batch,sampid) {
 lmem_corrected <- function(X,lab,batch,sampid) {
   # Corrected effect assessment using lmerTest
   # Should use REML for accurate variance estimation
-  model <- lmer(X~0+batch+lab+(1|sampid),REML=T);
+  model <- lmerTest::lmer(X~0+batch+lab+(1|sampid),REML=T);
   anova(model)["lab","Pr(>F)"]
 }
 
