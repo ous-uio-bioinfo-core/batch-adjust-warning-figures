@@ -247,7 +247,7 @@ result_summary <- data.frame(
     c(N.sign(limma_combat_blocking_out),N.sign(twowayanova_combat_blocking_out),NA,NA),
   "Result from Nygaard et al. article (GEO:GSEGSE40566)"=
     c(11,NA,NA,NA),
-  row.names=c('limma','anova','mixed','aov+err'))
+  row.names=c('limma','anova','mixed','ranova'))
 
 print(t(result_summary))
 cat('Consensus correlation from duplicateCorrelation:',attr(limma_out,'consensus'))
@@ -264,5 +264,6 @@ head(P) # P values for the first few probes
 
 fmtprt <- function(tab) round(tab,7)
 fmtprt(P[1:10,c(1,2,3,4)]) # ranova.orig = ranova.equiv
+fmtprt(P[1:10,c(8,9)]) # one-way models: unreliable method
 fmtprt(P[1:10,c(5,6,7,11)]) # ranova = anova.twoway ~ lme4 ~ nlme
-fmtprt(P[1:10,c(8,9,10,12,13)])
+fmtprt(P[1:10,c(10,12,13)]) # remaining two-way models

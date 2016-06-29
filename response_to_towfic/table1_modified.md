@@ -4,18 +4,26 @@ Results are produced by running table1_modified_code.R on the data set GEO:GSE61
 
 ## Modified Table 1
 
-                                                                    |limma |anova |mixed |aov+err
+                                                                    |limma |anova |mixed |ranova
 ------------------------------------------------------------------- | ---- | ---- | ---- | ------
-1. Towfic et al.: technical replicates, CHIP.blocking               | 1474 |   NA | 1968 |   1749
+1. Towfic et al.: technical replicates, CHIP blocking               | 1474 |   NA | 1968 |   1749
 2. Equivalent but simpler model                                     |   NA |   NA |   NA |   1749
-3. Corrected models: technical replicates, CHIP.blocking            |   NA |   NA |    1 |      1
+3. Corrected models: technical replicates, CHIP blocking            |   NA |   NA |    1 |      1
 4. Same model, different implementation                             |   NA |   NA |    0 |     NA
 5. One-way: replicates averaged, ComBat with treatment as covariate |  974 |  742 |   NA |     NA
 6. Two-way: replicates averaged, CHIP blocking                      |   87 |    1 |   NA |     NA
 7. Two-way: replicates averaged, ComBat normalized, CHIP blocking   |   86 |    1 |   NA |     NA
 8. Result from Nygaard et al. article (GEO:GSE40566)                |   11 |   NA |   NA |     NA
 
-Consensus correlation from duplicateCorrelation: 0.09611996
+*)Consensus correlation from duplicateCorrelation: 0.09611996
+
+**limma:** Analyses made using limma's lmFit method. In (1), lmFit is run with consensus correlation from duplicateCorrelation.
+
+**anova:** One-way ANOVA on batch adjusted data; two-way ANOVA with batch (CHIP) as blocking.
+
+**mixed:** Mixed random effects model using lmer from lme4, or lme from nlme as alternative (4).
+
+**ranova:** Random effects (repeated measures) model using aov: (1) being incorrectly specified as Error(1/sampid), (2) without random effects term, and (3) with random effects term Error(sampid).
 
 ## Comments on results and explanations:
 
@@ -25,17 +33,17 @@ limma: Linear model, lmFit, using consensus correlation from duplicateCorrelatio
 
 mixed: Mixed random effects model using lmer from the lme4 package. Model comparison using likelihood ratio test, which is not appropriate as it does not correct for the effect of the random effects on the estimates. Uses ML as REML does not make sense in such a comparison, but which tend to give biased variance estimates.
 
-aov+err: Uses aov with random sample effect misspecified as Error(1/sampid). See 2.
+ranova: Uses aov with random sample effect misspecified as Error(1/sampid). See 2.
 
 **2. Demonstration that misspecified model is equivalent to model without random effects term**
 
-aov+err: Same model as in 1, but without random effects included. Results exactly the same.
+ranova: Same model as in 1, but without random effects included. Results exactly the same.
 
 **3. Corrected mixed random effects models**
 
 mixed: Fits model with lmer using REML to get unbiased variance estimates. Uses lmerTest to estimate degrees of freedom: done using Satterthwaite's method.
 
-aov+err: Random effects term specified as Error(sampid).
+ranova: Random effects term specified as Error(sampid).
 
 **4. Alternative mixed random effects model**
 
@@ -59,6 +67,8 @@ The was based on the same method as in 7.
 
 
 ## P values for first ten probes
+
+The tables display the P values for the first ten probes of the data. This demonstrates that some of the methods are identical, or near identical.
 
 **Original analyses (and equivalent model) which we consider incorrect or unreliable**
 
@@ -91,7 +101,7 @@ ILMN_1234913 |   0.3804040 |    0.3519286
 ILMN_2610645 |   0.6564963 |    0.6448149 
 ILMN_2883907 |   0.2867952 |    0.3031055 
 
-**Random effects models and two-way ANOVA**
+**Corrected random effects models and two-way ANOVA**
 
              |    ranova |     lme4  |      nlme |anova.twoway
 -------------|-----------|-----------|-----------|------------
