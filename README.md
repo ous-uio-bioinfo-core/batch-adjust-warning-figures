@@ -13,7 +13,7 @@ The figures illustrate the side effects from batch effect adjustments using ComB
 
 ### Update, response_to_towfic/
 
-Towfic and colleagues commented on our paper in their Letter to the Editor (June 2016). When preparing our response we did some further analysis. In addition, we had a brief email communication with Illumina regarding the recommended way of analyzing their microarray chip. This work is under review.
+Towfic and colleagues commented on our paper in their Letter to the Editor (June 2016). When preparing our response we did some further analysis. In addition, we had a brief email communication with Illumina regarding the recommended way of analyzing their microarray chip. This work is in preparation.
 
 The original github commit for our paper has id 4cf315b and was done on Aug 25, 2015.
 
