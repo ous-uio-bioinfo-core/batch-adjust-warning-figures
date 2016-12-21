@@ -73,7 +73,7 @@ We also note that the reanalyses by Towfic et al. in the letter, unlike their an
 
 ### Other
 
-**[Illumina_correspondence.txt](Illumina_correspondence.txt):** Copy of email correspondence with Illumina tech support regarding processing of strips from the MouseWG-6 v2.0 bead array chip.
+**[Illumina_correspondence.txt](illumina_correspondence.txt):** Copy of email correspondence with Illumina tech support regarding processing of strips from the MouseWG-6 v2.0 bead array chip.
 
 
 ### References
