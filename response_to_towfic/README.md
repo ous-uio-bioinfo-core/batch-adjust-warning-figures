@@ -1,7 +1,7 @@
-Supplementary information in response to letter by Towfic et al. in Biostatistics
+Supplementary information in response to the Letter to the Editor by Towfic et al. in Biostatistics
 ----------
 
-In our article, we reanalyzed parts of a study by [Towfic et al.](https://dx.doi.org/10.1371/journal.pone.0083757) in order to illustrate our main point, that batch effect adjustment may lead to unreliable results. Towfic et al. maintain that their results are reliable, and wrote a [Letter To The Editor](https://dx.doi.org/10.1093/biostatistics/kxw031) where they present three alternative ways to analyze the data, claiming to obtain results consistent with their original findings. The three new alternative ways to analyze the data all handle batch as a fixed effect in the models,<i>i.e.</i> in a way we consider to be reliable. However, for other reasons, the implementation of the analysis is problematic for the first one, using duplicateCorrelation, and just wrong for the two other. In order to realize this, we had to dive deep into their code. And for others to also realize the errors, there is no way around getting into the details.
+In our article, we reanalyzed parts of a study by [Towfic et al.](https://dx.doi.org/10.1371/journal.pone.0083757) in order to illustrate our main point, that batch effect adjustment may lead to unreliable results. Towfic et al. maintain that their results are reliable, and wrote a [Letter to the Editor](https://dx.doi.org/10.1093/biostatistics/kxw031) where they present three alternative ways to analyze the data, claiming to obtain results consistent with their original findings. The three new alternative ways to analyze the data all handle batch as a fixed effect in the models,<i>i.e.</i> in a way we consider to be reliable. However, for other reasons, the implementation of the analysis is problematic for the first one, using duplicateCorrelation, and just wrong for the two other. In order to realize this, we had to dive deep into their code. And for others to also realize the errors, there is no way around getting into the details.
 
 
 ### Problem with alternative [analysis 1](https://github.com/immuneering/biostat_reply/blob/master/table1_code.R#L96): duplicateCorrelation+LIMMA
@@ -78,7 +78,7 @@ We also note that the reanalyses by Towfic et al. in the letter, unlike their an
 
 ### References
 
-Towfics et al.´s [**original reasearch article**](https://dx.doi.org/10.1371/journal.pone.0083757)  
+Towfics et al.´s [**original research article**](https://dx.doi.org/10.1371/journal.pone.0083757)  
 Towfic, F., Funt, J. M., Fowler, K. D., Bakshi, S., Blaugrund, E., Artyomov, M. N.,
 Hayden, M. R., Ladkani, D., Schwartz, R. and Zeskind, B. (2014, jan). Comparing the
 biological impact of glatiramer acetate with the biological impact of a generic. PloS one 9(1),
@@ -92,7 +92,7 @@ analyses. Biostatistics. 2016 Jan;17(1):29-39. doi: 10.1093/biostatistics/kxv027
 PubMed PMID: 26272994; PubMed Central PMCID: PMC4679072.
 
 <br/>
-Towfics et al.´s [**Letter To The Editor**](https://dx.doi.org/10.1093/biostatistics/kxw031) and the [r-script](https://github.com/immuneering/biostat_reply) to reproduce the results presented.
+Towfics et al.´s [**Letter to the Editor**](https://dx.doi.org/10.1093/biostatistics/kxw031) and the [r-script](https://github.com/immuneering/biostat_reply) to reproduce the results presented.
 
 <br/>
 [**GEO:GSE40566**](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40566)  
@@ -100,7 +100,7 @@ Data set cited (but not used) in the original article by Towfic et al. Also used
 <br/>
 
 [**GEO:GSE61901**](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE61901)  
-Data set used in the original article by Towfic et al. and in their Letter To The Editor. Data from the two strips are kept as separate observations to be used as technical replicates, or erroneously as biological replicates.
+Data set used in the original article by Towfic et al. and in their Letter to the Editor. Data from the two strips are kept as separate observations to be used as technical replicates, or erroneously as biological replicates.
 
 <br/>
 <br/>
