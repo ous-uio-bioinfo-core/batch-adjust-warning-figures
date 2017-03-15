@@ -92,11 +92,11 @@ Nygaard V, Rødland EA, Hovig E. Methods that remove batch effects while
 retaining group differences may lead to exaggerated confidence in downstream
 analyses. Biostatistics. 2016 Jan;17(1):29-39. doi: 10.1093/biostatistics/kxv027.
 PubMed PMID: 26272994; PubMed Central PMCID: PMC4679072.
-
 <br/>
+
 Towfics et al.´s [**Letter to the Editor**](https://dx.doi.org/10.1093/biostatistics/kxw031) and the [r-script](https://github.com/immuneering/biostat_reply) to reproduce the results presented.
-
 <br/>
+
 [**GEO:GSE40566**](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40566)  
 Data set cited (but not used) in the original article by Towfic et al. Also used in our reanalysis. Data from the two strips are combined, thus each sample has one measurement per probe.
 <br/>
